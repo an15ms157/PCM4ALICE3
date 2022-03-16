@@ -6,9 +6,28 @@
 #include "TH2.h"
 #include "TPad.h"
 #include "TLegend.h"
-
+#include "TLatex.h"
 
 void histogramplots(){
+
+gStyle->SetOptTitle(0);
+//gStyle->SetOptStat(0);
+gStyle->SetLineWidth(2);
+gStyle->SetPadLeftMargin(0.15);
+gStyle->SetPadBottomMargin(0.15);
+gStyle->SetPadTopMargin(0.05);
+gStyle->SetPadRightMargin(0.05);
+gStyle->SetTitleSize(0.06);
+gStyle->SetTitleSize(0.06,"Y");
+gStyle->SetTitleOffset(1,"Y");
+gStyle->SetTitleOffset(1,"X");
+gStyle->SetLabelSize(0.05);
+gStyle->SetLabelSize(0.05,"Y");
+gStyle->SetFrameLineWidth(2);
+gStyle->SetNdivisions(505,"X");
+gStyle->SetNdivisions(505,"Y");
+gStyle->SetPadTickX(1);
+gStyle->SetPadTickY(1);
 
 //   TO MOVE STATBOX
 //gStyle->SetStatX(.44);
@@ -19,7 +38,26 @@ void histogramplots(){
 
 //TFile * fileRec = new TFile("./ana_withft3.root");
 //TFile * fileRec = new TFile("./ana_211229_withft3.root");
-TFile * fileRec = new TFile("./output/pp/ana_pTcut_withft3.root");
+TFile * fileRec = new TFile("./output/pp/pcut_0.5/ana_pTcut_withft3.root");
+
+double fMaxPt=5.0;
+//const int nBinsPt=100;
+const int nBinsPt=19;
+
+Double_t pt_bin_proj[]={0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.2,1.4,1.6,1.8,2.0,2.4,2.0,4.0,5.0};
+Int_t nbinspt_proj  = sizeof(pt_bin_proj)/sizeof(*pt_bin_proj) -1;
+
+Double_t pt_bin_proj_fine[]={0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.6,0.7,0.8,0.9,1.0,1.25,1.5,1.75, 2.0,2.4,2.0,5.0 };
+Int_t nbinspt_proj_fine  = sizeof(pt_bin_proj)/sizeof(*pt_bin_proj) -1;
+/*
+double pt_bin_proj[nBinsPt+1];
+for(int i=0; i<nBinsPt+1; i++){
+      if (i < 10) pt_bin_proj[i]            =  0.1*i;
+      else if(i<20) pt_bin_proj[i]          = 1.0 + 0.2*(i-10);
+      else if(i<22) pt_bin_proj[i]          = 3.0 + 0.5*(i-20);
+      else pt_bin_proj[i]                   = fMaxPt;
+}
+*/
 
 
 ///////////////   INVARIANT MASS PLOT    ///////////////
@@ -56,9 +94,19 @@ hInvMassGGF_conv_SmearedP->Draw("SAME");
 hInvMassGGF_conv_SmearedP->SetLineColor(kCyan);  
 
 
-
-
 hInvMassGGF->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGF_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGF_rec->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGF_rec_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGF_conv->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGF_conv_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+
+hInvMassGGF->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGF_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGF_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGF_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGF_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGF_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
 
 auto l1 = new TLegend(0.4, 0.6, 0.7, 0.8);
 l1->SetHeader("ALICE 3 Study");
@@ -88,6 +136,19 @@ TH1D * hInvMassGGPi0F_conv_SmearedP = (TH1D*) fileRec->Get("hInvMassGGPi0F_conv_
 TCanvas c2("c2", "c2", 1600, 1600);
 c2.Divide(3,1);
 
+hInvMassGGPi0F->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F_rec->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F_rec_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F_conv->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F_conv_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0F_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0F_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0F_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0F_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0F_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+
 c2.cd(1);
 c2.cd(1)->SetLogy();  
 hInvMassGGPi0F->Draw();
@@ -108,7 +169,6 @@ hInvMassGGPi0F_rec->Draw("SAME");
 hInvMassGGPi0F_rec->SetLineColor(kMagenta);  
 hInvMassGGPi0F_rec_SmearedP->Draw("SAME");
 hInvMassGGPi0F_rec_SmearedP->SetLineColor(kGreen+4); 
-hInvMassGGPi0F->GetYaxis()->SetTitle("N_{ev}");
 
 auto l2 = new TLegend(0.4, 0.6, 0.7, 0.8);
 l2->SetHeader("ALICE 3 Study");
@@ -138,6 +198,19 @@ TH1D * hInvMassGGEtaF_conv_SmearedP = (TH1D*) fileRec->Get("hInvMassGGEtaF_conv_
 TCanvas c3("c3", "c3", 1600, 1600);
 c3.Divide(3,1);
 
+hInvMassGGEtaF->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF_rec->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF_rec_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF_conv->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF_conv_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF->GetXaxis()->SetTitle("Invaeiant Mass (GeV/c^{2})");
+hInvMassGGEtaF_SmearedP->GetXaxis()->SetTitle("Invaeiant Mass (GeV/c^{2})");
+hInvMassGGEtaF_rec->GetXaxis()->SetTitle("Invaeiant Mass (GeV/c^{2})");
+hInvMassGGEtaF_rec_SmearedP->GetXaxis()->SetTitle("Invaeiant Mass (GeV/c^{2})");
+hInvMassGGEtaF_conv->GetXaxis()->SetTitle("Invaeiant Mass (GeV/c^{2})");
+hInvMassGGEtaF_conv_SmearedP->GetXaxis()->SetTitle("Invaeiant Mass (GeV/c^{2})");
+
 c3.cd(1);
 c3.cd(1)->SetLogy();  
 hInvMassGGEtaF->Draw();
@@ -158,7 +231,6 @@ hInvMassGGEtaF_rec->Draw("SAME");
 hInvMassGGEtaF_rec->SetLineColor(kMagenta);  
 hInvMassGGEtaF_rec_SmearedP->Draw("SAME");
 hInvMassGGEtaF_rec_SmearedP->SetLineColor(kGreen+4); 
-hInvMassGGEtaF->GetYaxis()->SetTitle("N_{ev}");
 
 auto l3 = new TLegend(0.4, 0.6, 0.7, 0.8);
 l3->SetHeader("ALICE 3 Study");
@@ -187,46 +259,67 @@ TH1D * hPtGGPi0F_rec_SmearedP = (TH1D*) fileRec->Get("hPtGGPi0F_rec_SmearedP");
 TH1D * hPtGGPi0F_conv = (TH1D*) fileRec->Get("hPtGGPi0F_conv");
 TH1D * hPtGGPi0F_conv_SmearedP = (TH1D*) fileRec->Get("hPtGGPi0F_conv_SmearedP");
 
+TH1F* hPtGGPi0F_Rebin               = (TH1F*) hPtGGPi0F->Rebin(3);
+TH1F* hPtGGPi0F_SmearedP_Rebin      = (TH1F*) hPtGGPi0F_SmearedP->Rebin(3);
+TH1F* hPtGGPi0F_rec_Rebin           = (TH1F*) hPtGGPi0F_rec->Rebin(3);
+TH1F* hPtGGPi0F_rec_SmearedP_Rebin  = (TH1F*) hPtGGPi0F_rec_SmearedP->Rebin(3);
+TH1F* hPtGGPi0F_conv_Rebin          = (TH1F*) hPtGGPi0F_conv->Rebin(3);
+TH1F* hPtGGPi0F_conv_SmearedP_Rebin = (TH1F*) hPtGGPi0F_conv_SmearedP->Rebin(3);
+
+
 TCanvas c4("c4", "c4", 1600, 1600);
-c4.Divide(3,1);
+c4.Divide(3,1 );
+hPtGGPi0F_Rebin->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0F_SmearedP_Rebin->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0F_rec_Rebin->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0F_rec_SmearedP_Rebin->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0F_conv_Rebin->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0F_conv_SmearedP_Rebin->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
 
 c4.cd(1);
-c4.cd(1)->SetLogy();  
-hPtGGPi0F->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0F->Draw();
-hPtGGPi0F->SetLineColor(kBlue);  
-hPtGGPi0F_SmearedP->Draw("SAME");
-hPtGGPi0F_SmearedP->SetLineColor(kRed);
+c4.cd(1)->SetLogy();
+c4.cd(1)-> SetLeftMargin(0.2);
+hPtGGPi0F_Rebin->GetYaxis()->SetTitleOffset(2.5);   
+hPtGGPi0F_Rebin->GetXaxis()->SetRangeUser(0,5.0);
+hPtGGPi0F_Rebin->Draw("E1");
+hPtGGPi0F_Rebin->SetLineColor(kBlue);  
+hPtGGPi0F_SmearedP_Rebin->Draw("SAME,E1");
+hPtGGPi0F_SmearedP_Rebin->SetLineColor(kRed);
 
 c4.cd(2);
-c4.cd(2)->SetLogy();  
-hPtGGPi0F_conv->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0F_conv->Draw("SAME");
-hPtGGPi0F_conv->SetLineColor(kOrange+4);  
-hPtGGPi0F_conv_SmearedP->Draw("SAME");
-hPtGGPi0F_conv_SmearedP->SetLineColor(kCyan);  
+c4.cd(2)->SetLogy(); 
+c4.cd(2)-> SetLeftMargin(0.2);
+hPtGGPi0F_conv_Rebin->GetYaxis()->SetTitleOffset(2.5);   
+hPtGGPi0F_conv_Rebin->GetXaxis()->SetRangeUser(0,5.0);
+hPtGGPi0F_conv_Rebin->Draw("SAME,E1");
+hPtGGPi0F_conv_Rebin->SetLineColor(kOrange+4);  
+hPtGGPi0F_conv_SmearedP_Rebin->Draw("SAME,E1");
+hPtGGPi0F_conv_SmearedP_Rebin->SetLineColor(kCyan);  
 
 c4.cd(3); 
 c4.cd(3)->SetLogy();  
-hPtGGPi0F_rec->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0F_rec->Draw("SAME");
-hPtGGPi0F_rec->SetLineColor(kMagenta);  
+c4.cd(3)-> SetLeftMargin(0.2);   
+hPtGGPi0F_rec_Rebin->GetYaxis()->SetTitleOffset(2.5);   
+hPtGGPi0F_rec_Rebin->GetXaxis()->SetRangeUser(0,5.0);
+hPtGGPi0F_rec_Rebin->Draw("SAME,E1");
+hPtGGPi0F_rec_Rebin->SetLineColor(kMagenta);  
 //hPtGGPi0F_rec_SmearedP->Fit("gaus","V","E1");
-hPtGGPi0F_rec_SmearedP->Draw("SAME");
-hPtGGPi0F_rec_SmearedP->SetLineColor(kGreen+4); 
-hPtGGPi0F->GetYaxis()->SetTitle("N_{ev}");
+hPtGGPi0F_rec_SmearedP_Rebin->Draw("SAME,E1");
+hPtGGPi0F_rec_SmearedP_Rebin->SetLineColor(kGreen+4); 
 
-auto l4 = new TLegend(0.4, 0.6, 0.7, 0.8);
+c4.cd(1);
+
+auto l4 = new TLegend(0.25, 0.2, 0.4, 0.5);
 l4->SetHeader("ALICE 3 Study");
 l4->SetBorderSize(0);
 l4->SetFillStyle(0);
 l4->SetTextSize(0.03);
-l4->AddEntry(hPtGGPi0F,"hPtGGPi0F","l");
-l4->AddEntry(hPtGGPi0F_SmearedP,"hPtGGPi0F_SmearedP","l");
-l4->AddEntry(hPtGGPi0F_rec,"hPtGGPi0F_rec","l");
-l4->AddEntry(hPtGGPi0F_rec_SmearedP,"hPtGGPi0F_rec_SmearedPc_SmearedP","l");
-l4->AddEntry(hPtGGPi0F_conv,"hPtGGPi0F_conv","l");
-l4->AddEntry(hPtGGPi0F_conv_SmearedP,"hPtGGPi0F_conv_SmearedP","l");
+l4->AddEntry(hPtGGPi0F_Rebin,"hPtGGPi0F","l");
+l4->AddEntry(hPtGGPi0F_SmearedP_Rebin,"hPtGGPi0F_SmearedP","l");
+l4->AddEntry(hPtGGPi0F_rec_Rebin,"hPtGGPi0F_rec","l");
+l4->AddEntry(hPtGGPi0F_rec_SmearedP_Rebin,"hPtGGPi0F_rec_SmearedPc_SmearedP","l");
+l4->AddEntry(hPtGGPi0F_conv_Rebin,"hPtGGPi0F_conv","l");
+l4->AddEntry(hPtGGPi0F_conv_SmearedP_Rebin,"hPtGGPi0F_conv_SmearedP","l");
 //
 l4->Draw("SAME");
 c4.SaveAs("plots/hPtGGPi0F.png");
@@ -241,39 +334,58 @@ TH1D * hPtGGEtaF_rec_SmearedP = (TH1D*) fileRec->Get("hPtGGEtaF_rec_SmearedP");
 TH1D * hPtGGEtaF_conv = (TH1D*) fileRec->Get("hPtGGEtaF_conv");
 TH1D * hPtGGEtaF_conv_SmearedP = (TH1D*) fileRec->Get("hPtGGEtaF_conv_SmearedP");
 
+hPtGGEtaF->Rebin(3);
+hPtGGEtaF_SmearedP->Rebin(3);
+hPtGGEtaF_rec->Rebin(3);
+hPtGGEtaF_rec_SmearedP->Rebin(3);
+hPtGGEtaF_conv->Rebin(3);
+hPtGGEtaF_conv_SmearedP->Rebin(3);
+
+hPtGGEtaF->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaF_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaF_rec->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaF_rec_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaF_conv->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaF_conv_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+
 TCanvas c5("c5", "c5", 1600, 1600);
 c5.Divide(3,1);
 
 c5.cd(1);
 c5.cd(1)->SetLogy();  
+c5.cd(1)-> SetLeftMargin(0.2);
+hPtGGEtaF->GetYaxis()->SetTitleOffset(2.5);   
 hPtGGEtaF->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGEtaF->Draw();
+hPtGGEtaF->Draw("E!");
 hPtGGEtaF->SetLineColor(kBlue);  
-hPtGGEtaF_SmearedP->Draw("SAME");
+hPtGGEtaF_SmearedP->Draw("SAME,E1");
 hPtGGEtaF_SmearedP->SetLineColor(kRed);
 
 c5.cd(2);
-c5.cd(2)->SetLogy();  
+c5.cd(2)->SetLogy();
+c5.cd(2)-> SetLeftMargin(0.2);
+hPtGGEtaF_conv->GetYaxis()->SetTitleOffset(2.5);    
 hPtGGEtaF_conv->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGEtaF_conv->Draw("SAME");
+hPtGGEtaF_conv->Draw("SAME,E1");
 hPtGGEtaF_conv->SetLineColor(kOrange+4);  
-hPtGGEtaF_conv_SmearedP->Draw("SAME");
+hPtGGEtaF_conv_SmearedP->Draw("SAME,E1");
 hPtGGEtaF_conv_SmearedP->SetLineColor(kCyan);  
 
 c5.cd(3);
-c5.cd(3)->SetLogy();  
+c5.cd(3)->SetLogy(); 
+c5.cd(3)-> SetLeftMargin(0.2);
+hPtGGEtaF_rec->GetYaxis()->SetTitleOffset(2.5);  
 hPtGGEtaF_rec->GetXaxis()->SetRangeUser(0,5.0); 
-hPtGGEtaF_rec->Draw("SAME");
+hPtGGEtaF_rec->Draw("SAME,E1");
 hPtGGEtaF_rec->SetLineColor(kMagenta);  
-hPtGGEtaF_rec_SmearedP->Draw("SAME");
+hPtGGEtaF_rec_SmearedP->Draw("SAME,E1");
 hPtGGEtaF_rec_SmearedP->SetLineColor(kGreen+4); 
 //TH1D* hPtGGEtaF_rec_SmearedP_FIT   = (TH1D*) hPtGGEtaF_rec_SmearedP->Clone("Fit");
 //hPtGGEtaF_rec_SmearedP_FIT->Fit("gaus");
-//hPtGGEtaF_rec_SmearedP_FIT->Draw("SAME");
-hPtGGEtaF->GetYaxis()->SetTitle("N_{ev}");
-c5.Update();
+//hPtGGEtaF_rec_SmearedP_FIT->Draw("SAME,E1");
+c5.cd(1);
 
-auto l5 = new TLegend(0.4, 0.6, 0.7, 0.8);
+auto l5 = new TLegend(0.25, 0.2, 0.4, 0.5);
 l5->SetHeader("ALICE 3 Study");
 l5->SetBorderSize(0);
 l5->SetFillStyle(0);
@@ -310,8 +422,25 @@ TH2D * hRapidityPt_Eta_F_SmearedP           = (TH2D*) fileRec->Get("hRapidityPt_
 TH2D * hRapidityPt_Eta_F_GG_SmearedP        = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_SmearedP");
 TH2D * hRapidityPt_Eta_F_GG_conv_SmearedP   = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_conv_SmearedP");
 TH2D * hRapidityPt_Eta_F_GG_rec_SmearedP    = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_rec_SmearedP");
+/*
+hRapidityPt_Pi0_F->Rebin2D(4,2);
+hRapidityPt_Pi0_F_GG->Rebin2D(4,2);
+hRapidityPt_Pi0_F_GG_conv->Rebin2D(4,2);
+hRapidityPt_Pi0_F_GG_rec->Rebin2D(4,2);
+hRapidityPt_Eta_F->Rebin2D(4,2);
+hRapidityPt_Eta_F_GG->Rebin2D(4,2);
+hRapidityPt_Eta_F_GG_conv->Rebin2D(4,2);
+hRapidityPt_Eta_F_GG_rec->Rebin2D(4,2);
 
-
+hRapidityPt_Pi0_F_SmearedP->Rebin2D(4,2);
+hRapidityPt_Pi0_F_GG_SmearedP->Rebin2D(4,2);
+hRapidityPt_Pi0_F_GG_conv_SmearedP->Rebin2D(4,2);
+hRapidityPt_Pi0_F_GG_rec_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_F_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_F_GG_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_F_GG_conv_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_F_GG_rec_SmearedP->Rebin2D(4,2);
+*/
 TCanvas c6("c6", "c6", 1600, 1600);
 c6.Divide(2,2);
 c6.cd(1);
@@ -319,28 +448,28 @@ hRapidityPt_Pi0_F->Draw("Colz");
 hRapidityPt_Pi0_F->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c6.cd(2);
 hRapidityPt_Pi0_F_GG->Draw("ColZ");
 hRapidityPt_Pi0_F_GG->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_GG->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_GG->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_GG->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c6.cd(3);
 hRapidityPt_Pi0_F_GG_conv->Draw("ColZ");
 hRapidityPt_Pi0_F_GG_conv->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_GG_conv->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_conv->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_GG_conv->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_GG_conv->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c6.cd(4);
 hRapidityPt_Pi0_F_GG_rec->Draw("ColZ");
 hRapidityPt_Pi0_F_GG_rec->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_rec->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_GG_rec->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c6.SaveAs("plots/hRapidityPt_Pi0_F.png");
 
@@ -354,28 +483,28 @@ hRapidityPt_Pi0_F_SmearedP->Draw("Colz");
 hRapidityPt_Pi0_F_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c7.cd(2);
 hRapidityPt_Pi0_F_GG_SmearedP->Draw("ColZ");
 hRapidityPt_Pi0_F_GG_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_GG_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_GG_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_GG_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c7.cd(3);
 hRapidityPt_Pi0_F_GG_conv_SmearedP->Draw("ColZ");
 hRapidityPt_Pi0_F_GG_conv_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_GG_conv_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_conv_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_GG_conv_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_GG_conv_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c7.cd(4);
 hRapidityPt_Pi0_F_GG_rec_SmearedP->Draw("ColZ");
 hRapidityPt_Pi0_F_GG_rec_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Pi0_F_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c7.SaveAs("plots/hRapidityPt_Pi0_F_SmearedP.png");
 
@@ -387,28 +516,28 @@ hRapidityPt_Eta_F->Draw("Colz");
 hRapidityPt_Eta_F->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c8.cd(2);
 hRapidityPt_Eta_F_GG->Draw("ColZ");
 hRapidityPt_Eta_F_GG->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_GG->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_GG->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_GG->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c8.cd(3);
 hRapidityPt_Eta_F_GG_conv->Draw("ColZ");
 hRapidityPt_Eta_F_GG_conv->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_GG_conv->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_conv->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_GG_conv->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_GG_conv->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c8.cd(4);
 hRapidityPt_Eta_F_GG_rec->Draw("ColZ");
 hRapidityPt_Eta_F_GG_rec->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_rec->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_GG_rec->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c8.SaveAs("plots/hRapidityPt_Eta_F.png");
 
@@ -422,28 +551,28 @@ hRapidityPt_Eta_F_SmearedP->Draw("Colz");
 hRapidityPt_Eta_F_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c9.cd(2);
 hRapidityPt_Eta_F_GG_SmearedP->Draw("ColZ");
 hRapidityPt_Eta_F_GG_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_GG_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_GG_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_GG_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c9.cd(3);
 hRapidityPt_Eta_F_GG_conv_SmearedP->Draw("ColZ");
 hRapidityPt_Eta_F_GG_conv_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_GG_conv_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_conv_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_GG_conv_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_GG_conv_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c9.cd(4);
 hRapidityPt_Eta_F_GG_rec_SmearedP->Draw("ColZ");
 hRapidityPt_Eta_F_GG_rec_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hRapidityPt_Eta_F_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c9.SaveAs("plots/hRapidityPt_Eta_F_SmearedP.png");
 
@@ -461,10 +590,10 @@ TH2D* RapPt_ratio_MC_Rec_Pi0    = (TH2D*) hRapidityPt_Pi0_F_GG->Clone("ReC vs MC
 RapPt_ratio_ALL_Rec_Pi0->Divide(hRapidityPt_Pi0_F_GG_rec , hRapidityPt_Pi0_F,1,1,"B");
 RapPt_ratio_MC_Rec_Pi0->Divide(hRapidityPt_Pi0_F_GG_rec ,  hRapidityPt_Pi0_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_Pi0->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_Pi0->GetXaxis()->SetTitle("Rapidity");
 
 c10.cd(1);
@@ -478,10 +607,10 @@ TH2D* RapPt_ratio_MC_Conv_Pi0    = (TH2D*) hRapidityPt_Pi0_F_GG->Clone("Conv vs 
 RapPt_ratio_ALL_Conv_Pi0->Divide(hRapidityPt_Pi0_F_GG_conv , hRapidityPt_Pi0_F,1,1,"B");
 RapPt_ratio_MC_Conv_Pi0->Divide(hRapidityPt_Pi0_F_GG_conv ,  hRapidityPt_Pi0_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_Pi0->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_Pi0->GetXaxis()->SetTitle("Rapidity");
 
 c10.cd(2);
@@ -502,10 +631,10 @@ TH2D* RapPt_ratio_MC_Rec_SmearedP_Pi0    = (TH2D*) hRapidityPt_Pi0_F_GG->Clone("
 RapPt_ratio_ALL_Rec_SmearedP_Pi0->Divide(hRapidityPt_Pi0_F_GG_rec_SmearedP , hRapidityPt_Pi0_F,1,1,"B");
 RapPt_ratio_MC_Rec_SmearedP_Pi0->Divide(hRapidityPt_Pi0_F_GG_rec_SmearedP ,  hRapidityPt_Pi0_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_SmearedP_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_SmearedP_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_SmearedP_Pi0->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_SmearedP_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_SmearedP_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_SmearedP_Pi0->GetXaxis()->SetTitle("Rapidity");
 
 c11.cd(2);
@@ -519,10 +648,10 @@ TH2D* RapPt_ratio_MC_Conv_SmearedP_Pi0    = (TH2D*) hRapidityPt_Pi0_F_GG_Smeared
 RapPt_ratio_ALL_Conv_SmearedP_Pi0->Divide(hRapidityPt_Pi0_F_GG_conv , hRapidityPt_Pi0_F,1,1,"B");
 RapPt_ratio_MC_Conv_SmearedP_Pi0->Divide(hRapidityPt_Pi0_F_GG_conv ,  hRapidityPt_Pi0_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_SmearedP_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_SmearedP_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_SmearedP_Pi0->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_SmearedP_Pi0->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_SmearedP_Pi0->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_SmearedP_Pi0->GetXaxis()->SetTitle("Rapidity");
 
 c11.cd(1);
@@ -548,10 +677,10 @@ TH2D* RapPt_ratio_MC_Rec_Eta    = (TH2D*) hRapidityPt_Eta_F_GG->Clone("ReC vs MC
 RapPt_ratio_ALL_Rec_Eta->Divide(hRapidityPt_Eta_F_GG_rec , hRapidityPt_Eta_F,1,1,"B");
 RapPt_ratio_MC_Rec_Eta->Divide(hRapidityPt_Eta_F_GG_rec ,  hRapidityPt_Eta_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_Eta->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_Eta->GetXaxis()->SetTitle("Rapidity");
 
 c12.cd(1);
@@ -565,10 +694,10 @@ TH2D* RapPt_ratio_MC_Conv_Eta    = (TH2D*) hRapidityPt_Eta_F_GG->Clone("Conv vs 
 RapPt_ratio_ALL_Conv_Eta->Divide(hRapidityPt_Eta_F_GG_conv , hRapidityPt_Eta_F,1,1,"B");
 RapPt_ratio_MC_Conv_Eta->Divide(hRapidityPt_Eta_F_GG_conv ,  hRapidityPt_Eta_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_Eta->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_Eta->GetXaxis()->SetTitle("Rapidity");
 
 c12.cd(2);
@@ -589,10 +718,10 @@ TH2D* RapPt_ratio_MC_Rec_SmearedP_Eta    = (TH2D*) hRapidityPt_Eta_F_GG->Clone("
 RapPt_ratio_ALL_Rec_SmearedP_Eta->Divide(hRapidityPt_Eta_F_GG_rec_SmearedP , hRapidityPt_Eta_F,1,1,"B");
 RapPt_ratio_MC_Rec_SmearedP_Eta->Divide(hRapidityPt_Eta_F_GG_rec_SmearedP ,  hRapidityPt_Eta_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_SmearedP_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_SmearedP_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_SmearedP_Eta->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_SmearedP_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_SmearedP_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_SmearedP_Eta->GetXaxis()->SetTitle("Rapidity");
 
 c13.cd(2);
@@ -606,10 +735,10 @@ TH2D* RapPt_ratio_MC_Conv_SmearedP_Eta    = (TH2D*) hRapidityPt_Eta_F_GG_Smeared
 RapPt_ratio_ALL_Conv_SmearedP_Eta->Divide(hRapidityPt_Eta_F_GG_conv , hRapidityPt_Eta_F,1,1,"B");
 RapPt_ratio_MC_Conv_SmearedP_Eta->Divide(hRapidityPt_Eta_F_GG_conv ,  hRapidityPt_Eta_F_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_SmearedP_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_SmearedP_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_SmearedP_Eta->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_SmearedP_Eta->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_SmearedP_Eta->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_SmearedP_Eta->GetXaxis()->SetTitle("Rapidity");
 
 c13.cd(1);
@@ -632,14 +761,14 @@ c14.Divide(2,1);
 
 c14.cd(1);
 TH2D * histRapPt_ALL_Pi0 = (TH2D*) fileRec->Get("hRapidityPt_Pi0_F_GG");
-TH1 * histPt_ALL_rap1_75to4_Pi0 = histRapPt_ALL_Pi0->ProjectionY("histPt_MC_rap1_75to4",1,1000); 
+TH1 * histPt_ALL_rap1_75to4_Pi0 = histRapPt_ALL_Pi0->ProjectionY("histPt_MC_rap1_75to4",176,400); 
 TH1 * histPt_ALL_rap3to4_Pi0 = histRapPt_ALL_Pi0->ProjectionY("histPt_MC_rap3to4",300,400); 
-TH1 * histPt_ALL_rap1_75to3_Pi0 = histRapPt_ALL_Pi0->ProjectionY("histPt_MC_rap1_75to3",175,300); 
+TH1 * histPt_ALL_rap1_75to3_Pi0 = histRapPt_ALL_Pi0->ProjectionY("histPt_MC_rap1_75to3",176,300); 
 
 TH2D * histRapPt_REC_Pi0 = (TH2D*) fileRec->Get("hRapidityPt_Pi0_F_GG_rec");
-TH1 * histPt_REC_rap1_75to4_Pi0 = histRapPt_REC_Pi0->ProjectionY("histPt_REC_rap1_75to3_Pi0",1,1000); 
+TH1 * histPt_REC_rap1_75to4_Pi0 = histRapPt_REC_Pi0->ProjectionY("histPt_REC_rap1_75to4_Pi0",176,400); 
 TH1 * histPt_REC_rap3to4_Pi0 = histRapPt_REC_Pi0->ProjectionY("histPt_REC_rap3to4_Pi0",300,400); 
-TH1 * histPt_REC_rap1_75to3_Pi0 = histRapPt_REC_Pi0->ProjectionY("histPt_REC_rap1_75to3_Pi0",175,300); 
+TH1 * histPt_REC_rap1_75to3_Pi0 = histRapPt_REC_Pi0->ProjectionY("histPt_REC_rap1_75to3_Pi0",176,300); 
 
 TH1F* histPt_RATIO_rap3to4_Pi0  = (TH1F*) histPt_REC_rap3to4_Pi0->Clone("histPt_RATIO_rap3to4_Pi0");
 histPt_RATIO_rap3to4_Pi0->Divide(histPt_REC_rap3to4_Pi0, histPt_ALL_rap3to4_Pi0, 1,1,"B");
@@ -650,8 +779,9 @@ histPt_RATIO_rap1_75to3_Pi0->Divide(histPt_REC_rap1_75to3_Pi0, histPt_ALL_rap1_7
 TH1F* histPt_RATIO_rap1_75to4_Pi0  = (TH1F*) histPt_REC_rap1_75to4_Pi0->Clone("histPt_RATIO_rap1_75to4_Pi0");
 histPt_RATIO_rap1_75to4_Pi0->Divide(histPt_REC_rap1_75to4_Pi0, histPt_ALL_rap1_75to4_Pi0, 1,1,"B");
 
+
 histPt_RATIO_rap3to4_Pi0->GetYaxis()->SetTitle("fraction");
-histPt_RATIO_rap3to4_Pi0->GetXaxis()->SetTitle("pT");
+histPt_RATIO_rap3to4_Pi0->GetXaxis()->SetTitle("pT (GeV/c)");
 //histPt_RATIO_rap3to4_Pi0->GetXaxis()->SetLogy();
 histPt_RATIO_rap3to4_Pi0->SetMarkerStyle(3);
 histPt_RATIO_rap3to4_Pi0->SetLineColor(kRed);  
@@ -661,11 +791,16 @@ histPt_RATIO_rap1_75to4_Pi0->SetMarkerColor(kBlack);
 histPt_RATIO_rap1_75to4_Pi0->SetMarkerStyle(8);
 c14.cd(1)->SetLogy();  
 histPt_RATIO_rap3to4_Pi0->GetXaxis()->SetRangeUser(0.0,5.0);
-//histPt_RATIO_rap3to4_Pi0->GetYaxis()->SetRangeUser(.0001,1.1);
+//histPt_RATIO_rap3to4_Pi0->GetYaxis()->SetRangeUser(.0001,0.1);
 
 histPt_RATIO_rap3to4_Pi0->Draw();
 histPt_RATIO_rap1_75to3_Pi0->Draw("SAME");
 histPt_RATIO_rap1_75to4_Pi0->Draw("SAME");
+
+//CHECKER
+//TH1F* histPt_RATIO_CheckerF_Pi0  = (TH1F*) hPtGGPi0F_rec->Clone("histPt_RATIO_CheckerF_Pi0");
+//histPt_RATIO_CheckerF_Pi0->Divide(hPtGGPi0F_rec, hPtGGPi0F, 1,1,"B");
+//histPt_RATIO_CheckerF_Pi0->Draw("SAME");
 
 auto leg_Pi0_eff = new TLegend(0.2, 0.7, 0.4, 0.8);
 leg_Pi0_eff->SetHeader("ALICE 3 Study");
@@ -683,13 +818,13 @@ leg_Pi0_eff->Draw("SAME");
 c14.cd(2);
 TH2D * histRapPt_ALL_Pi0_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Pi0_F_GG_SmearedP");
 TH1 * histPt_ALL_rap3to4_Pi0_SmearedP = histRapPt_ALL_Pi0_SmearedP->ProjectionY("histPt_MC_rap3to4",300,400); 
-TH1 * histPt_ALL_rap1_75to3_Pi0_SmearedP = histRapPt_ALL_Pi0_SmearedP->ProjectionY("histPt_MC_rap1_75to3",175,300); 
-TH1 * histPt_ALL_rap1_75to4_Pi0_SmearedP = histRapPt_ALL_Pi0_SmearedP->ProjectionY("histPt_MC_rap1_75to4",1,1000); 
+TH1 * histPt_ALL_rap1_75to3_Pi0_SmearedP = histRapPt_ALL_Pi0_SmearedP->ProjectionY("histPt_MC_rap1_75to3",176,300); 
+TH1 * histPt_ALL_rap1_75to4_Pi0_SmearedP = histRapPt_ALL_Pi0_SmearedP->ProjectionY("histPt_MC_rap1_75to4",176,400); 
 
 TH2D * histRapPt_REC_Pi0_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Pi0_F_GG_rec_SmearedP");
 TH1 * histPt_REC_rap3to4_Pi0_SmearedP = histRapPt_REC_Pi0_SmearedP->ProjectionY("histPt_REC_rap3to4_Pi0_SmearedP",300,400); 
-TH1 * histPt_REC_rap1_75to3_Pi0_SmearedP = histRapPt_REC_Pi0_SmearedP->ProjectionY("histPt_REC_rap1_75to3_Pi0_SmearedP",175,300); 
-TH1 * histPt_REC_rap1_75to4_Pi0_SmearedP = histRapPt_REC_Pi0_SmearedP->ProjectionY("histPt_REC_rap1_75to4_Pi0_SmearedP",1,1000); 
+TH1 * histPt_REC_rap1_75to3_Pi0_SmearedP = histRapPt_REC_Pi0_SmearedP->ProjectionY("histPt_REC_rap1_75to3_Pi0_SmearedP",176,300); 
+TH1 * histPt_REC_rap1_75to4_Pi0_SmearedP = histRapPt_REC_Pi0_SmearedP->ProjectionY("histPt_REC_rap1_75to4_Pi0_SmearedP",176,400); 
 
 TH1F* histPt_RATIO_rap3to4_Pi0_SmearedP  = (TH1F*) histPt_REC_rap3to4_Pi0_SmearedP->Clone("histPt_RATIO_rap3to4_Pi0_SmearedP");
 histPt_RATIO_rap3to4_Pi0_SmearedP->Divide(histPt_REC_rap3to4_Pi0_SmearedP, histPt_ALL_rap3to4_Pi0_SmearedP, 1,1,"B");
@@ -706,7 +841,7 @@ histPt_REC_rap1_75to3_Pi0_SmearedP->Draw();
 histPt_ALL_rap1_75to3_Pi0_SmearedP->Draw("SAME");
 */
 histPt_RATIO_rap3to4_Pi0_SmearedP->GetYaxis()->SetTitle("fraction");
-histPt_RATIO_rap3to4_Pi0_SmearedP->GetXaxis()->SetTitle("pT");
+histPt_RATIO_rap3to4_Pi0_SmearedP->GetXaxis()->SetTitle("pT (GeV/c)");
 //histPt_RATIO_rap3to4_Pi0_SmearedP->GetXaxis()->SetLogy();
 histPt_RATIO_rap3to4_Pi0_SmearedP->SetMarkerStyle(3);
 histPt_RATIO_rap3to4_Pi0_SmearedP->SetLineColor(kRed);  
@@ -722,6 +857,10 @@ histPt_RATIO_rap3to4_Pi0_SmearedP->GetXaxis()->SetRangeUser(0.0,5.0);
 histPt_RATIO_rap3to4_Pi0_SmearedP->Draw();
 histPt_RATIO_rap1_75to3_Pi0_SmearedP->Draw("SAME");
 histPt_RATIO_rap1_75to4_Pi0_SmearedP->Draw("SAME");
+
+//TH1F* histPt_RATIO_CheckerF_Pi0_SmearedP  = (TH1F*) hPtGGPi0F_rec_SmearedP->Clone("histPt_RATIO_CheckerF_Pi0_SmearedP");
+//histPt_RATIO_CheckerF_Pi0_SmearedP->Divide(hPtGGPi0F_rec_SmearedP, hPtGGPi0F_SmearedP, 1,1,"B");
+//histPt_RATIO_CheckerF_Pi0_SmearedP->Draw("SAME");
 
 auto leg_Pi0_SmearedP_eff = new TLegend(0.2, 0.7, 0.4, 0.8);
 leg_Pi0_SmearedP_eff->SetHeader("ALICE 3 Study");
@@ -743,32 +882,22 @@ c14.SaveAs("plots/hDiffRap_ratio_Pi0_F.png");
 
 
 ///////////////  Eta Effiiency at different rapidity PLOT    ///////////////
-double fMaxPt=5.0;
-const int nBinsPt=1001;
-double pt_bin_proj[nBinsPt+1];
-for(int i=0; i<nBinsPt+1; i++){
-      if (i < 50) pt_bin_proj[i]            =  0.1*i;
-      else if(i<60) pt_bin_proj[i]          = 0.5 + 0.2*(i-50);
-      else if(i<70) pt_bin_proj[i]          = 2.0 + 0.5*(i-60);
-      else if(i<78) pt_bin_proj[i]          = 3.0 + 1.0*(i-70);
-      else pt_bin_proj[i]                   = fMaxPt;
-}
-Int_t nbinspt_proj  = sizeof(pt_bin_proj)/sizeof(*pt_bin_proj) -1;
 
 
 TCanvas c15("c15", "c15", 1600, 1600);
 c15.Divide(2,1);
 
 c15.cd(1);
+
 TH2D * histRapPt_ALL_Eta = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG");
-TH1 * histPt_ALL_rap1_75to4_Eta = histRapPt_ALL_Eta->ProjectionY("histPt_MC_rap1_75to4",1,1000); 
+TH1 * histPt_ALL_rap1_75to4_Eta = histRapPt_ALL_Eta->ProjectionY("histPt_MC_rap1_75to4",176,400); 
 TH1 * histPt_ALL_rap3to4_Eta = histRapPt_ALL_Eta->ProjectionY("histPt_MC_rap3to4",300,400); 
-TH1 * histPt_ALL_rap1_75to3_Eta = histRapPt_ALL_Eta->ProjectionY("histPt_MC_rap1_75to3",175,300); 
+TH1 * histPt_ALL_rap1_75to3_Eta = histRapPt_ALL_Eta->ProjectionY("histPt_MC_rap1_75to3",176,300); 
 
 TH2D * histRapPt_REC_Eta = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_rec");
-TH1 * histPt_REC_rap1_75to4_Eta = histRapPt_REC_Eta->ProjectionY("histPt_REC_rap1_75to3_Eta",1,1000); 
+TH1 * histPt_REC_rap1_75to4_Eta = histRapPt_REC_Eta->ProjectionY("histPt_REC_rap1_75to4_Eta",176,400); 
 TH1 * histPt_REC_rap3to4_Eta = histRapPt_REC_Eta->ProjectionY("histPt_REC_rap3to4_Eta",300,400); 
-TH1 * histPt_REC_rap1_75to3_Eta = histRapPt_REC_Eta->ProjectionY("histPt_REC_rap1_75to3_Eta",175,300); 
+TH1 * histPt_REC_rap1_75to3_Eta = histRapPt_REC_Eta->ProjectionY("histPt_REC_rap1_75to3_Eta",176,300); 
 
 TH1F* histPt_RATIO_rap3to4_Eta  = (TH1F*) histPt_REC_rap3to4_Eta->Clone("histPt_RATIO_rap3to4_Eta");
 histPt_RATIO_rap3to4_Eta->Divide(histPt_REC_rap3to4_Eta, histPt_ALL_rap3to4_Eta, 1,1,"B");
@@ -779,8 +908,9 @@ histPt_RATIO_rap1_75to3_Eta->Divide(histPt_REC_rap1_75to3_Eta, histPt_ALL_rap1_7
 TH1F* histPt_RATIO_rap1_75to4_Eta  = (TH1F*) histPt_REC_rap1_75to4_Eta->Clone("histPt_RATIO_rap1_75to4_Eta");
 histPt_RATIO_rap1_75to4_Eta->Divide(histPt_REC_rap1_75to4_Eta, histPt_ALL_rap1_75to4_Eta, 1,1,"B");
 
+
 histPt_RATIO_rap3to4_Eta->GetYaxis()->SetTitle("fraction");
-histPt_RATIO_rap3to4_Eta->GetXaxis()->SetTitle("pT");
+histPt_RATIO_rap3to4_Eta->GetXaxis()->SetTitle("pT (GeV/c)");
 //histPt_RATIO_rap3to4_Eta->GetXaxis()->SetLogy();
 histPt_RATIO_rap3to4_Eta->SetMarkerStyle(3);
 histPt_RATIO_rap3to4_Eta->SetLineColor(kRed);  
@@ -792,9 +922,9 @@ c15.cd(1)->SetLogy();
 histPt_RATIO_rap3to4_Eta->GetXaxis()->SetRangeUser(0.0,5.0);
 //histPt_RATIO_rap3to4_Eta->GetYaxis()->SetRangeUser(.0001,1.1);
 
-TH1F* histPt_RATIO_rap3to4_Eta_Rebin      = (TH1F*) histPt_RATIO_rap3to4_Eta->Rebin(nbinspt_proj,"hPt_Eta_gg_forward_CONV",&pt_bin_proj[0]);
-TH1F* histPt_RATIO_rap1_75to3_Eta_Rebin   = (TH1F*) histPt_RATIO_rap1_75to3_Eta->Rebin(nbinspt_proj,"hPt_Eta_gg_forward_CONV",&pt_bin_proj[0]);
-TH1F* histPt_RATIO_rap1_75to4_Eta_Rebin   = (TH1F*) histPt_RATIO_rap1_75to4_Eta->Rebin(nbinspt_proj,"hPt_Eta_gg_forward_CONV",&pt_bin_proj[0]);
+TH1F* histPt_RATIO_rap3to4_Eta_Rebin      = (TH1F*) histPt_RATIO_rap3to4_Eta->Rebin(nbinspt_proj,"histPt_RATIO_rap3to4_Eta_Rebin",&pt_bin_proj[0]);
+TH1F* histPt_RATIO_rap1_75to3_Eta_Rebin   = (TH1F*) histPt_RATIO_rap1_75to3_Eta->Rebin(nbinspt_proj,"histPt_RATIO_rap1_75to3_Eta_Rebin",&pt_bin_proj[0]);
+TH1F* histPt_RATIO_rap1_75to4_Eta_Rebin   = (TH1F*) histPt_RATIO_rap1_75to4_Eta->Rebin(nbinspt_proj,"histPt_RATIO_rap1_75to4_Eta_Rebin",&pt_bin_proj[0]);
 //histPt_RATIO_rap3to4_Eta_Rebin->Draw();
 //histPt_RATIO_rap1_75to3_Eta_Rebin->Draw("SAME");
 //histPt_RATIO_rap1_75to4_Eta_Rebin->Draw("SAME");
@@ -818,13 +948,13 @@ leg_Eta_eff->Draw("SAME");
 c15.cd(2);
 TH2D * histRapPt_ALL_Eta_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_SmearedP");
 TH1 * histPt_ALL_rap3to4_Eta_SmearedP = histRapPt_ALL_Eta_SmearedP->ProjectionY("histPt_MC_rap3to4",300,400); 
-TH1 * histPt_ALL_rap1_75to3_Eta_SmearedP = histRapPt_ALL_Eta_SmearedP->ProjectionY("histPt_MC_rap1_75to3",180,300); 
-TH1 * histPt_ALL_rap1_75to4_Eta_SmearedP = histRapPt_ALL_Eta_SmearedP->ProjectionY("histPt_MC_rap1_75to4",1,1000); 
+TH1 * histPt_ALL_rap1_75to3_Eta_SmearedP = histRapPt_ALL_Eta_SmearedP->ProjectionY("histPt_MC_rap1_75to3",176,300); 
+TH1 * histPt_ALL_rap1_75to4_Eta_SmearedP = histRapPt_ALL_Eta_SmearedP->ProjectionY("histPt_MC_rap1_75to4",176,400); 
 
 TH2D * histRapPt_REC_Eta_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_rec_SmearedP");
 TH1 * histPt_REC_rap3to4_Eta_SmearedP = histRapPt_REC_Eta_SmearedP->ProjectionY("histPt_REC_rap3to4_Eta_SmearedP",300,400); 
-TH1 * histPt_REC_rap1_75to3_Eta_SmearedP = histRapPt_REC_Eta_SmearedP->ProjectionY("histPt_REC_rap1_75to3_Eta_SmearedP",180,300); 
-TH1 * histPt_REC_rap1_75to4_Eta_SmearedP = histRapPt_REC_Eta_SmearedP->ProjectionY("histPt_REC_rap1_75to4_Eta_SmearedP",1,1000); 
+TH1 * histPt_REC_rap1_75to3_Eta_SmearedP = histRapPt_REC_Eta_SmearedP->ProjectionY("histPt_REC_rap1_75to3_Eta_SmearedP",176,300); 
+TH1 * histPt_REC_rap1_75to4_Eta_SmearedP = histRapPt_REC_Eta_SmearedP->ProjectionY("histPt_REC_rap1_75to4_Eta_SmearedP",176,400); 
 
 TH1F* histPt_RATIO_rap3to4_Eta_SmearedP  = (TH1F*) histPt_REC_rap3to4_Eta_SmearedP->Clone("histPt_RATIO_rap3to4_Eta_SmearedP");
 histPt_RATIO_rap3to4_Eta_SmearedP->Divide(histPt_REC_rap3to4_Eta_SmearedP, histPt_ALL_rap3to4_Eta_SmearedP, 1,1,"B");
@@ -836,12 +966,12 @@ TH1F* histPt_RATIO_rap1_75to4_Eta_SmearedP  = (TH1F*) histPt_REC_rap1_75to4_Eta_
 histPt_RATIO_rap1_75to4_Eta_SmearedP->Divide(histPt_REC_rap1_75to4_Eta_SmearedP, histPt_ALL_rap1_75to4_Eta_SmearedP, 1,1,"B");
 
 c15.cd(2)->SetLogy();  
-/*
-histPt_REC_rap1_75to3_Eta_SmearedP->Draw();
-histPt_ALL_rap1_75to3_Eta_SmearedP->Draw("SAME");
-*/
+
+//histPt_REC_rap1_75to3_Eta_SmearedP->Draw();
+//histPt_ALL_rap1_75to3_Eta_SmearedP->Draw("SAME");
+
 histPt_RATIO_rap3to4_Eta_SmearedP->GetYaxis()->SetTitle("fraction");
-histPt_RATIO_rap3to4_Eta_SmearedP->GetXaxis()->SetTitle("pT");
+histPt_RATIO_rap3to4_Eta_SmearedP->GetXaxis()->SetTitle("pT (GeV/c)");
 //histPt_RATIO_rap3to4_Eta_SmearedP->GetXaxis()->SetLogy();
 histPt_RATIO_rap3to4_Eta_SmearedP->SetMarkerStyle(3);
 histPt_RATIO_rap3to4_Eta_SmearedP->SetLineColor(kRed);  
@@ -854,13 +984,16 @@ c15.cd(2)->SetLogy();
 histPt_RATIO_rap3to4_Eta_SmearedP->GetXaxis()->SetRangeUser(0.0,5.0);
 //histPt_RATIO_rap3to4_Eta_SmearedP->GetYaxis()->SetRangeUser(.0001,1.1);
 
-TH1F* histPt_RATIO_rap3to4_Eta_SmearedP_Rebin      = (TH1F*) histPt_RATIO_rap3to4_Eta_SmearedP->Rebin(nbinspt_proj,"hPt_Eta_gg_forward_CONV",&pt_bin_proj[0]);
-TH1F* histPt_RATIO_rap1_75to3_Eta_SmearedP_Rebin   = (TH1F*) histPt_RATIO_rap1_75to3_Eta_SmearedP->Rebin(nbinspt_proj,"hPt_Eta_gg_forward_CONV",&pt_bin_proj[0]);
-TH1F* histPt_RATIO_rap1_75to4_Eta_SmearedP_Rebin   = (TH1F*) histPt_RATIO_rap1_75to4_Eta_SmearedP->Rebin(nbinspt_proj,"hPt_Eta_gg_forward_CONV",&pt_bin_proj[0]);
+TH1F* histPt_RATIO_rap3to4_Eta_SmearedP_Rebin      = (TH1F*) histPt_RATIO_rap3to4_Eta_SmearedP->Rebin(nbinspt_proj_fine,"hPt_Eta_gg_forward_CONV",&pt_bin_proj_fine[0]);
+TH1F* histPt_RATIO_rap1_75to3_Eta_SmearedP_Rebin   = (TH1F*) histPt_RATIO_rap1_75to3_Eta_SmearedP->Rebin(nbinspt_proj_fine,"hPt_Eta_gg_forward_CONV",&pt_bin_proj_fine[0]);
+TH1F* histPt_RATIO_rap1_75to4_Eta_SmearedP_Rebin   = (TH1F*) histPt_RATIO_rap1_75to4_Eta_SmearedP->Rebin(nbinspt_proj_fine,"hPt_Eta_gg_forward_CONV",&pt_bin_proj_fine[0]);
 
 //histPt_RATIO_rap3to4_Eta_SmearedP_Rebin->Draw();
 //histPt_RATIO_rap1_75to3_Eta_SmearedP_Rebin->Draw("SAME");
 //histPt_RATIO_rap1_75to4_Eta_SmearedP_Rebin->Draw("SAME");
+//histPt_RATIO_rap3to4_Eta_SmearedP->Rebin(2);
+//histPt_RATIO_rap1_75to3_Eta_SmearedP->Rebin(2);
+//histPt_RATIO_rap1_75to4_Eta_SmearedP->Rebin(2);
 histPt_RATIO_rap3to4_Eta_SmearedP->Draw();
 histPt_RATIO_rap1_75to3_Eta_SmearedP->Draw("SAME");
 histPt_RATIO_rap1_75to4_Eta_SmearedP->Draw("SAME");
@@ -892,9 +1025,10 @@ c16.cd(1)->SetLogy();
 TH1D* hInvMassGGPi0F_SmearedP_FIT   = (TH1D*) hInvMassGGPi0F_SmearedP->Clone("Fit");
 hInvMassGGPi0F_SmearedP_FIT->Fit("gaus");
 hInvMassGGPi0F_SmearedP_FIT->Draw("SAME");
-hInvMassGGPi0F_SmearedP_FIT->GetYaxis()->SetTitle("N_{ev}");
 hInvMassGGPi0F_SmearedP->SetLineColor(kBlue);
 hInvMassGGPi0F_SmearedP_FIT->GetXaxis()->SetRangeUser(0,0.3); 
+hInvMassGGPi0F_SmearedP_FIT->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0F_SmearedP_FIT->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
 
 hInvMassGGPi0F_SmearedP->Draw("SAME");
 
@@ -906,11 +1040,11 @@ c16.cd(2)->SetLogy();
 TH1D* hInvMassGGEtaF_SmearedP_FIT   = (TH1D*) hInvMassGGEtaF_SmearedP->Clone("Fit");
 hInvMassGGEtaF_SmearedP_FIT->Fit("gaus");
 hInvMassGGEtaF_SmearedP_FIT->Draw("SAME");
-hInvMassGGEtaF_SmearedP_FIT->GetYaxis()->SetTitle("N_{ev}");
 hInvMassGGEtaF_SmearedP->Draw("SAME");
 hInvMassGGEtaF_SmearedP->SetLineColor(kBlue);
 hInvMassGGEtaF_SmearedP_FIT->GetXaxis()->SetRangeUser(0.3,0.8); 
-
+hInvMassGGEtaF_SmearedP_FIT->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaF_SmearedP_FIT->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
 hInvMassGGEtaF_SmearedP->Draw("SAME");
 
 auto l16 = new TLegend(0.2, 0.8, 0.5, 0.9);
@@ -946,29 +1080,29 @@ c17.cd(1);
 hInvMassPt_F->Draw("Colz");
 hInvMassPt_F->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F->GetYaxis()->SetTitle("pT");
+hInvMassPt_F->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c17.cd(2);
 hInvMassPt_F_GG->Draw("ColZ");
 hInvMassPt_F_GG->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_GG->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_GG->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_GG->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_GG->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_GG->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c17.cd(3);
 hInvMassPt_F_GG_conv->Draw("ColZ");
 hInvMassPt_F_GG_conv->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_GG_conv->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_GG_conv->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_GG_conv->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_GG_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_GG_conv->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c17.cd(4);
 hInvMassPt_F_GG_rec->Draw("ColZ");
 hInvMassPt_F_GG_rec->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_GG_rec->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_GG_rec->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_GG_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c17.SaveAs("plots/hInvMassPt_F.png");
 
@@ -981,29 +1115,29 @@ c18.cd(1);
 hInvMassPt_F_SmearedP->Draw("Colz");
 hInvMassPt_F_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c18.cd(2);
 hInvMassPt_F_GG_SmearedP->Draw("ColZ");
 hInvMassPt_F_GG_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_GG_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_GG_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_GG_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_GG_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_GG_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c18.cd(3);
 hInvMassPt_F_GG_conv_SmearedP->Draw("ColZ");
 hInvMassPt_F_GG_conv_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_GG_conv_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_GG_conv_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_GG_conv_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_GG_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_GG_conv_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c18.cd(4);
 hInvMassPt_F_GG_rec_SmearedP->Draw("ColZ");
 hInvMassPt_F_GG_rec_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_F_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_F_GG_rec_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_F_GG_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c18.SaveAs("plots/hInvMassPt_F_SmearedP.png");
 
@@ -1036,6 +1170,20 @@ TH1D * hInvMassGGB_conv_SmearedP = (TH1D*) fileRec->Get("hInvMassGGB_conv_Smeare
 TCanvas c101("c101", "c101", 1600, 1600);
 c101.Divide(3,1);
 
+hInvMassGGB->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGB_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGB_rec->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGB_rec_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGB_conv->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGB_conv_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+
+hInvMassGGB->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGB_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGB_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGB_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGB_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGB_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+
 c101.cd(1);
 c101.cd(1)->SetLogy();  
 hInvMassGGB->Draw();
@@ -1057,10 +1205,6 @@ hInvMassGGB_conv->SetLineColor(kMagenta);
 hInvMassGGB_conv_SmearedP->Draw("SAME");
 hInvMassGGB_conv_SmearedP->SetLineColor(kCyan);  
 
-
-
-
-hInvMassGGB->GetYaxis()->SetTitle("N_{ev}");
 
 auto l101 = new TLegend(0.4, 0.6, 0.7, 0.8);
 l101->SetHeader("ALICE 3 Study");
@@ -1090,6 +1234,19 @@ TH1D * hInvMassGGPi0B_conv_SmearedP = (TH1D*) fileRec->Get("hInvMassGGPi0B_conv_
 TCanvas c102("c102", "c102", 1600, 1600);
 c102.Divide(3,1);
 
+hInvMassGGPi0B->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0B_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0B_rec->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0B_rec_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0B_conv->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0B_conv_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGPi0B->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0B_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0B_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0B_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0B_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGPi0B_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+
 c102.cd(1);
 c102.cd(1)->SetLogy();  
 hInvMassGGPi0B->Draw();
@@ -1112,7 +1269,6 @@ hInvMassGGPi0B_rec->Draw("SAME");
 hInvMassGGPi0B_rec->SetLineColor(kMagenta);  
 hInvMassGGPi0B_rec_SmearedP->Draw("SAME");
 hInvMassGGPi0B_rec_SmearedP->SetLineColor(kGreen+4); 
-hInvMassGGPi0B->GetYaxis()->SetTitle("N_{ev}");
 hInvMassGGPi0B_rec->GetXaxis()->SetRangeUser(0,0.5);
 
 auto l102 = new TLegend(0.4, 0.6, 0.7, 0.8);
@@ -1145,6 +1301,19 @@ TH1D * hInvMassGGEtaB_conv_SmearedP = (TH1D*) fileRec->Get("hInvMassGGEtaB_conv_
 TCanvas c103("c103", "c103", 1600, 1600);
 c103.Divide(3,1);
 
+hInvMassGGEtaB->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaB_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaB_rec->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaB_rec_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaB_conv->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaB_conv_SmearedP->GetYaxis()->SetTitle("N_{ev}");
+hInvMassGGEtaB->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGEtaB_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGEtaB_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGEtaB_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGEtaB_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassGGEtaB_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+
 c103.cd(1);
 c103.cd(1)->SetLogy();  
 hInvMassGGEtaB->Draw();
@@ -1166,7 +1335,6 @@ c103.cd(3)->SetLogy();
 hInvMassGGEtaB_rec->SetLineColor(kMagenta);  
 hInvMassGGEtaB_rec->Draw("SAME");
 hInvMassGGEtaB_rec_SmearedP->SetLineColor(kGreen+4); 
-hInvMassGGEtaB->GetYaxis()->SetTitle("N_{ev}");
 hInvMassGGEtaB_rec_SmearedP->Draw("SAME");
 hInvMassGGEtaB_rec->GetXaxis()->SetRangeUser(0,0.8);
 
@@ -1197,36 +1365,56 @@ TH1D * hPtGGPi0B_rec_SmearedP = (TH1D*) fileRec->Get("hPtGGPi0B_rec_SmearedP");
 TH1D * hPtGGPi0B_conv = (TH1D*) fileRec->Get("hPtGGPi0B_conv");
 TH1D * hPtGGPi0B_conv_SmearedP = (TH1D*) fileRec->Get("hPtGGPi0B_conv_SmearedP");
 
+hPtGGPi0B->Rebin(3);
+hPtGGPi0B_SmearedP->Rebin(3);
+hPtGGPi0B_rec->Rebin(3);
+hPtGGPi0B_rec_SmearedP->Rebin(3);
+hPtGGPi0B_conv->Rebin(3);
+hPtGGPi0B_conv_SmearedP->Rebin(3);
+
 TCanvas c104("c104", "c104", 1600, 1600);
 c104.Divide(3,1);
 
+hPtGGPi0B->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0B_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0B_rec->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0B_rec_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0B_conv->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGPi0B_conv_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+
 c104.cd(1);
-c104.cd(1)->SetLogy();  
+c104.cd(1)->SetLogy();
+c104.cd(1)-> SetLeftMargin(0.2);
+hPtGGPi0B->GetYaxis()->SetTitleOffset(2.5);   
 hPtGGPi0B->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0B->Draw();
+hPtGGPi0B->Draw("E1");
 hPtGGPi0B->SetLineColor(kBlue);  
-hPtGGPi0B_SmearedP->Draw("SAME");
+hPtGGPi0B_SmearedP->Draw("SAME,E1");
 hPtGGPi0B_SmearedP->SetLineColor(kRed);
 
 c104.cd(2);
-c104.cd(2)->SetLogy();  
+c104.cd(2)->SetLogy();
+c104.cd(2)-> SetLeftMargin(0.2);
+hPtGGPi0B_conv->GetYaxis()->SetTitleOffset(2.5);
 hPtGGPi0B_conv->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0B_conv->Draw("SAME");
+hPtGGPi0B_conv->Draw("SAME,E1");
 hPtGGPi0B_conv->SetLineColor(kOrange+4);  
-hPtGGPi0B_conv_SmearedP->Draw("SAME");
+hPtGGPi0B_conv_SmearedP->Draw("SAME,E1");
 hPtGGPi0B_conv_SmearedP->SetLineColor(kCyan);  
 
 c104.cd(3); 
 c104.cd(3)->SetLogy();  
+c104.cd(3)-> SetLeftMargin(0.2);
+hPtGGPi0B_rec->GetYaxis()->SetTitleOffset(2.5);
 hPtGGPi0B_rec->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0B_rec->Draw("SAME");
+hPtGGPi0B_rec->Draw("SAME,E1");
 hPtGGPi0B_rec->SetLineColor(kMagenta);  
 //hPtGGPi0B_rec_SmearedP->Fit("gaus","V","E1");
-hPtGGPi0B_rec_SmearedP->Draw("SAME");
+hPtGGPi0B_rec_SmearedP->Draw("SAME,E1");
 hPtGGPi0B_rec_SmearedP->SetLineColor(kGreen+4); 
-hPtGGPi0B->GetYaxis()->SetTitle("N_{ev}");
 
-auto l104 = new TLegend(0.4, 0.6, 0.7, 0.8);
+c104.cd(1); 
+auto l104 = new TLegend(0.25, 0.2, 0.4, 0.5);
 l104->SetHeader("ALICE 3 Study");
 l104->SetBorderSize(0);
 l104->SetFillStyle(0);
@@ -1234,7 +1422,7 @@ l104->SetTextSize(0.03);
 l104->AddEntry(hPtGGPi0B,"hPtGGPi0B","l");
 l104->AddEntry(hPtGGPi0B_SmearedP,"hPtGGPi0B_SmearedP","l");
 l104->AddEntry(hPtGGPi0B_rec,"hPtGGPi0B_rec","l");
-l104->AddEntry(hPtGGPi0B_rec_SmearedP,"hPtGGPi0B_rec_SmearedPc_SmearedP","l");
+l104->AddEntry(hPtGGPi0B_rec_SmearedP,"hPtGGPi0B_rec_SmearedP","l");
 l104->AddEntry(hPtGGPi0B_conv,"hPtGGPi0B_conv","l");
 l104->AddEntry(hPtGGPi0B_conv_SmearedP,"hPtGGPi0B_conv_SmearedP","l");
 //
@@ -1251,39 +1439,58 @@ TH1D * hPtGGEtaB_rec_SmearedP = (TH1D*) fileRec->Get("hPtGGEtaB_rec_SmearedP");
 TH1D * hPtGGEtaB_conv = (TH1D*) fileRec->Get("hPtGGEtaB_conv");
 TH1D * hPtGGEtaB_conv_SmearedP = (TH1D*) fileRec->Get("hPtGGEtaB_conv_SmearedP");
 
+hPtGGEtaB->Rebin(5);
+hPtGGEtaB_SmearedP->Rebin(5);
+hPtGGEtaB_conv->Rebin(5);
+hPtGGEtaB_conv_SmearedP->Rebin(5);
+hPtGGEtaB_rec->Rebin(10);
+hPtGGEtaB_rec_SmearedP->Rebin(10);
+
 TCanvas c105("c105", "c105", 1600, 1600);
 c105.Divide(3,1);
 
+hPtGGEtaB->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaB_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaB_conv->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaB_conv_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaB_rec->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+hPtGGEtaB_rec_SmearedP->GetYaxis()->SetTitle("#frac{d^{2} N_{#pi^{0}}}{2#pi N_{ev} p_{T} dp_{T} dy} (GeV/c)^{2}");
+
 c105.cd(1);
 c105.cd(1)->SetLogy();  
+c105.cd(1)-> SetLeftMargin(0.2);
+hPtGGEtaB->GetYaxis()->SetTitleOffset(2.5); 
 hPtGGEtaB->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGEtaB->Draw();
+hPtGGEtaB->Draw("E1");
 hPtGGEtaB->SetLineColor(kBlue);  
-hPtGGEtaB_SmearedP->Draw("SAME");
+hPtGGEtaB_SmearedP->Draw("SAME,E1");
 hPtGGEtaB_SmearedP->SetLineColor(kRed);
 
 c105.cd(2);
 c105.cd(2)->SetLogy();  
+c105.cd(2)-> SetLeftMargin(0.2);
+hPtGGEtaB_conv->GetYaxis()->SetTitleOffset(2.5); 
 hPtGGEtaB_conv->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGEtaB_conv->Draw("SAME");
+hPtGGEtaB_conv->Draw("SAME,E1");
 hPtGGEtaB_conv->SetLineColor(kOrange+4);  
-hPtGGEtaB_conv_SmearedP->Draw("SAME");
+hPtGGEtaB_conv_SmearedP->Draw("SAME,E1");
 hPtGGEtaB_conv_SmearedP->SetLineColor(kCyan);  
 
 c105.cd(3);
 c105.cd(3)->SetLogy();  
+c105.cd(3)-> SetLeftMargin(0.2);
+hPtGGEtaB_rec->GetYaxis()->SetTitleOffset(2.5); 
 hPtGGEtaB_rec->GetXaxis()->SetRangeUser(0,5.0); 
-hPtGGEtaB_rec->Draw("SAME");
+hPtGGEtaB_rec->Draw("SAME,E1");
 hPtGGEtaB_rec->SetLineColor(kMagenta);  
-hPtGGEtaB_rec_SmearedP->Draw("SAME");
+hPtGGEtaB_rec_SmearedP->Draw("SAME,E1");
 hPtGGEtaB_rec_SmearedP->SetLineColor(kGreen+4); 
 //TH1D* hPtGGEtaB_rec_SmearedP_FIT   = (TH1D*) hPtGGEtaB_rec_SmearedP->Clone("Fit");
 //hPtGGEtaB_rec_SmearedP_FIT->Fit("gaus");
 //hPtGGEtaB_rec_SmearedP_FIT->Draw("SAME");
-hPtGGEtaB->GetYaxis()->SetTitle("N_{ev}");
-c105.Update();
+c105.cd(1); 
 
-auto l105 = new TLegend(0.4, 0.6, 0.7, 0.8);
+auto l105 = new TLegend(0.25, 0.2, 0.4, 0.5);
 l105->SetHeader("ALICE 3 Study");
 l105->SetBorderSize(0);
 l105->SetFillStyle(0);
@@ -1320,8 +1527,25 @@ TH2D * hRapidityPt_Eta_B_SmearedP           = (TH2D*) fileRec->Get("hRapidityPt_
 TH2D * hRapidityPt_Eta_B_GG_SmearedP        = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG_SmearedP");
 TH2D * hRapidityPt_Eta_B_GG_conv_SmearedP   = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG_conv_SmearedP");
 TH2D * hRapidityPt_Eta_B_GG_rec_SmearedP    = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG_rec_SmearedP");
+/*
+hRapidityPt_Pi0_B->Rebin2D(4,2);
+hRapidityPt_Pi0_B_GG->Rebin2D(4,2);
+hRapidityPt_Pi0_B_GG_conv->Rebin2D(4,2);
+hRapidityPt_Pi0_B_GG_rec->Rebin2D(4,2);
+hRapidityPt_Eta_B->Rebin2D(4,2);
+hRapidityPt_Eta_B_GG->Rebin2D(4,2);
+hRapidityPt_Eta_B_GG_conv->Rebin2D(4,2);
+hRapidityPt_Eta_B_GG_rec->Rebin2D(4,2);
 
-
+hRapidityPt_Pi0_B_SmearedP->Rebin2D(4,2);
+hRapidityPt_Pi0_B_GG_SmearedP->Rebin2D(4,2);
+hRapidityPt_Pi0_B_GG_conv_SmearedP->Rebin2D(4,2);
+hRapidityPt_Pi0_B_GG_rec_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_B_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_B_GG_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_B_GG_conv_SmearedP->Rebin2D(4,2);
+hRapidityPt_Eta_B_GG_rec_SmearedP->Rebin2D(4,2);
+*/
 TCanvas c106("c106", "c106", 1600, 1600);
 c106.Divide(2,2);
 c106.cd(1);
@@ -1329,28 +1553,28 @@ hRapidityPt_Pi0_B->Draw("Colz");
 hRapidityPt_Pi0_B->GetXaxis()->SetRangeUser(-1.0,1.5);
 hRapidityPt_Pi0_B->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c106.cd(2);
 hRapidityPt_Pi0_B_GG->Draw("ColZ");
 hRapidityPt_Pi0_B_GG->GetXaxis()->SetRangeUser(-1.0,1.5);
 hRapidityPt_Pi0_B_GG->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_GG->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_GG->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c106.cd(3);
 hRapidityPt_Pi0_B_GG_conv->Draw("ColZ");
 hRapidityPt_Pi0_B_GG_conv->GetXaxis()->SetRangeUser(-1.0,1.5);
 hRapidityPt_Pi0_B_GG_conv->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_conv->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_GG_conv->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_GG_conv->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c106.cd(4);
 hRapidityPt_Pi0_B_GG_rec->Draw("ColZ");
 hRapidityPt_Pi0_B_GG_rec->GetXaxis()->SetRangeUser(-1.0,1.5);
 hRapidityPt_Pi0_B_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_rec->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_GG_rec->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c106.SaveAs("plots/hRapidityPt_Pi0_B.png");
 
@@ -1364,28 +1588,28 @@ hRapidityPt_Pi0_B_SmearedP->Draw("Colz");
 hRapidityPt_Pi0_B_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Pi0_B_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c107.cd(2);
 hRapidityPt_Pi0_B_GG_SmearedP->Draw("ColZ");
 hRapidityPt_Pi0_B_GG_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Pi0_B_GG_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_GG_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_GG_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c107.cd(3);
 hRapidityPt_Pi0_B_GG_conv_SmearedP->Draw("ColZ");
 hRapidityPt_Pi0_B_GG_conv_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Pi0_B_GG_conv_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_conv_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_GG_conv_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_GG_conv_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c107.cd(4);
 hRapidityPt_Pi0_B_GG_rec_SmearedP->Draw("ColZ");
 hRapidityPt_Pi0_B_GG_rec_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Pi0_B_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Pi0_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Pi0_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c107.SaveAs("plots/hRapidityPt_Pi0_B_SmearedP.png");
 
@@ -1397,28 +1621,28 @@ hRapidityPt_Eta_B->Draw("Colz");
 hRapidityPt_Eta_B->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c108.cd(2);
 hRapidityPt_Eta_B_GG->Draw("ColZ");
 hRapidityPt_Eta_B_GG->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_GG->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_GG->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_GG->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c108.cd(3);
 hRapidityPt_Eta_B_GG_conv->Draw("ColZ");
 hRapidityPt_Eta_B_GG_conv->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_GG_conv->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_conv->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_GG_conv->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_GG_conv->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c108.cd(4);
 hRapidityPt_Eta_B_GG_rec->Draw("ColZ");
 hRapidityPt_Eta_B_GG_rec->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_rec->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_GG_rec->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c108.SaveAs("plots/hRapidityPt_Eta_B.png");
 
@@ -1432,28 +1656,28 @@ hRapidityPt_Eta_B_SmearedP->Draw("Colz");
 hRapidityPt_Eta_B_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c109.cd(2);
 hRapidityPt_Eta_B_GG_SmearedP->Draw("ColZ");
 hRapidityPt_Eta_B_GG_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_GG_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_GG_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_GG_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c109.cd(3);
 hRapidityPt_Eta_B_GG_conv_SmearedP->Draw("ColZ");
 hRapidityPt_Eta_B_GG_conv_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_GG_conv_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_conv_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_GG_conv_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_GG_conv_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c109.cd(4);
 hRapidityPt_Eta_B_GG_rec_SmearedP->Draw("ColZ");
 hRapidityPt_Eta_B_GG_rec_SmearedP->GetXaxis()->SetRangeUser(-2.0,1.5);
 hRapidityPt_Eta_B_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
-hRapidityPt_Eta_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT");
+hRapidityPt_Eta_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c109.SaveAs("plots/hRapidityPt_Eta_B_SmearedP.png");
 
@@ -1469,10 +1693,10 @@ TH2D* RapPt_ratio_MC_Rec_Pi0_B    = (TH2D*) hRapidityPt_Pi0_B_GG->Clone("ReC vs 
 RapPt_ratio_ALL_Rec_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_rec , hRapidityPt_Pi0_B,1,1,"B");
 RapPt_ratio_MC_Rec_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_rec ,  hRapidityPt_Pi0_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
 c110.cd(1);
@@ -1486,10 +1710,10 @@ TH2D* RapPt_ratio_MC_Conv_Pi0_B    = (TH2D*) hRapidityPt_Pi0_B_GG->Clone("Conv v
 RapPt_ratio_ALL_Conv_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_conv , hRapidityPt_Pi0_B,1,1,"B");
 RapPt_ratio_MC_Conv_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_conv ,  hRapidityPt_Pi0_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
 c110.cd(2);
@@ -1510,10 +1734,10 @@ TH2D* RapPt_ratio_MC_Rec_SmearedP_Pi0_B    = (TH2D*) hRapidityPt_Pi0_B_GG->Clone
 RapPt_ratio_ALL_Rec_SmearedP_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_rec_SmearedP , hRapidityPt_Pi0_B,1,1,"B");
 RapPt_ratio_MC_Rec_SmearedP_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_rec_SmearedP ,  hRapidityPt_Pi0_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_SmearedP_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_SmearedP_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
 c111.cd(2);
@@ -1527,10 +1751,10 @@ TH2D* RapPt_ratio_MC_Conv_SmearedP_Pi0_B    = (TH2D*) hRapidityPt_Pi0_B_GG_Smear
 RapPt_ratio_ALL_Conv_SmearedP_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_conv , hRapidityPt_Pi0_B,1,1,"B");
 RapPt_ratio_MC_Conv_SmearedP_Pi0_B->Divide(hRapidityPt_Pi0_B_GG_conv ,  hRapidityPt_Pi0_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_SmearedP_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_SmearedP_Pi0_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_SmearedP_Pi0_B->GetXaxis()->SetTitle("Rapidity");
 
 c111.cd(1);
@@ -1555,10 +1779,10 @@ TH2D* RapPt_ratio_MC_Rec_Eta_B    = (TH2D*) hRapidityPt_Eta_B_GG->Clone("ReC vs 
 RapPt_ratio_ALL_Rec_Eta_B->Divide(hRapidityPt_Eta_B_GG_rec , hRapidityPt_Eta_B,1,1,"B");
 RapPt_ratio_MC_Rec_Eta_B->Divide(hRapidityPt_Eta_B_GG_rec ,  hRapidityPt_Eta_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
 c112.cd(1);
@@ -1572,10 +1796,10 @@ TH2D* RapPt_ratio_MC_Conv_Eta_B    = (TH2D*) hRapidityPt_Eta_B_GG->Clone("Conv v
 RapPt_ratio_ALL_Conv_Eta_B->Divide(hRapidityPt_Eta_B_GG_conv , hRapidityPt_Eta_B,1,1,"B");
 RapPt_ratio_MC_Conv_Eta_B->Divide(hRapidityPt_Eta_B_GG_conv ,  hRapidityPt_Eta_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
 c112.cd(2);
@@ -1596,10 +1820,10 @@ TH2D* RapPt_ratio_MC_Rec_SmearedP_Eta_B    = (TH2D*) hRapidityPt_Eta_B_GG->Clone
 RapPt_ratio_ALL_Rec_SmearedP_Eta_B->Divide(hRapidityPt_Eta_B_GG_rec_SmearedP , hRapidityPt_Eta_B,1,1,"B");
 RapPt_ratio_MC_Rec_SmearedP_Eta_B->Divide(hRapidityPt_Eta_B_GG_rec_SmearedP ,  hRapidityPt_Eta_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Rec_SmearedP_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Rec_SmearedP_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Rec_SmearedP_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Rec_SmearedP_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Rec_SmearedP_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Rec_SmearedP_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
 c113.cd(2);
@@ -1613,10 +1837,10 @@ TH2D* RapPt_ratio_MC_Conv_SmearedP_Eta_B    = (TH2D*) hRapidityPt_Eta_B_GG_Smear
 RapPt_ratio_ALL_Conv_SmearedP_Eta_B->Divide(hRapidityPt_Eta_B_GG_conv , hRapidityPt_Eta_B,1,1,"B");
 RapPt_ratio_MC_Conv_SmearedP_Eta_B->Divide(hRapidityPt_Eta_B_GG_conv ,  hRapidityPt_Eta_B_GG,1,1,"B");
 
-RapPt_ratio_ALL_Conv_SmearedP_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_ALL_Conv_SmearedP_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_ALL_Conv_SmearedP_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
-RapPt_ratio_MC_Conv_SmearedP_Eta_B->GetYaxis()->SetTitle("pT");
+RapPt_ratio_MC_Conv_SmearedP_Eta_B->GetYaxis()->SetTitle("pT (GeV/c)");
 RapPt_ratio_MC_Conv_SmearedP_Eta_B->GetXaxis()->SetTitle("Rapidity");
 
 c113.cd(1);
@@ -1638,24 +1862,24 @@ c114.Divide(2,1);
 
 c114.cd(1);
 TH2D * histRapPt_ALL_Pi0_B = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG");
-TH1 * histPt_ALL_rap0to1_3_Pi0_B = histRapPt_ALL_Pi0_B->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B",1,1000); 
+TH1 * histPt_ALL_rap0to1_3_Pi0_B = histRapPt_ALL_Pi0_B->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B",1,130); 
 
 TH2D * histRapPt_REC_Pi0_B = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG_rec");
-TH1 * histPt_REC_rap0to1_3_Pi0_B  = histRapPt_REC_Pi0_B->ProjectionY("histPt_REC_rap0to1_3_Pi0_B",1,1000); 
+TH1 * histPt_REC_rap0to1_3_Pi0_B  = histRapPt_REC_Pi0_B->ProjectionY("histPt_REC_rap0to1_3_Pi0_B",1,130); 
 
 TH1F* histPt_RATIO_rap0to1_3_Pi0_B  = (TH1F*) histPt_REC_rap0to1_3_Pi0_B->Clone("histPt_RATIO_rap0to1_3_Pi0_B");
 histPt_RATIO_rap0to1_3_Pi0_B->Divide(histPt_REC_rap0to1_3_Pi0_B, histPt_ALL_rap0to1_3_Pi0_B, 1,1,"B");
 
 histPt_RATIO_rap0to1_3_Pi0_B->GetYaxis()->SetTitle("fraction");
-histPt_RATIO_rap0to1_3_Pi0_B->GetXaxis()->SetTitle("pT");
+histPt_RATIO_rap0to1_3_Pi0_B->GetXaxis()->SetTitle("pT (GeV/c)");
 //histPt_RATIO_rap0to1_3_Pi0_B->GetXaxis()->SetLogy();
 histPt_RATIO_rap0to1_3_Pi0_B->SetMarkerStyle(3);
 histPt_RATIO_rap0to1_3_Pi0_B->SetLineColor(kRed);  
 
 TH2D * histRapPt_ALL_Pi0_B_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG_SmearedP");
-TH1 * histPt_ALL_rap0to1_3_Pi0_B_SmearedP = histRapPt_ALL_Pi0_B_SmearedP->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B_SmearedP",1,1000); 
+TH1 * histPt_ALL_rap0to1_3_Pi0_B_SmearedP = histRapPt_ALL_Pi0_B_SmearedP->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B_SmearedP",1,130); 
 TH2D * histRapPt_REC_Pi0_B_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG_rec_SmearedP");
-TH1 * histPt_REC_rap0to1_3_Pi0_B_SmearedP  = histRapPt_REC_Pi0_B_SmearedP->ProjectionY("histPt_REC_rap0to1_3_Pi0_B_SmearedP",1,1000); 
+TH1 * histPt_REC_rap0to1_3_Pi0_B_SmearedP  = histRapPt_REC_Pi0_B_SmearedP->ProjectionY("histPt_REC_rap0to1_3_Pi0_B_SmearedP",1,130); 
 TH1F* histPt_RATIO_rap0to1_3_Pi0_B_SmearedP  = (TH1F*) histPt_REC_rap0to1_3_Pi0_B_SmearedP->Clone("histPt_RATIO_rap0to1_3_Pi0_B_SmearedP");
 histPt_RATIO_rap0to1_3_Pi0_B_SmearedP->Divide(histPt_REC_rap0to1_3_Pi0_B_SmearedP, histPt_ALL_rap0to1_3_Pi0_B_SmearedP, 1,1,"B");
 histPt_RATIO_rap0to1_3_Pi0_B_SmearedP->SetMarkerStyle(4);
@@ -1681,24 +1905,24 @@ leg_Pi0_eff_B->Draw("SAME");
 
 c114.cd(2);
 TH2D * histRapPt_ALL_Eta_B = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG");
-TH1 * histPt_ALL_rap0to1_3_Eta_B = histRapPt_ALL_Eta_B->ProjectionY("histPt_ALL_rap0to1_3_Eta_B",1,1000); 
+TH1 * histPt_ALL_rap0to1_3_Eta_B = histRapPt_ALL_Eta_B->ProjectionY("histPt_ALL_rap0to1_3_Eta_B",1,400); 
 
 TH2D * histRapPt_REC_Eta_B = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG_rec");
-TH1 * histPt_REC_rap0to1_3_Eta_B  = histRapPt_REC_Eta_B->ProjectionY("histPt_REC_rap0to1_3_Eta_B",1,1000); 
+TH1 * histPt_REC_rap0to1_3_Eta_B  = histRapPt_REC_Eta_B->ProjectionY("histPt_REC_rap0to1_3_Eta_B",1,400); 
 
 TH1F* histPt_RATIO_rap0to1_3_Eta_B  = (TH1F*) histPt_REC_rap0to1_3_Eta_B->Clone("histPt_RATIO_rap0to1_3_Eta_B");
 histPt_RATIO_rap0to1_3_Eta_B->Divide(histPt_REC_rap0to1_3_Eta_B, histPt_ALL_rap0to1_3_Eta_B, 1,1,"B");
 
 histPt_RATIO_rap0to1_3_Eta_B->GetYaxis()->SetTitle("fraction");
-histPt_RATIO_rap0to1_3_Eta_B->GetXaxis()->SetTitle("pT");
+histPt_RATIO_rap0to1_3_Eta_B->GetXaxis()->SetTitle("pT (GeV/c)");
 //histPt_RATIO_rap0to1_3_Eta_B->GetXaxis()->SetLogy();
 histPt_RATIO_rap0to1_3_Eta_B->SetMarkerStyle(3);
 histPt_RATIO_rap0to1_3_Eta_B->SetLineColor(kRed);  
 
 TH2D * histRapPt_ALL_Eta_B_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG_SmearedP");
-TH1 * histPt_ALL_rap0to1_3_Eta_B_SmearedP = histRapPt_ALL_Eta_B_SmearedP->ProjectionY("histPt_ALL_rap0to1_3_Eta_B_SmearedP",1,1000); 
+TH1 * histPt_ALL_rap0to1_3_Eta_B_SmearedP = histRapPt_ALL_Eta_B_SmearedP->ProjectionY("histPt_ALL_rap0to1_3_Eta_B_SmearedP",1,400); 
 TH2D * histRapPt_REC_Eta_B_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG_rec_SmearedP");
-TH1 * histPt_REC_rap0to1_3_Eta_B_SmearedP  = histRapPt_REC_Eta_B_SmearedP->ProjectionY("histPt_REC_rap0to1_3_Eta_B_SmearedP",1,1000); 
+TH1 * histPt_REC_rap0to1_3_Eta_B_SmearedP  = histRapPt_REC_Eta_B_SmearedP->ProjectionY("histPt_REC_rap0to1_3_Eta_B_SmearedP",1,400); 
 TH1F* histPt_RATIO_rap0to1_3_Eta_B_SmearedP  = (TH1F*) histPt_REC_rap0to1_3_Eta_B_SmearedP->Clone("histPt_RATIO_rap0to1_3_Eta_B_SmearedP");
 histPt_RATIO_rap0to1_3_Eta_B_SmearedP->Divide(histPt_REC_rap0to1_3_Eta_B_SmearedP, histPt_ALL_rap0to1_3_Eta_B_SmearedP, 1,1,"B");
 histPt_RATIO_rap0to1_3_Eta_B_SmearedP->SetMarkerStyle(4);
@@ -1794,29 +2018,29 @@ c117.cd(1);
 hInvMassPt_B->Draw("Colz");
 hInvMassPt_B->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B->GetYaxis()->SetTitle("pT");
+hInvMassPt_B->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c117.cd(2);
 hInvMassPt_B_GG->Draw("ColZ");
 hInvMassPt_B_GG->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_GG->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_GG->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_GG->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_GG->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_GG->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c117.cd(3);
 hInvMassPt_B_GG_conv->Draw("ColZ");
 hInvMassPt_B_GG_conv->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_GG_conv->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_GG_conv->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_GG_conv->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_GG_conv->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_GG_conv->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c117.cd(4);
 hInvMassPt_B_GG_rec->Draw("ColZ");
 hInvMassPt_B_GG_rec->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_GG_rec->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_GG_rec->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_GG_rec->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c117.SaveAs("plots/hInvMassPt_B.png");
 
@@ -1829,32 +2053,31 @@ c118.cd(1);
 hInvMassPt_B_SmearedP->Draw("Colz");
 hInvMassPt_B_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c118.cd(2);
 hInvMassPt_B_GG_SmearedP->Draw("ColZ");
 hInvMassPt_B_GG_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_GG_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_GG_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_GG_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_GG_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_GG_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c118.cd(3);
 hInvMassPt_B_GG_conv_SmearedP->Draw("ColZ");
 hInvMassPt_B_GG_conv_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_GG_conv_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_GG_conv_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_GG_conv_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_GG_conv_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_GG_conv_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c118.cd(4);
 hInvMassPt_B_GG_rec_SmearedP->Draw("ColZ");
 hInvMassPt_B_GG_rec_SmearedP->GetXaxis()->SetRangeUser(1.5,4.5);
 hInvMassPt_B_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
-hInvMassPt_B_GG_rec_SmearedP->GetXaxis()->SetTitle("nvasshInvMass");
-hInvMassPt_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT");
+hInvMassPt_B_GG_rec_SmearedP->GetXaxis()->SetTitle("Invariant Mass (GeV/c^{2})");
+hInvMassPt_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
 c118.SaveAs("plots/hInvMassPt_B_SmearedP.png");
-
 
 
 }
