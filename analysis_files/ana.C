@@ -656,8 +656,8 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     TH2D hVertexR {"hVertexR", "prod. vertices of e^{+}/e^{-} with photon mother;z (cm);r (cm)", 1000, -maxZ, maxZ, 1000, 0., r};
     TH2D hVertexR_F {"hVertexR_F", "prod. vertices of e^{+}/e^{-} with photon mother in Forwards disks;z (cm);r (cm)", 1000, -maxZ, maxZ, 1000, 0., r};
     
-    TH1D hInvMass {"hInvMass", "invariant mass of e^{+}/e^{-} with photon mother;m (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassSame {"hInvMassSame", "invariant mass of e^{+}/e^{-} with same photon mother;m (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMass {"hInvMass", "invariant mass of e^{+}/e^{-} with photon mother;m (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassSame {"hInvMassSame", "invariant mass of e^{+}/e^{-} with same photon mother;m (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hChargedPionPt {"hChargedPionPt", "Charged pT  ; p_{T}(GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPi0Pt {"hPi0Pt", "pi0 pT  ; p_{T}(GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hEtaPt {"hEtaPt", "eta pT  ; p_{T}(GeV/c);N / N_{ev}", 500, 0., 10.};
@@ -674,15 +674,15 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     TH1D hPrimPhotonPt {"hPrimPhotonPt", "primary Photon pT  ;p_{T} (GeV/c);N / N_{ev}", 500, 0., 10.};
     
     TH1D hPhotonPt {"hPhotonPt", "reconstructed Photon pT  e^{+}/e^{-} with same photon mother;p_{T} (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassPrim {"hInvMassPrim", "invariant mass of primary e^{+}/e^{-}; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassPrim {"hInvMassPrim", "invariant mass of primary e^{+}/e^{-}; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH1D hInvMassGG{"hInvMassGG", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0{"hInvMassGGPi0", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0_SmearedP{"hInvMassGGPi0_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEta{"hInvMassGGEta", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEta_SmearedP{"hInvMassGGEta_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0Cut{"hInvMassGGPi0Cut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaCut{"hInvMassGGEtaCut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGG{"hInvMassGG", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0{"hInvMassGGPi0", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0_SmearedP{"hInvMassGGPi0_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEta{"hInvMassGGEta", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEta_SmearedP{"hInvMassGGEta_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0Cut{"hInvMassGGPi0Cut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaCut{"hInvMassGGEtaCut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   
     TH1D hPtGGPi0{"hPtGGPi0", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEta{"hPtGGEta", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
@@ -691,193 +691,193 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 
 
 ////////////////////////
-    TH1D hInvMassGGB{"hInvMassGGB", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0B{"hInvMassGGPi0B", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaB{"hInvMassGGEtaB", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BCut{"hInvMassGGPi0BCut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBCut{"hInvMassGGEtaBCut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB{"hInvMassGGB", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0B{"hInvMassGGPi0B", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaB{"hInvMassGGEtaB", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BCut{"hInvMassGGPi0BCut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBCut{"hInvMassGGEtaBCut", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0B{"hPtGGPi0B", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaB{"hPtGGEtaB", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0BCut{"hPtGGPi0BCut", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBCut{"hPtGGEtaBCut", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
 
-    TH1D hInvMassGGB_SmearedP{"hInvMassGGB_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0B_SmearedP{"hInvMassGGPi0B_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaB_SmearedP{"hInvMassGGEtaB_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BCut_SmearedP{"hInvMassGGPi0BCut_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBCut_SmearedP{"hInvMassGGEtaBCut_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_SmearedP{"hInvMassGGB_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0B_SmearedP{"hInvMassGGPi0B_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaB_SmearedP{"hInvMassGGEtaB_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BCut_SmearedP{"hInvMassGGPi0BCut_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBCut_SmearedP{"hInvMassGGEtaBCut_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0B_SmearedP{"hPtGGPi0B_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaB_SmearedP{"hPtGGEtaB_SmearedP", "Smeared pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0BCut_SmearedP{"hPtGGPi0BCut_SmearedP", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBCut_SmearedP{"hPtGGEtaBCut_SmearedP", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
 
-    TH1D hInvMassGGB_rec{"hInvMassGGB_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0B_rec{"hInvMassGGPi0B_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaB_rec{"hInvMassGGEtaB_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BCut_rec{"hInvMassGGPi0BCut_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBCut_rec{"hInvMassGGEtaBCut_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_rec{"hInvMassGGB_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0B_rec{"hInvMassGGPi0B_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaB_rec{"hInvMassGGEtaB_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BCut_rec{"hInvMassGGPi0BCut_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBCut_rec{"hInvMassGGEtaBCut_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0BCut_rec{"hPtGGPi0BCut_rec", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBCut_rec{"hPtGGEtaBCut_rec", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaB_rec{"hPtGGEtaB_rec", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0B_rec{"hPtGGPi0B_rec", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGB_Samemother_rec{"hInvMassGGB_Samemother_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_Samemother_rec{"hInvMassGGB_Samemother_rec", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     
-    TH1D hInvMassGGB_rec_SmearedP{"hInvMassGGB_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0B_rec_SmearedP{"hInvMassGGPi0B_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaB_rec_SmearedP{"hInvMassGGEtaB_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BCut_rec_SmearedP{"hInvMassGGPi0BCut_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBCut_rec_SmearedP{"hInvMassGGEtaBCut_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_rec_SmearedP{"hInvMassGGB_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0B_rec_SmearedP{"hInvMassGGPi0B_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaB_rec_SmearedP{"hInvMassGGEtaB_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BCut_rec_SmearedP{"hInvMassGGPi0BCut_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBCut_rec_SmearedP{"hInvMassGGEtaBCut_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0B_rec_SmearedP{"hPtGGPi0B_rec_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaB_rec_SmearedP{"hPtGGEtaB_rec_SmearedP", "Smeared pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0BCut_rec_SmearedP{"hPtGGPi0BCut_rec_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBCut_rec_SmearedP{"hPtGGEtaBCut_rec_SmearedP", "Smeared pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGB_Samemother_rec_SmearedP{"hInvMassGGB_Samemother_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_Samemother_rec_SmearedP{"hInvMassGGB_Samemother_rec_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH1D hInvMassGGB_conv{"hInvMassGGB_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0B_conv{"hInvMassGGPi0B_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaB_conv{"hInvMassGGEtaB_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BCut_conv{"hInvMassGGPi0BCut_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBCut_conv{"hInvMassGGEtaBCut_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_conv{"hInvMassGGB_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0B_conv{"hInvMassGGPi0B_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaB_conv{"hInvMassGGEtaB_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BCut_conv{"hInvMassGGPi0BCut_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBCut_conv{"hInvMassGGEtaBCut_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0BCut_conv{"hPtGGPi0BCut_conv", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBCut_conv{"hPtGGEtaBCut_conv", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaB_conv{"hPtGGEtaB_conv", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0B_conv{"hPtGGPi0B_conv", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGB_Samemother_conv{"hInvMassGGB_Samemother_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_Samemother_conv{"hInvMassGGB_Samemother_conv", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     
-    TH1D hInvMassGGB_conv_SmearedP{"hInvMassGGB_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0B_conv_SmearedP{"hInvMassGGPi0B_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaB_conv_SmearedP{"hInvMassGGEtaB_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BCut_conv_SmearedP{"hInvMassGGPi0BCut_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBCut_conv_SmearedP{"hInvMassGGEtaBCut_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_conv_SmearedP{"hInvMassGGB_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0B_conv_SmearedP{"hInvMassGGPi0B_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaB_conv_SmearedP{"hInvMassGGEtaB_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BCut_conv_SmearedP{"hInvMassGGPi0BCut_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBCut_conv_SmearedP{"hInvMassGGEtaBCut_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0B_conv_SmearedP{"hPtGGPi0B_conv_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaB_conv_SmearedP{"hPtGGEtaB_conv_SmearedP", "Smeared pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0BCut_conv_SmearedP{"hPtGGPi0BCut_conv_SmearedP", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBCut_conv_SmearedP{"hPtGGEtaBCut_conv_SmearedP", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGB_Samemother_conv_SmearedP{"hInvMassGGB_Samemother_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGB_Samemother_conv_SmearedP{"hInvMassGGB_Samemother_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH2D hRapidityPt_Pi0_B {"hRapidityPt_Pi0_B", "Rapidity and Pt Pi0 in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG {"hRapidityPt_Pi0_B_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_conv {"hRapidityPt_Pi0_B_GG_conv", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_rec {"hRapidityPt_Pi0_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B {"hRapidityPt_Eta_B", "Rapidity and Pt of all Eta in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG{"hRapidityPt_Eta_B_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_conv {"hRapidityPt_Eta_B_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_rec {"hRapidityPt_Eta_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
+    TH2D hRapidityPt_Pi0_B {"hRapidityPt_Pi0_B", "Rapidity and Pt Pi0 in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG {"hRapidityPt_Pi0_B_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_conv {"hRapidityPt_Pi0_B_GG_conv", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_rec {"hRapidityPt_Pi0_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B {"hRapidityPt_Eta_B", "Rapidity and Pt of all Eta in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG{"hRapidityPt_Eta_B_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_conv {"hRapidityPt_Eta_B_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_rec {"hRapidityPt_Eta_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
 
-    TH2D hRapidityPt_Pi0_B_SmearedP {"hRapidityPt_Pi0_B_SmearedP", "Rapidity and Pt Pi0 in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_SmearedP {"hRapidityPt_Pi0_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_conv_SmearedP {"hRapidityPt_Pi0_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_rec_SmearedP {"hRapidityPt_Pi0_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_SmearedP {"hRapidityPt_Eta_B_SmearedP", "Rapidity and Pt of all Eta in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_SmearedP{"hRapidityPt_Eta_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_conv_SmearedP {"hRapidityPt_Eta_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_rec_SmearedP {"hRapidityPt_Eta_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_SmearedP {"hRapidityPt_Pi0_B_SmearedP", "Rapidity and Pt Pi0 in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_SmearedP {"hRapidityPt_Pi0_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_conv_SmearedP {"hRapidityPt_Pi0_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_rec_SmearedP {"hRapidityPt_Pi0_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_SmearedP {"hRapidityPt_Eta_B_SmearedP", "Rapidity and Pt of all Eta in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_SmearedP{"hRapidityPt_Eta_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_conv_SmearedP {"hRapidityPt_Eta_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_rec_SmearedP {"hRapidityPt_Eta_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
 
-    TH2D hInvMassPt_B {"hInvMassPt_B", "InvMass and Pt in Barrel region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_B_GG {"hInvMassPt_B_GG", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_B_GG_conv {"hInvMassPt_B_GG_conv", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_B_GG_rec {"hInvMassPt_B_GG_rec", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,1.,2000,-10.,10.}; 
-    TH2D hInvMassPt_B_SmearedP {"hInvMassPt_B_SmearedP", "InvMass and Pt in Barrel region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_B_GG_SmearedP {"hInvMassPt_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_B_GG_conv_SmearedP {"hInvMassPt_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_B_GG_rec_SmearedP {"hInvMassPt_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B {"hInvMassPt_B", "InvMass and Pt in Barrel region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B_GG {"hInvMassPt_B_GG", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B_GG_conv {"hInvMassPt_B_GG_conv", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B_GG_rec {"hInvMassPt_B_GG_rec", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,-1.,1.,2000,-10.,10.}; 
+    TH2D hInvMassPt_B_SmearedP {"hInvMassPt_B_SmearedP", "InvMass and Pt in Barrel region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B_GG_SmearedP {"hInvMassPt_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B_GG_conv_SmearedP {"hInvMassPt_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_B_GG_rec_SmearedP {"hInvMassPt_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,-1.,1.,2000,-10.,10.};
 
 
 ////////////////////////////////
 
-    TH1D hInvMassF {"hInvMassF", "invariant mass of e^{+}/e^{-} with photon mother Forward;m (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassSameF {"hInvMassSameF", "invariant mass of e^{+}/e^{-} with same photon mother Forward;m (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassF {"hInvMassF", "invariant mass of e^{+}/e^{-} with photon mother Forward;m (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassSameF {"hInvMassSameF", "invariant mass of e^{+}/e^{-} with same photon mother Forward;m (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH1D hInvMassGGF{"hInvMassGGF", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0F{"hInvMassGGPi0F", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaF{"hInvMassGGEtaF", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0FCut{"hInvMassGGPi0FCut", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaFCut{"hInvMassGGEtaFCut", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF{"hInvMassGGF", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0F{"hInvMassGGPi0F", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaF{"hInvMassGGEtaF", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0FCut{"hInvMassGGPi0FCut", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaFCut{"hInvMassGGEtaFCut", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0F{"hPtGGPi0F", "pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaF{"hPtGGEtaF", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0FCut{"hPtGGPi0FCut", "pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaFCut{"hPtGGEtaFCut", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
 
-    TH1D hInvMassGGF_SmearedP{"hInvMassGGF_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0F_SmearedP{"hInvMassGGPi0F_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaF_SmearedP{"hInvMassGGEtaF_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0FCut_SmearedP{"hInvMassGGPi0FCut_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaFCut_SmearedP{"hInvMassGGEtaFCut_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_SmearedP{"hInvMassGGF_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0F_SmearedP{"hInvMassGGPi0F_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaF_SmearedP{"hInvMassGGEtaF_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0FCut_SmearedP{"hInvMassGGPi0FCut_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaFCut_SmearedP{"hInvMassGGEtaFCut_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0F_SmearedP{"hPtGGPi0F_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaF_SmearedP{"hPtGGEtaF_SmearedP", "Smeared pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0FCut_SmearedP{"hPtGGPi0FCut_SmearedP", "pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaFCut_SmearedP{"hPtGGEtaFCut_SmearedP", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
 
-    TH1D hInvMassGGF_rec{"hInvMassGGF_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0F_rec{"hInvMassGGPi0F_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaF_rec{"hInvMassGGEtaF_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0FCut_rec{"hInvMassGGPi0FCut_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaFCut_rec{"hInvMassGGEtaFCut_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_rec{"hInvMassGGF_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0F_rec{"hInvMassGGPi0F_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaF_rec{"hInvMassGGEtaF_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0FCut_rec{"hInvMassGGPi0FCut_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaFCut_rec{"hInvMassGGEtaFCut_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0FCut_rec{"hPtGGPi0FCut_rec", "pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaFCut_rec{"hPtGGEtaFCut_rec", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaF_rec{"hPtGGEtaF_rec", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0F_rec{"hPtGGPi0F_rec", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGF_Samemother_rec{"hInvMassGGF_Samemother_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_Samemother_rec{"hInvMassGGF_Samemother_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     
-    TH1D hInvMassGGF_rec_SmearedP{"hInvMassGGF_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0F_rec_SmearedP{"hInvMassGGPi0F_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaF_rec_SmearedP{"hInvMassGGEtaF_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0FCut_rec_SmearedP{"hInvMassGGPi0FCut_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaFCut_rec_SmearedP{"hInvMassGGEtaFCut_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_rec_SmearedP{"hInvMassGGF_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0F_rec_SmearedP{"hInvMassGGPi0F_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaF_rec_SmearedP{"hInvMassGGEtaF_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0FCut_rec_SmearedP{"hInvMassGGPi0FCut_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaFCut_rec_SmearedP{"hInvMassGGEtaFCut_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0F_rec_SmearedP{"hPtGGPi0F_rec_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaF_rec_SmearedP{"hPtGGEtaF_rec_SmearedP", "Smeared pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0FCut_rec_SmearedP{"hPtGGPi0FCut_rec_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaFCut_rec_SmearedP{"hPtGGEtaFCut_rec_SmearedP", "Smeared pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGF_Samemother_rec_SmearedP{"hInvMassGGF_Samemother_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_Samemother_rec_SmearedP{"hInvMassGGF_Samemother_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH1D hInvMassGGF_conv{"hInvMassGGF_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0F_conv{"hInvMassGGPi0F_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaF_conv{"hInvMassGGEtaF_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0FCut_conv{"hInvMassGGPi0FCut_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaFCut_conv{"hInvMassGGEtaFCut_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_conv{"hInvMassGGF_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0F_conv{"hInvMassGGPi0F_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaF_conv{"hInvMassGGEtaF_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0FCut_conv{"hInvMassGGPi0FCut_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaFCut_conv{"hInvMassGGEtaFCut_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0FCut_conv{"hPtGGPi0FCut_conv", "pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaFCut_conv{"hPtGGEtaFCut_conv", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaF_conv{"hPtGGEtaF_conv", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0F_conv{"hPtGGPi0F_conv", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGF_Samemother_conv{"hInvMassGGF_Samemother_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_Samemother_conv{"hInvMassGGF_Samemother_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     
-    TH1D hInvMassGGF_conv_SmearedP{"hInvMassGGF_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0F_conv_SmearedP{"hInvMassGGPi0F_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaF_conv_SmearedP{"hInvMassGGEtaF_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0FCut_conv_SmearedP{"hInvMassGGPi0FCut_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaFCut_conv_SmearedP{"hInvMassGGEtaFCut_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_conv_SmearedP{"hInvMassGGF_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0F_conv_SmearedP{"hInvMassGGPi0F_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaF_conv_SmearedP{"hInvMassGGEtaF_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0FCut_conv_SmearedP{"hInvMassGGPi0FCut_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaFCut_conv_SmearedP{"hInvMassGGEtaFCut_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
     TH1D hPtGGPi0F_conv_SmearedP{"hPtGGPi0F_conv_SmearedP", "Smeared pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaF_conv_SmearedP{"hPtGGEtaF_conv_SmearedP", "Smeared pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGPi0FCut_conv_SmearedP{"hPtGGPi0FCut_conv_SmearedP", "pT of #pi^0 #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaFCut_conv_SmearedP{"hPtGGEtaFCut_conv_SmearedP", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
-    TH1D hInvMassGGF_Samemother_conv_SmearedP{"hInvMassGGF_Samemother_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGF_Samemother_conv_SmearedP{"hInvMassGGF_Samemother_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH2D hRapidityPt_Pi0_F {"hRapidityPt_Pi0_F", "Rapidity and Pt Pi0 in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG {"hRapidityPt_Pi0_F_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_conv {"hRapidityPt_Pi0_F_GG_conv", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_rec {"hRapidityPt_Pi0_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F {"hRapidityPt_Eta_F", "Rapidity and Pt of all Eta in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG{"hRapidityPt_Eta_F_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_conv {"hRapidityPt_Eta_F_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_rec {"hRapidityPt_Eta_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
+    TH2D hRapidityPt_Pi0_F {"hRapidityPt_Pi0_F", "Rapidity and Pt Pi0 in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG {"hRapidityPt_Pi0_F_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_conv {"hRapidityPt_Pi0_F_GG_conv", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_rec {"hRapidityPt_Pi0_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F {"hRapidityPt_Eta_F", "Rapidity and Pt of all Eta in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG{"hRapidityPt_Eta_F_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_conv {"hRapidityPt_Eta_F_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_rec {"hRapidityPt_Eta_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
 
-    TH2D hRapidityPt_Pi0_F_SmearedP {"hRapidityPt_Pi0_F_SmearedP", "Rapidity and Pt Pi0 in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_SmearedP {"hRapidityPt_Pi0_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_conv_SmearedP {"hRapidityPt_Pi0_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_rec_SmearedP {"hRapidityPt_Pi0_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_SmearedP {"hRapidityPt_Eta_F_SmearedP", "Rapidity and Pt of all Eta in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_SmearedP{"hRapidityPt_Eta_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_conv_SmearedP {"hRapidityPt_Eta_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,10.,200,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_rec_SmearedP {"hRapidityPt_Eta_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,10.,200,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_SmearedP {"hRapidityPt_Pi0_F_SmearedP", "Rapidity and Pt Pi0 in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_SmearedP {"hRapidityPt_Pi0_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_conv_SmearedP {"hRapidityPt_Pi0_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_rec_SmearedP {"hRapidityPt_Pi0_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_SmearedP {"hRapidityPt_Eta_F_SmearedP", "Rapidity and Pt of all Eta in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_SmearedP{"hRapidityPt_Eta_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_conv_SmearedP {"hRapidityPt_Eta_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_rec_SmearedP {"hRapidityPt_Eta_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
 
-    TH2D hInvMassPt_F {"hInvMassPt_F", "InvMass and Pt in forward region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_F_GG {"hInvMassPt_F_GG", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_F_GG_conv {"hInvMassPt_F_GG_conv", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_F_GG_rec {"hInvMassPt_F_GG_rec", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,1.,2000,-10.,10.}; 
-    TH2D hInvMassPt_F_SmearedP {"hInvMassPt_F_SmearedP", "InvMass and Pt in forward region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_F_GG_SmearedP {"hInvMassPt_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_F_GG_conv_SmearedP {"hInvMassPt_F_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,0.,1.,2000,-10.,10.};
-    TH2D hInvMassPt_F_GG_rec_SmearedP {"hInvMassPt_F_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F {"hInvMassPt_F", "InvMass and Pt in forward region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F_GG {"hInvMassPt_F_GG", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F_GG_conv {"hInvMassPt_F_GG_conv", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F_GG_rec {"hInvMassPt_F_GG_rec", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,-1.,1.,2000,-10.,10.}; 
+    TH2D hInvMassPt_F_SmearedP {"hInvMassPt_F_SmearedP", "InvMass and Pt in forward region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F_GG_SmearedP {"hInvMassPt_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F_GG_conv_SmearedP {"hInvMassPt_F_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,-1.,1.,2000,-10.,10.};
+    TH2D hInvMassPt_F_GG_rec_SmearedP {"hInvMassPt_F_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,-1.,1.,2000,-10.,10.};
     
     TH1D hPrimPhotonPtF {"hPrimPhotonPtF", "primary Photon pT  F ;p_{T} (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPhotonPtF {"hPhotonPtF", "reconstructed Photon pT forward e^{+}/e^{-} with same photon mother;p_{T} (GeV/c);N / N_{ev}", 500, 0., 10.};
@@ -886,11 +886,11 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     TH1D hPhotonPF {"hPhotonPF", "reconstructed Photon p forward e^{+}/e^{-} with same photon mother;p (GeV/c);N / N_{ev}", 5000, 0., 100.};
 
                     
-    TH1D hInvMassGGBF{"hInvMassGGBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BF{"hInvMassGGPi0BF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBF{"hInvMassGGEtaBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGPi0BFCut{"hInvMassGGPi0BFCut", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
-    TH1D hInvMassGGEtaBFCut{"hInvMassGGEtaBFCut", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 200, 0., 2.};
+    TH1D hInvMassGGBF{"hInvMassGGBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BF{"hInvMassGGPi0BF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBF{"hInvMassGGEtaBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGPi0BFCut{"hInvMassGGPi0BFCut", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
+    TH1D hInvMassGGEtaBFCut{"hInvMassGGEtaBFCut", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
  
     TH1D hPtGGPi0BF{"hPtGGPi0BF", "pT of #pi^0 #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hPtGGEtaBF{"hPtGGEtaBF", "pT of #h #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
