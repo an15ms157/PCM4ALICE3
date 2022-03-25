@@ -540,7 +540,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve3
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve395/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve396/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve397/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve398/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve398/o2sim_Kine.root");*/
 
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve401/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve402/o2sim_Kine.root");
@@ -588,7 +588,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve446/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve447/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve448/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve449/o2sim_Kine.root");*/
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve449/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve450/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve451/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve452/o2sim_Kine.root");
@@ -755,23 +755,23 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     TH1D hPtGGEtaBCut_conv_SmearedP{"hPtGGEtaBCut_conv_SmearedP", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hInvMassGGB_Samemother_conv_SmearedP{"hInvMassGGB_Samemother_conv_SmearedP", "invariant mass of #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH2D hRapidityPt_Pi0_B {"hRapidityPt_Pi0_B", "Rapidity and Pt Pi0 in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG {"hRapidityPt_Pi0_B_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_conv {"hRapidityPt_Pi0_B_GG_conv", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_rec {"hRapidityPt_Pi0_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B {"hRapidityPt_Eta_B", "Rapidity and Pt of all Eta in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG{"hRapidityPt_Eta_B_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_conv {"hRapidityPt_Eta_B_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_rec {"hRapidityPt_Eta_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B {"hRapidityPt_Pi0_B", "Rapidity and Pt Pi0 in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG {"hRapidityPt_Pi0_B_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_conv {"hRapidityPt_Pi0_B_GG_conv", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_rec {"hRapidityPt_Pi0_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B {"hRapidityPt_Eta_B", "Rapidity and Pt of all Eta in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG{"hRapidityPt_Eta_B_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_conv {"hRapidityPt_Eta_B_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_rec {"hRapidityPt_Eta_B_GG_rec", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
 
-    TH2D hRapidityPt_Pi0_B_SmearedP {"hRapidityPt_Pi0_B_SmearedP", "Rapidity and Pt Pi0 in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_SmearedP {"hRapidityPt_Pi0_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_conv_SmearedP {"hRapidityPt_Pi0_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_B_GG_rec_SmearedP {"hRapidityPt_Pi0_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_SmearedP {"hRapidityPt_Eta_B_SmearedP", "Rapidity and Pt of all Eta in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_SmearedP{"hRapidityPt_Eta_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_conv_SmearedP {"hRapidityPt_Eta_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_B_GG_rec_SmearedP {"hRapidityPt_Eta_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_SmearedP {"hRapidityPt_Pi0_B_SmearedP", "Rapidity and Pt Pi0 in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_SmearedP {"hRapidityPt_Pi0_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_conv_SmearedP {"hRapidityPt_Pi0_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_B_GG_rec_SmearedP {"hRapidityPt_Pi0_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_SmearedP {"hRapidityPt_Eta_B_SmearedP", "Rapidity and Pt of all Eta in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_SmearedP{"hRapidityPt_Eta_B_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_conv_SmearedP {"hRapidityPt_Eta_B_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in Barrel region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_B_GG_rec_SmearedP {"hRapidityPt_Eta_B_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in Barrel with eta as same mother after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
 
     TH2D hInvMassPt_B {"hInvMassPt_B", "InvMass and Pt in Barrel region",1000,-1.,1.,2000,-10.,10.};
     TH2D hInvMassPt_B_GG {"hInvMassPt_B_GG", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,-1.,1.,2000,-10.,10.};
@@ -852,23 +852,23 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     TH1D hPtGGEtaFCut_conv_SmearedP{"hPtGGEtaFCut_conv_SmearedP", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 500, 0., 10.};
     TH1D hInvMassGGF_Samemother_conv_SmearedP{"hInvMassGGF_Samemother_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
-    TH2D hRapidityPt_Pi0_F {"hRapidityPt_Pi0_F", "Rapidity and Pt Pi0 in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG {"hRapidityPt_Pi0_F_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_conv {"hRapidityPt_Pi0_F_GG_conv", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_rec {"hRapidityPt_Pi0_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F {"hRapidityPt_Eta_F", "Rapidity and Pt of all Eta in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG{"hRapidityPt_Eta_F_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_conv {"hRapidityPt_Eta_F_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_rec {"hRapidityPt_Eta_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F {"hRapidityPt_Pi0_F", "Rapidity and Pt Pi0 in forward region",1000,-5.,5,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG {"hRapidityPt_Pi0_F_GG", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_conv {"hRapidityPt_Pi0_F_GG_conv", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_rec {"hRapidityPt_Pi0_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F {"hRapidityPt_Eta_F", "Rapidity and Pt of all Eta in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG{"hRapidityPt_Eta_F_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_conv {"hRapidityPt_Eta_F_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_rec {"hRapidityPt_Eta_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
 
-    TH2D hRapidityPt_Pi0_F_SmearedP {"hRapidityPt_Pi0_F_SmearedP", "Rapidity and Pt Pi0 in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_SmearedP {"hRapidityPt_Pi0_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_conv_SmearedP {"hRapidityPt_Pi0_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Pi0_F_GG_rec_SmearedP {"hRapidityPt_Pi0_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_SmearedP {"hRapidityPt_Eta_F_SmearedP", "Rapidity and Pt of all Eta in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_SmearedP{"hRapidityPt_Eta_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_conv_SmearedP {"hRapidityPt_Eta_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,10.,2000,-10.,10.};
-    TH2D hRapidityPt_Eta_F_GG_rec_SmearedP {"hRapidityPt_Eta_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,10.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_SmearedP {"hRapidityPt_Pi0_F_SmearedP", "Rapidity and Pt Pi0 in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_SmearedP {"hRapidityPt_Pi0_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_conv_SmearedP {"hRapidityPt_Pi0_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs in forward region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Pi0_F_GG_rec_SmearedP {"hRapidityPt_Pi0_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_SmearedP {"hRapidityPt_Eta_F_SmearedP", "Rapidity and Pt of all Eta in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_SmearedP{"hRapidityPt_Eta_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_conv_SmearedP {"hRapidityPt_Eta_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,-5.,5.,2000,-10.,10.};
+    TH2D hRapidityPt_Eta_F_GG_rec_SmearedP {"hRapidityPt_Eta_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,-5.,5.,2000,-10.,10.};
 
     TH2D hInvMassPt_F {"hInvMassPt_F", "InvMass and Pt in forward region",1000,-1.,1.,2000,-10.,10.};
     TH2D hInvMassPt_F_GG {"hInvMassPt_F_GG", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,-1.,1.,2000,-10.,10.};
@@ -913,7 +913,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     double eMass = 0.000511;
     double minPt = 0.01;
     double minPtG = 0.1;
-    double minPFG = 0.25;
+    double minPFG = 0.1;
     //double maxR  = 15;
     double maxR  = 22;
 //    double maxR  = 120;
@@ -1006,13 +1006,13 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 	  
     if (track.GetPdgCode() == 111 ) {
        pi0_prim.emplace_back(track);
-       hRapidityPt_Pi0_B.Fill(track.GetRapidity() ,track.GetPt());
-       hRapidityPt_Pi0_B_SmearedP.Fill(track.GetRapidity() ,track.GetPt());}
+       hRapidityPt_Pi0_B.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());
+       hRapidityPt_Pi0_B_SmearedP.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());}
 
 	  if (track.GetPdgCode() == 221 )  {
        eta_prim.emplace_back(track);
-       hRapidityPt_Eta_B.Fill(track.GetRapidity() ,track.GetPt());
-       hRapidityPt_Eta_B_SmearedP.Fill(track.GetRapidity() ,track.GetPt());}
+       hRapidityPt_Eta_B.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());
+       hRapidityPt_Eta_B_SmearedP.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());}
 
     //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	  if (track.GetPdgCode() == 22 )   gamma_prim.emplace_back(track);
@@ -1158,7 +1158,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 	  // add that the two gammas have the same mother
 
 	  if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
-      if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGPi0.Fill((LVgam1+LVgam2).M());
 	      hPtGGPi0.Fill((LVgam1+LVgam2).Pt());
 	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
@@ -1166,7 +1166,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 		hPtGGPi0Cut.Fill((LVgam1+LVgam2).Pt());
 	      }
 	    }
-      if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGEta.Fill((LVgam1+LVgam2).M());
 	      hPtGGEta.Fill((LVgam1+LVgam2).Pt());
 	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
@@ -1202,13 +1202,13 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
       hInvMassPt_B_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
       hInvMassPt_B_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
       
-      if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGPi0B.Fill((LVgam1+LVgam2).M());
         hInvMassGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGPi0B.Fill((LVgam1+LVgam2).Pt());
         hPtGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        hRapidityPt_Pi0_B_GG.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-        hRapidityPt_Pi0_B_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hRapidityPt_Pi0_B_GG.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+        hRapidityPt_Pi0_B_GG_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
 	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 		      hInvMassGGPi0BCut.Fill((LVgam1+LVgam2).M());
@@ -1217,13 +1217,13 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
           hPtGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         }
 	    }
-      if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGEtaB.Fill((LVgam1+LVgam2).M());
 	      hInvMassGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGEtaB.Fill((LVgam1+LVgam2).Pt());
 	      hPtGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        hRapidityPt_Eta_B_GG.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-        hRapidityPt_Eta_B_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hRapidityPt_Eta_B_GG.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+        hRapidityPt_Eta_B_GG_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
 	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 		      hInvMassGGEtaBCut.Fill((LVgam1+LVgam2).M());
@@ -1264,14 +1264,14 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
             fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	//	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	              countPi0++;
 	              hInvMassGGPi0B_conv.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0B_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
                 hPtGGPi0B_conv.Fill((LVgam1+LVgam2).Pt());
                 hPtGGPi0B_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-                hRapidityPt_Pi0_B_GG_conv.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-                hRapidityPt_Pi0_B_GG_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hRapidityPt_Pi0_B_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+                hRapidityPt_Pi0_B_GG_conv_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 countEta++;
 		            hInvMassGGPi0BCut_conv.Fill((LVgam1+LVgam2).M());
@@ -1280,14 +1280,14 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0BCut_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
               hInvMassGGEtaB_conv.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaB_conv.Fill((LVgam1+LVgam2).Pt());
-              hRapidityPt_Eta_B_GG_conv.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_B_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               hInvMassGGEtaB_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	      hPtGGEtaB_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_B_GG_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_B_GG_conv_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 hInvMassGGEtaBCut_conv.Fill((LVgam1+LVgam2).M());
@@ -1327,14 +1327,14 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 		        hInvMassGGB_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 
 	              //	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 
 	              hInvMassGGPi0B_rec.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
                 hPtGGPi0B_rec.Fill((LVgam1+LVgam2).Pt());
                 hPtGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-                hRapidityPt_Pi0_B_GG_rec.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-                hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hRapidityPt_Pi0_B_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+                hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 
 		            hInvMassGGPi0BCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1343,14 +1343,14 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
               hInvMassGGEtaB_rec.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaB_rec.Fill((LVgam1+LVgam2).Pt());
-              hRapidityPt_Eta_B_GG_rec.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_B_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               hInvMassGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	      hPtGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 hInvMassGGEtaBCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1436,12 +1436,12 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
     
     if (track.GetPdgCode() == 111 ) {
        pi0_prim_F.emplace_back(track);
-       hRapidityPt_Pi0_F.Fill(track.GetRapidity() ,track.GetPt());
-       hRapidityPt_Pi0_F_SmearedP.Fill(track.GetRapidity() ,track.GetPt());}
+       hRapidityPt_Pi0_F.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());
+       hRapidityPt_Pi0_F_SmearedP.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());}
 	  if (track.GetPdgCode() == 221 )  {
        eta_prim_F.emplace_back(track);
-       hRapidityPt_Eta_F.Fill(track.GetRapidity() ,track.GetPt());
-       hRapidityPt_Eta_F_SmearedP.Fill(track.GetRapidity() ,track.GetPt());}
+       hRapidityPt_Eta_F.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());
+       hRapidityPt_Eta_F_SmearedP.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());}
     if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	  if (track.GetPdgCode() == 22 )   gamma_prim_F.emplace_back(track);
 	  if ( (gRandom->Uniform() < (convProb )) & (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
@@ -1526,13 +1526,13 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
       hInvMassPt_F_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
       hInvMassPt_F_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
-  	  if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<4.0) ){
+  	  if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	      hInvMassGGPi0F.Fill((LVgam1+LVgam2).M());
         hInvMassGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGPi0F.Fill((LVgam1+LVgam2).Pt());
         hPtGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        hRapidityPt_Pi0_F_GG.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-        hRapidityPt_Pi0_F_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hRapidityPt_Pi0_F_GG.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+        hRapidityPt_Pi0_F_GG_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
 	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 		      hInvMassGGPi0FCut.Fill((LVgam1+LVgam2).M());
@@ -1541,13 +1541,13 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
           hPtGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         }
 	    }
-	      if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.75<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<4.0) ){
+	      if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	      hInvMassGGEtaF.Fill((LVgam1+LVgam2).M());
 	      hInvMassGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGEtaF.Fill((LVgam1+LVgam2).Pt());
 	      hPtGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        hRapidityPt_Eta_F_GG.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-        hRapidityPt_Eta_F_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hRapidityPt_Eta_F_GG.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+        hRapidityPt_Eta_F_GG_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
 	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 		      hInvMassGGEtaFCut.Fill((LVgam1+LVgam2).M());
@@ -1620,14 +1620,14 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
             fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	//	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.75<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<4.0) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	              countPi0++;
 	              hInvMassGGPi0F_conv.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0F_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
                 hPtGGPi0F_conv.Fill((LVgam1+LVgam2).Pt());
                 hPtGGPi0F_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-                hRapidityPt_Pi0_F_GG_conv.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-                hRapidityPt_Pi0_F_GG_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hRapidityPt_Pi0_F_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+                hRapidityPt_Pi0_F_GG_conv_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 countEta++;
 		            hInvMassGGPi0FCut_conv.Fill((LVgam1+LVgam2).M());
@@ -1636,14 +1636,14 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hPtGGPi0FCut_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.75<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<4.0) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
               hInvMassGGEtaF_conv.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaF_conv.Fill((LVgam1+LVgam2).Pt());
-              hRapidityPt_Eta_F_GG_conv.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_F_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               hInvMassGGEtaF_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	      hPtGGEtaF_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_F_GG_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_F_GG_conv_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 hInvMassGGEtaFCut_conv.Fill((LVgam1+LVgam2).M());
@@ -1685,14 +1685,14 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
             fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	              //	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.75<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<4.0) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
 	              countPi0++;
 	              hInvMassGGPi0F_rec.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
                 hPtGGPi0F_rec.Fill((LVgam1+LVgam2).Pt());
                 hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-                hRapidityPt_Pi0_F_GG_rec.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
-                hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hRapidityPt_Pi0_F_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+                hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 countEta++;
 		            hInvMassGGPi0FCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1701,14 +1701,14 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hPtGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<mTrackMother_gam1.GetRapidity()) & (mTrackMother_gam1.GetRapidity()<4.0) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
               hInvMassGGEtaF_rec.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaF_rec.Fill((LVgam1+LVgam2).Pt());
-              hRapidityPt_Eta_F_GG_rec.Fill((LVgam1+LVgam2).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_F_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	      hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_F_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity() ,(LVgam1+LVgam2).Pt());
+              hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 hInvMassGGEtaFCut_rec.Fill((LVgam1+LVgam2).M());
