@@ -1506,7 +1506,7 @@ c104.cd(1)->SetLogy();
 c104.cd(1)-> SetLeftMargin(0.2);
 hPtGGPi0B->GetYaxis()->SetTitleOffset(2.5);   
 hPtGGPi0B->GetXaxis()->SetRangeUser(0,5.0);
-hPtGGPi0B->Draw("E1");
+//hPtGGPi0B->Draw("E1");
 hPtGGPi0B->SetLineColor(kBlue);  
 hPtGGPi0B_SmearedP->Draw("SAME,E1");
 hPtGGPi0B_SmearedP->SetLineColor(kRed);
@@ -1538,7 +1538,7 @@ l104->SetHeader("ALICE 3 Study");
 l104->SetBorderSize(0);
 l104->SetFillStyle(0);
 l104->SetTextSize(0.03);
-l104->AddEntry(hPtGGPi0B,"hPtGGPi0B","l");
+//l104->AddEntry(hPtGGPi0B,"hPtGGPi0B","l");
 l104->AddEntry(hPtGGPi0B_SmearedP,"hPtGGPi0B_SmearedP","l");
 l104->AddEntry(hPtGGPi0B_rec,"hPtGGPi0B_rec","l");
 l104->AddEntry(hPtGGPi0B_rec_SmearedP,"hPtGGPi0B_rec_SmearedP","l");
@@ -2134,7 +2134,7 @@ c116.cd(1);
 //c116.cd(1)->SetLogy();
 
 SetStyleHistoTH1ForGraphs(hInvMassGGPi0B, "M_{#gamma#gamma} (GeV/c)^2)", "N_{ev}", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-DrawGammaSetMarker(hInvMassGGPi0B , 0, 0, kBlack, kBlack);
+//DrawGammaSetMarker(hInvMassGGPi0B , 0, 0, kBlack, kBlack);
 DrawGammaSetMarker(hInvMassGGPi0B_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 
@@ -2178,7 +2178,7 @@ c116.cd(2);
 
 
 SetStyleHistoTH1ForGraphs(hInvMassGGEtaB, "M_{#gamma#gamma} (GeV/c)^2)", "N_{ev}", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-DrawGammaSetMarker(hInvMassGGEtaB , 0, 0, kBlack, kBlack);
+//DrawGammaSetMarker(hInvMassGGEtaB , 0, 0, kBlack, kBlack);
 DrawGammaSetMarker(hInvMassGGEtaB_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 
@@ -2190,7 +2190,7 @@ gs116_Eta->SetLineWidth(1);
 
 
 hInvMassGGEtaB->GetXaxis()->SetRangeUser(0.48,0.65); 
-hInvMassGGEtaB->Draw();
+//hInvMassGGEtaB->Draw();
 hInvMassGGEtaB_SmearedP->Draw("E1,SAME");
 gs116_Eta->Draw("SAME");
 
@@ -2200,7 +2200,7 @@ l116_Eta->SetHeader("");
 l116_Eta->SetBorderSize(0);
 l116_Eta->SetFillStyle(0);
 l116_Eta->SetTextSize(TextSize);
-l116_Eta->AddEntry(hInvMassGGEtaB,"Invariant Mass Histogram: #pi^0","l");
+//l116_Eta->AddEntry(hInvMassGGEtaB,"Invariant Mass Histogram: #pi^0","l");
 l116_Eta->AddEntry(hInvMassGGEtaB_SmearedP,"#splitline{Invariant Mass Histogram}{: With Smeared Momentum}","p");
 l116_Eta->AddEntry(gs116_Eta,"Gaussian Fit","l");
 l116_Eta->Draw("SAME");

@@ -1017,8 +1017,8 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
     //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	  if (track.GetPdgCode() == 22 )   gamma_prim.emplace_back(track);
 	  if (track.GetPdgCode() == 22 )   gamma_prim_B.emplace_back(track);
-	  if ( (gRandom->Uniform() < (convProb )) & (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
-    if ( (gRandom->Uniform() < (convProb * eff)) & (track.GetPdgCode() == 22 ) ) gamB_rec_conv.emplace_back(track);
+	  if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
+    if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamB_rec_conv.emplace_back(track);
 
 	  //continue;
 	}
@@ -1158,7 +1158,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 	  // add that the two gammas have the same mother
 
 	  if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
-      if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGPi0.Fill((LVgam1+LVgam2).M());
 	      hPtGGPi0.Fill((LVgam1+LVgam2).Pt());
 	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
@@ -1166,7 +1166,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 		hPtGGPi0Cut.Fill((LVgam1+LVgam2).Pt());
 	      }
 	    }
-      if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGEta.Fill((LVgam1+LVgam2).M());
 	      hPtGGEta.Fill((LVgam1+LVgam2).Pt());
 	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
@@ -1202,7 +1202,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
       hInvMassPt_B_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
       hInvMassPt_B_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
       
-      if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGPi0B.Fill((LVgam1+LVgam2).M());
         hInvMassGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGPi0B.Fill((LVgam1+LVgam2).Pt());
@@ -1217,7 +1217,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
           hPtGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         }
 	    }
-      if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+      if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	      hInvMassGGEtaB.Fill((LVgam1+LVgam2).M());
 	      hInvMassGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGEtaB.Fill((LVgam1+LVgam2).Pt());
@@ -1264,7 +1264,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
             fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	//	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	              countPi0++;
 	              hInvMassGGPi0B_conv.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0B_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1280,7 +1280,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0BCut_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
               hInvMassGGEtaB_conv.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaB_conv.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_B_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
@@ -1327,7 +1327,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 		        hInvMassGGB_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 
 	              //	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 
 	              hInvMassGGPi0B_rec.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1343,7 +1343,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
+              if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
               hInvMassGGEtaB_rec.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaB_rec.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_B_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
@@ -1444,8 +1444,8 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
        hRapidityPt_Eta_F_SmearedP.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());}
     if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	  if (track.GetPdgCode() == 22 )   gamma_prim_F.emplace_back(track);
-	  if ( (gRandom->Uniform() < (convProb )) & (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
-    if ( (gRandom->Uniform() < (convProb * eff)) & (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
+	  if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
+    if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
     
 	}
 	// Conversions in forward
@@ -1526,7 +1526,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
       hInvMassPt_F_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
       hInvMassPt_F_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
-  	  if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
+  	  if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	      hInvMassGGPi0F.Fill((LVgam1+LVgam2).M());
         hInvMassGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGPi0F.Fill((LVgam1+LVgam2).Pt());
@@ -1541,7 +1541,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
           hPtGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         }
 	    }
-	      if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
+	      if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	      hInvMassGGEtaF.Fill((LVgam1+LVgam2).M());
 	      hInvMassGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
 	      hPtGGEtaF.Fill((LVgam1+LVgam2).Pt());
@@ -1620,7 +1620,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
             fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	//	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
+              if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	              countPi0++;
 	              hInvMassGGPi0F_conv.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0F_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1636,7 +1636,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hPtGGPi0FCut_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
+              if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
               hInvMassGGEtaF_conv.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaF_conv.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_F_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
@@ -1685,7 +1685,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
             fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	              //	cout<< gam1->getMotherTrackId() <<endl;
-              if ((mTrackMother_gam1.GetPdgCode() == 111) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
+              if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
 	              countPi0++;
 	              hInvMassGGPi0F_rec.Fill((LVgam1+LVgam2).M());
                 hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1701,7 +1701,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hPtGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
             }
-              if ((mTrackMother_gam1.GetPdgCode() == 221) & (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) & (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
+              if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
               hInvMassGGEtaF_rec.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaF_rec.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_F_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
