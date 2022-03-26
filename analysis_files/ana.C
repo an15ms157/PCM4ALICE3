@@ -540,7 +540,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve3
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve395/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve396/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve397/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve398/o2sim_Kine.root");*/
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve398/o2sim_Kine.root");
 
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve401/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve402/o2sim_Kine.root");
@@ -627,7 +627,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve485/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve486/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve487/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve488/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve488/o2sim_Kine.root");*/
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve489/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve490/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve491/o2sim_Kine.root");
@@ -1210,7 +1210,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
         hRapidityPt_Pi0_B_GG.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
         hRapidityPt_Pi0_B_GG_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
-	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
 		      hInvMassGGPi0BCut.Fill((LVgam1+LVgam2).M());
 		      hPtGGPi0BCut.Fill((LVgam1+LVgam2).Pt());
 	        hInvMassGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1225,7 +1225,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
         hRapidityPt_Eta_B_GG.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
         hRapidityPt_Eta_B_GG_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
-	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
 		      hInvMassGGEtaBCut.Fill((LVgam1+LVgam2).M());
 		      hPtGGEtaBCut.Fill((LVgam1+LVgam2).Pt());
 		      hInvMassGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1272,7 +1272,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0B_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
                 hRapidityPt_Pi0_B_GG_conv.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
                 hRapidityPt_Pi0_B_GG_conv_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+              if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
                 countEta++;
 		            hInvMassGGPi0BCut_conv.Fill((LVgam1+LVgam2).M());
                 hPtGGPi0BCut_conv.Fill((LVgam1+LVgam2).Pt());
@@ -1289,7 +1289,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
        	      hPtGGEtaB_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               hRapidityPt_Eta_B_GG_conv_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
-              if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+              if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
                 hInvMassGGEtaBCut_conv.Fill((LVgam1+LVgam2).M());
                 hPtGGEtaBCut_conv.Fill((LVgam1+LVgam2).Pt());
                 hInvMassGGEtaBCut_conv_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1334,9 +1334,10 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0B_rec.Fill((LVgam1+LVgam2).Pt());
                 hPtGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
                 hRapidityPt_Pi0_B_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-                hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
-
+                if(( LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
+                  hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                }              
+              if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
 		            hInvMassGGPi0BCut_rec.Fill((LVgam1+LVgam2).M());
                 hPtGGPi0BCut_rec.Fill((LVgam1+LVgam2).Pt());
 		            hInvMassGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1350,9 +1351,11 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 
               hInvMassGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	      hPtGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
-              if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+              if( (LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
+              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
+              }
+              if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
                 hInvMassGGEtaBCut_rec.Fill((LVgam1+LVgam2).M());
                 hPtGGEtaBCut_rec.Fill((LVgam1+LVgam2).Pt());
                 hInvMassGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1442,7 +1445,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
        eta_prim_F.emplace_back(track);
        hRapidityPt_Eta_F.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());
        hRapidityPt_Eta_F_SmearedP.Fill(TMath::Abs(track.GetRapidity()) ,track.GetPt());}
-    if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
+    //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	  if (track.GetPdgCode() == 22 )   gamma_prim_F.emplace_back(track);
 	  if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
     if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
@@ -1688,11 +1691,15 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
               if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.7<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
 	              countPi0++;
 	              hInvMassGGPi0F_rec.Fill((LVgam1+LVgam2).M());
-                hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-                hPtGGPi0F_rec.Fill((LVgam1+LVgam2).Pt());
-                hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
                 hRapidityPt_Pi0_F_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-                hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hPtGGPi0F_rec.Fill((LVgam1+LVgam2).Pt());
+
+                if( (LVgam1_Smear_P).P()> minPFG && (LVgam2_Smear_P).P() > minPFG){
+                hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+                hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());              
+                }
+
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 countEta++;
 		            hInvMassGGPi0FCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1705,11 +1712,12 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
               hInvMassGGEtaF_rec.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaF_rec.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_F_GG_rec.Fill(TMath::Abs((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-
-              hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-       	      hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
-
+           
+              if( (LVgam1_Smear_P).P()> minPFG && (LVgam2_Smear_P).P() > minPFG){
+                hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+       	        hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(TMath::Abs((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
+              }
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 hInvMassGGEtaFCut_rec.Fill((LVgam1+LVgam2).M());
                 hPtGGEtaFCut_rec.Fill((LVgam1+LVgam2).Pt());

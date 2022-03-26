@@ -40,7 +40,7 @@ gStyle->SetPadTickY(1);
                                                 ////////////////FORWARD///////////////
 
 //TFile * fileRec = new TFile("./ana_withft3.root");
-TFile * fileRec = new TFile("./ana_pTcut_withft3.root");
+TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3.root");
 //TFile * fileRec = new TFile("./output/pp/pcut_0.1/ana_pTcut_withft3.root");
 
 double fMaxPt=10.0;
@@ -1669,13 +1669,13 @@ histPt_RATIO_rap1_75to3_Pi0_B->Divide(histPt_REC_rap0to1_3_Pi0_B_Rebin, histPt_A
 TH1F* histPt_RATIO_rap1_75to3_Pi0_B_SmearedP  = (TH1F*) histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin->Clone("histPt_RATIO_rap1_75to3_Pi0_B_SmearedP");
 histPt_RATIO_rap1_75to3_Pi0_B_SmearedP->Divide(histPt_REC_rap0to1_3_Pi0_B_SmearedP_Rebin, histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin, 1,1,"B");
 
-histPt_RATIO_rap1_75to3_Pi0_B->Draw("E1"); 
+//histPt_RATIO_rap1_75to3_Pi0_B->Draw("E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap1_75to3_Pi0_B,25,0.5, kBlack , kBlack);
-//histPt_RATIO_rap1_75to3_Pi0_B_SmearedP->Draw("SAME,E1"); 
+histPt_RATIO_rap1_75to3_Pi0_B_SmearedP->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap1_75to3_Pi0_B_SmearedP,20,0.5, kBlue , kBlue);
 
 //LABELING
-SetStyleHistoTH1ForGraphs(histPt_RATIO_rap1_75to3_Pi0_B, "pT", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+SetStyleHistoTH1ForGraphs(histPt_RATIO_rap1_75to3_Pi0_B, "pT (GeV/c)", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
 histPt_RATIO_rap1_75to3_Pi0_B->GetXaxis()->SetRangeUser(0.0,10.0);
 histPt_RATIO_rap1_75to3_Pi0_B->GetYaxis()->SetRangeUser(.0000001,0.01);
 
@@ -1684,8 +1684,8 @@ l114->SetHeader("");
 l114->SetBorderSize(0);
 l114->SetFillStyle(0);
 l114->SetTextSize(TextSize);
-l114->AddEntry(histPt_RATIO_rap1_75to3_Pi0_B,"Pi0 efficiency: rapidity: |0-1.3| ","p");
-//l114->AddEntry(histPt_RATIO_rap1_75to3_Pi0_B_SmearedP,"Pi0 efficiency with smearing: rapidity: |0-1.3|","p");
+//l114->AddEntry(histPt_RATIO_rap1_75to3_Pi0_B,"Pi0 efficiency: rapidity: |0-1.3| ","p");
+l114->AddEntry(histPt_RATIO_rap1_75to3_Pi0_B_SmearedP,"Pi0 efficiency with smearing: rapidity: |0-1.3|","p");
 l114->Draw("SAME");
 
 TLatex *lt114a = new TLatex(0.2,0.9,"Pi0 Effiiency at Barrel region ");
@@ -1741,7 +1741,7 @@ histPt_RATIO_rap1_75to3_Eta_B->Divide(histPt_REC_rap0to1_3_Eta_B_Rebin, histPt_A
 TH1F* histPt_RATIO_rap1_75to3_Eta_B_SmearedP  = (TH1F*) histPt_ALL_rap0to1_3_Eta_B_SmearedP_Rebin->Clone("histPt_RATIO_rap1_75to3_Eta_B_SmearedP");
 histPt_RATIO_rap1_75to3_Eta_B_SmearedP->Divide(histPt_REC_rap0to1_3_Eta_B_SmearedP_Rebin, histPt_ALL_rap0to1_3_Eta_B_SmearedP_Rebin, 1,1,"B");
 
-histPt_RATIO_rap1_75to3_Eta_B->Draw("E1"); 
+//histPt_RATIO_rap1_75to3_Eta_B->Draw("E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap1_75to3_Eta_B,25,0.5, kBlack , kBlack);
 histPt_RATIO_rap1_75to3_Eta_B_SmearedP->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap1_75to3_Eta_B_SmearedP,20,0.5, kBlue , kBlue);
@@ -1756,8 +1756,8 @@ l115->SetHeader("");
 l115->SetBorderSize(0);
 l115->SetFillStyle(0);
 l115->SetTextSize(TextSize);
-l115->AddEntry(histPt_RATIO_rap1_75to3_Eta_B,"Eta efficiency: rapidity: |0-1.3| ","p");
-//l115->AddEntry(histPt_RATIO_rap1_75to3_Eta_B_SmearedP,"Eta efficiency with smearing: rapidity: |0-1.3|","p");
+//l115->AddEntry(histPt_RATIO_rap1_75to3_Eta_B,"Eta efficiency: rapidity: |0-1.3| ","p");
+l115->AddEntry(histPt_RATIO_rap1_75to3_Eta_B_SmearedP,"Eta efficiency with smearing: rapidity: |0-1.3|","p");
 l115->Draw("SAME");
 
 TLatex *lt115a = new TLatex(0.2,0.9,"Eta Effiiency at Barrel region ");
@@ -2140,7 +2140,7 @@ DrawGammaSetMarker(hInvMassGGPi0B_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 TF1 *gs116_Pi0 = new TF1("gs116_Pi0", "gaus", 0.1, 0.2);
 gs116_Pi0->SetParameters(.10, 0.547, 0.01);
-hInvMassGGPi0B_SmearedP->Fit(gs116_Pi0,"LN");
+hInvMassGGPi0B_SmearedP->Fit(gs116_Pi0,"RME+");
 gs116_Pi0->SetLineColor(kAzure+2);
 gs116_Pi0->SetLineWidth(1);
 
@@ -2182,14 +2182,14 @@ SetStyleHistoTH1ForGraphs(hInvMassGGEtaB, "M_{#gamma#gamma} (GeV/c)^2)", "N_{ev}
 DrawGammaSetMarker(hInvMassGGEtaB_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 
-TF1 *gs116_Eta = new TF1("gs116_Eta", "gaus", 0.4, 07);
+TF1 *gs116_Eta = new TF1("gs116_Eta", "gaus", 0.5, 0.6);
 gs116_Eta->SetParameters(.10, 0.547, 0.01);
-hInvMassGGEtaB_SmearedP->Fit(gs116_Eta,"LN");
+hInvMassGGEtaB_SmearedP->Fit(gs116_Eta,"RME+");//RECOR MINWI Er
 gs116_Eta->SetLineColor(kAzure+2);
 gs116_Eta->SetLineWidth(1);
 
 
-hInvMassGGEtaB->GetXaxis()->SetRangeUser(0.48,0.65); 
+hInvMassGGEtaB_SmearedP->GetXaxis()->SetRangeUser(0.48,0.65); 
 //hInvMassGGEtaB->Draw();
 hInvMassGGEtaB_SmearedP->Draw("E1,SAME");
 gs116_Eta->Draw("SAME");
@@ -2289,6 +2289,87 @@ DrawAutoGammaHisto2D(hInvMassPt_B_GG_rec_SmearedP,"M_{#gamma#gamma}-pT of all tr
 
 c118->SaveAs("plots/hInvMassPt_B_SmearedP.png");
 c118->Close();
+
+
+
+
+///////////////  Pi0 Acceptance at different rapidity PLOT    ///////////////
+
+TCanvas* c119 = new TCanvas("c119","c119",200,10,700,700);  // gives the page size
+DrawGammaCanvasSettings( c119, 0.1, 0.02, 0.02, 0.1);
+//c119->Divide(2,1);
+c119->SetLogy();  
+
+c119->cd(1);
+TH2D * histRapPt_All_Pi0_B          = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B");
+TH2D * histRapPt_All_Pi0_B_GG       = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG");
+
+TH1 * histPt_All_rap0to1_3_Pi0_B    = histRapPt_All_Pi0_B->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B",501,630); 
+TH1 * histPt_All_rap0to1_3_Pi0_B_GG    = histRapPt_All_Pi0_B_GG->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B_GG",501,630); 
+
+/*
+//SMEARED P
+TH2D * histRapPt_ALL_Pi0_B_SmearedP          = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG_SmearedP");
+TH1 * histPt_ALL_rap0to1_3_Pi0_B_SmearedP    = histRapPt_ALL_Pi0_B_SmearedP->ProjectionY("histPt_ALL_rap0to1_3_Pi0_B_SmearedP",501,630); 
+TH2D * histRapPt_REC_Pi0_B_SmearedP          = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG_rec_SmearedP");
+TH1 * histPt_REC_rap0to1_3_Pi0_B_SmearedP    = histRapPt_REC_Pi0_B_SmearedP->ProjectionY("histPt_REC_rap0to1_3_Pi0_B_SmearedP",501,630);
+
+//REBINNING
+TH1F* histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin     = (TH1F*) histPt_ALL_rap0to1_3_Pi0_B->Rebin(nbinspt_proj,"histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin",&pt_bin_proj[0]);
+TH1F* histPt_REC_rap0to1_3_Pi0_B_SmearedP_Rebin     = (TH1F*) histPt_REC_rap0to1_3_Pi0_B->Rebin(nbinspt_proj,"histPt_REC_rap0to1_3_Pi0_B_SmearedP_Rebin",&pt_bin_proj[0]);
+
+//SCALING
+DivideTH1ByBinWidth(histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin);
+DivideTH1ByBinWidth(histPt_REC_rap0to1_3_Pi0_B_SmearedP_Rebin);
+
+*/
+TH1F* histPt_All_rap0to1_3_Pi0_B_Rebin     = (TH1F*) histPt_All_rap0to1_3_Pi0_B->Rebin(nbinspt_proj,"histPt_All_rap0to1_3_Pi0_B_Rebin",&pt_bin_proj[0]);
+TH1F* histPt_All_rap0to1_3_Pi0_B_GG_Rebin     = (TH1F*) histPt_All_rap0to1_3_Pi0_B_GG->Rebin(nbinspt_proj,"histPt_All_rap0to1_3_Pi0_B_Rebin",&pt_bin_proj[0]);
+
+DivideTH1ByBinWidth(histPt_ALL_rap0to1_3_Pi0_B_Rebin);
+DivideTH1ByBinWidth(histPt_All_rap0to1_3_Pi0_B_GG_Rebin);
+
+//RATIO
+TH1F* histPt_Acceptance_rap1_75to3_Pi0_B  = (TH1F*) histPt_ALL_rap0to1_3_Pi0_B_Rebin->Clone("histPt_Acceptance_rap1_75to3_Pi0_B");
+histPt_Acceptance_rap1_75to3_Pi0_B->Divide(histPt_All_rap0to1_3_Pi0_B_GG_Rebin, histPt_ALL_rap0to1_3_Pi0_B_Rebin, 1,1,"B");
+
+//TH1F* histPt_Acceptance_rap1_75to3_Pi0_B_SmearedP  = (TH1F*) histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin->Clone("histPt_Acceptance_rap1_75to3_Pi0_B_SmearedP");
+//histPt_Acceptance_rap1_75to3_Pi0_B_SmearedP->Divide(histPt_REC_rap0to1_3_Pi0_B_SmearedP_Rebin, histPt_ALL_rap0to1_3_Pi0_B_SmearedP_Rebin, 1,1,"B");
+
+histPt_Acceptance_rap1_75to3_Pi0_B->Draw("E1"); 
+DrawGammaSetMarker(histPt_Acceptance_rap1_75to3_Pi0_B,25,0.5, kBlack , kBlack);
+//histPt_Acceptance_rap1_75to3_Pi0_B_SmearedP->Draw("SAME,E1"); 
+//DrawGammaSetMarker(histPt_Acceptance_rap1_75to3_Pi0_B_SmearedP,20,0.5, kBlue , kBlue);
+
+//LABELING
+SetStyleHistoTH1ForGraphs(histPt_Acceptance_rap1_75to3_Pi0_B, "pT", "acceptance", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+histPt_Acceptance_rap1_75to3_Pi0_B->GetXaxis()->SetRangeUser(0.0,10.0);
+//histPt_Acceptance_rap1_75to3_Pi0_B->GetYaxis()->SetRangeUser(.0000001,0.01);
+
+auto l119 = new TLegend(0.4, 0.2, 0.9, 0.35);
+l119->SetHeader("");
+l119->SetBorderSize(0);
+l119->SetFillStyle(0);
+l119->SetTextSize(TextSize);
+l119->AddEntry(histPt_Acceptance_rap1_75to3_Pi0_B,"Pi0 acceptance: rapidity: |0-1.3| ","p");
+//l119->AddEntry(histPt_Acceptance_rap1_75to3_Pi0_B_SmearedP,"Pi0 acceptance with smearing: rapidity: |0-1.3|","p");
+l119->Draw("SAME");
+
+TLatex *lt119a = new TLatex(0.2,0.9,"Pi0 Acceptance at Barrel region ");
+SetStyleTLatex( lt119a, 0.03,4);
+lt119a->Draw("SAME");
+
+TLatex *lt119b = new TLatex(0.7,0.9,"#splitline{ALICE 3 Study}{pp, #sqrt{#it{s}_{NN}} = 14 TeV}");
+SetStyleTLatex( lt119b, 0.03,4);
+lt119b->Draw("SAME");
+
+c119->SaveAs("plots/hAcceptance_Pi0_Acceptance_B.png");
+
+c119->Close();
+
+
+
+
 
 }
 
