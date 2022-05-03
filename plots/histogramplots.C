@@ -40,7 +40,7 @@ gStyle->SetPadTickY(1);
                                                 ////////////////FORWARD///////////////
 
 //TFile * fileRec = new TFile("./ana_withft3.root");
-TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3.root");
+TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
 //TFile * fileRec = new TFile("./output/pp/pcut_0.1/ana_pTcut_withft3.root");
 
 double fMaxPt=10.0;
@@ -130,7 +130,7 @@ l1->AddEntry(hInvMassGGF_conv,"hInvMassGGF_conv","l");
 l1->AddEntry(hInvMassGGF_conv_SmearedP,"hInvMassGGF_conv_SmearedP","l");
 
 l1->Draw("SAME");
-c1.SaveAs("plots/hInvMassGGF.png");
+c1.SaveAs("histogramplots/hInvMassGGF.png");
 
 
 ///////////////   Pi0 INVMASS PLOT    ///////////////
@@ -192,7 +192,7 @@ l2->AddEntry(hInvMassGGPi0F_rec,"hInvMassGGPi0F_rec","l");
 l2->AddEntry(hInvMassGGPi0F_rec_SmearedP,"hInvMassGGPi0F_rec_SmearedP","l");
 
 l2->Draw("SAME");
-c2.SaveAs("plots/hInvMassGGF_Pi0.png");
+c2.SaveAs("histogramplots/hInvMassGGF_Pi0.png");
 
 
 ///////////////   Eta INVMASS PLOT    ///////////////
@@ -254,7 +254,7 @@ l3->AddEntry(hInvMassGGEtaF_rec,"hInvMassGGEtaF_rec","l");
 l3->AddEntry(hInvMassGGEtaF_rec_SmearedP,"hInvMassGGEtaF_rec_SmearedP","l");
 //
 l3->Draw("SAME");
-c3.SaveAs("plots/hInvMassGGF_Eta.png");
+c3.SaveAs("histogramplots/hInvMassGGF_Eta.png");
 
 
 
@@ -331,7 +331,7 @@ l4->AddEntry(hPtGGPi0F_conv_Rebin,"hPtGGPi0F_conv","l");
 l4->AddEntry(hPtGGPi0F_conv_SmearedP_Rebin,"hPtGGPi0F_conv_SmearedP","l");
 //
 l4->Draw("SAME");
-c4.SaveAs("plots/hPtGGPi0F.png");
+c4.SaveAs("histogramplots/hPtGGPi0F.png");
 
 
 ///////////////   Eta pT PLOT    ///////////////
@@ -407,7 +407,7 @@ l5->AddEntry(hPtGGEtaF_conv,"hPtGGEtaF_conv","l");
 l5->AddEntry(hPtGGEtaF_conv_SmearedP,"hPtGGEtaF_conv_SmearedP","l");
 //
 l5->Draw("SAME");
-c5.SaveAs("plots/hPtGGEtaF.png");
+c5.SaveAs("histogramplots/hPtGGEtaF.png");
 
 
 ///////////////  Pi0 Effiiency at different rapidity PLOT    ///////////////
@@ -569,7 +569,7 @@ lt14b_SmearedP->Draw("SAME");
 
 c14->Update();
 
-c14->SaveAs("plots/hDiffRap_ratio_Pi0_F.png");
+c14->SaveAs("histogramplots/hDiffRap_ratio_Pi0_F.png");
 
 c14->Close();
 
@@ -737,7 +737,7 @@ lt15b_SmearedP->Draw("SAME");
 
 c15->Update();
 
-c15->SaveAs("plots/hDiffRap_ratio_Eta_F.png");
+c15->SaveAs("histogramplots/hDiffRap_ratio_Eta_F.png");
 
 c15->Close();
 
@@ -814,7 +814,7 @@ hRapidityPt_Pi0_F_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_rec->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Pi0_F_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c6.SaveAs("plots/hRapidityPt_Pi0_F.png");
+c6.SaveAs("histogramplots/hRapidityPt_Pi0_F.png");
 
 
 
@@ -849,7 +849,7 @@ hRapidityPt_Pi0_F_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_F_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Pi0_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c7.SaveAs("plots/hRapidityPt_Pi0_F_SmearedP.png");
+c7.SaveAs("histogramplots/hRapidityPt_Pi0_F_SmearedP.png");
 
 
 TCanvas c8("c8", "c8", 1600, 1600);
@@ -882,7 +882,7 @@ hRapidityPt_Eta_F_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_rec->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Eta_F_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c8.SaveAs("plots/hRapidityPt_Eta_F.png");
+c8.SaveAs("histogramplots/hRapidityPt_Eta_F.png");
 
 
 
@@ -917,7 +917,7 @@ hRapidityPt_Eta_F_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_F_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Eta_F_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c9.SaveAs("plots/hRapidityPt_Eta_F_SmearedP.png");
+c9.SaveAs("histogramplots/hRapidityPt_Eta_F_SmearedP.png");
 
 
 
@@ -962,7 +962,7 @@ c10.cd(4);
 RapPt_ratio_MC_Conv_Pi0->Draw("colz");
 
 
-c10.SaveAs("plots/hRapPt_ratio_Pi0_F.png");
+c10.SaveAs("histogramplots/hRapPt_ratio_Pi0_F.png");
 
 
 
@@ -1003,7 +1003,7 @@ c11.cd(3);
 RapPt_ratio_MC_Conv_SmearedP_Pi0->Draw("colz");
 
 
-c11.SaveAs("plots/hRapPt_ratio_Pi0_F_SmearedP.png");
+c11.SaveAs("histogramplots/hRapPt_ratio_Pi0_F_SmearedP.png");
 
 
 
@@ -1049,7 +1049,7 @@ c12.cd(4);
 RapPt_ratio_MC_Conv_Eta->Draw("colz");
 
 
-c12.SaveAs("plots/hRapPt_ratio_Eta_F.png");
+c12.SaveAs("histogramplots/hRapPt_ratio_Eta_F.png");
 
 
 
@@ -1090,7 +1090,7 @@ c13.cd(3);
 RapPt_ratio_MC_Conv_SmearedP_Eta->Draw("colz");
 
 
-c13.SaveAs("plots/hRapPt_ratio_Eta_F_SmearedP.png");
+c13.SaveAs("histogramplots/hRapPt_ratio_Eta_F_SmearedP.png");
 
 
 
@@ -1187,7 +1187,7 @@ SetStyleTLatex( lt16_Eta_b, 0.025,4);
 lt16_Eta_b->Draw("SAME");
 
 
-c16.SaveAs("plots/hInvMassGGF_FIT.png");
+c16.SaveAs("histogramplots/hInvMassGGF_FIT.png");
 
 
 
@@ -1338,7 +1338,7 @@ l101->AddEntry(hInvMassGGB_conv,"hInvMassGGB_conv","l");
 l101->AddEntry(hInvMassGGB_conv_SmearedP,"hInvMassGGB_conv_SmearedP","l");
 
 l101->Draw("SAME");
-c101.SaveAs("plots/hInvMassGGB.png");
+c101.SaveAs("histogramplots/hInvMassGGB.png");
 
 
 ///////////////   Pi0 INVMASS PLOT    ///////////////
@@ -1403,7 +1403,7 @@ l102->AddEntry(hInvMassGGPi0B_rec,"hInvMassGGPi0B_rec","l");
 l102->AddEntry(hInvMassGGPi0B_rec_SmearedP,"hInvMassGGPi0B_rec_SmearedP","l");
 
 l102->Draw("SAME");
-c102.SaveAs("plots/hInvMassGGB_Pi0.png");
+c102.SaveAs("histogramplots/hInvMassGGB_Pi0.png");
 
 
 
@@ -1470,7 +1470,7 @@ l103->AddEntry(hInvMassGGEtaB_rec,"hInvMassGGEtaB_rec","l");
 l103->AddEntry(hInvMassGGEtaB_rec_SmearedP,"hInvMassGGEtaB_rec_SmearedP","l");
 //
 l103->Draw("SAME");
-c103.SaveAs("plots/hInvMassGGB_Eta.png");
+c103.SaveAs("histogramplots/hInvMassGGB_Eta.png");
 
 
 
@@ -1546,7 +1546,7 @@ l104->AddEntry(hPtGGPi0B_conv,"hPtGGPi0B_conv","l");
 l104->AddEntry(hPtGGPi0B_conv_SmearedP,"hPtGGPi0B_conv_SmearedP","l");
 //
 l104->Draw("SAME");
-c104.SaveAs("plots/hPtGGPi0B.png");
+c104.SaveAs("histogramplots/hPtGGPi0B.png");
 
 
 ///////////////   Eta pT PLOT    ///////////////
@@ -1622,7 +1622,7 @@ l105->AddEntry(hPtGGEtaB_conv,"hPtGGEtaB_conv","l");
 l105->AddEntry(hPtGGEtaB_conv_SmearedP,"hPtGGEtaB_conv_SmearedP","l");
 //
 l105->Draw("SAME");
-c105.SaveAs("plots/hPtGGEtaB.png");
+c105.SaveAs("histogramplots/hPtGGEtaB.png");
 
 
 
@@ -1696,7 +1696,7 @@ TLatex *lt114b = new TLatex(0.7,0.9,"#splitline{ALICE 3 Study}{pp, #sqrt{#it{s}_
 SetStyleTLatex( lt114b, 0.03,4);
 lt114b->Draw("SAME");
 
-c114->SaveAs("plots/hDiffRap_Pi0_ratio_B.png");
+c114->SaveAs("histogramplots/hDiffRap_Pi0_ratio_B.png");
 
 c114->Close();
 
@@ -1769,7 +1769,7 @@ SetStyleTLatex( lt115b, 0.03,4);
 lt115b->Draw("SAME");
 
 
-c115->SaveAs("plots/hDiffRap_Eta_ratio_B.png");
+c115->SaveAs("histogramplots/hDiffRap_Eta_ratio_B.png");
 
 c115->Close();
 
@@ -1844,7 +1844,7 @@ hRapidityPt_Pi0_B_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_rec->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Pi0_B_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c106.SaveAs("plots/hRapidityPt_Pi0_B.png");
+c106.SaveAs("histogramplots/hRapidityPt_Pi0_B.png");
 
 
 
@@ -1879,7 +1879,7 @@ hRapidityPt_Pi0_B_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Pi0_B_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Pi0_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c107.SaveAs("plots/hRapidityPt_Pi0_B_SmearedP.png");
+c107.SaveAs("histogramplots/hRapidityPt_Pi0_B_SmearedP.png");
 
 
 TCanvas c108("c108", "c108", 1600, 1600);
@@ -1912,7 +1912,7 @@ hRapidityPt_Eta_B_GG_rec->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_rec->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Eta_B_GG_rec->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c108.SaveAs("plots/hRapidityPt_Eta_B.png");
+c108.SaveAs("histogramplots/hRapidityPt_Eta_B.png");
 
 
 
@@ -1947,7 +1947,7 @@ hRapidityPt_Eta_B_GG_rec_SmearedP->GetYaxis()->SetRangeUser(-0.5,10.0);
 hRapidityPt_Eta_B_GG_rec_SmearedP->GetXaxis()->SetTitle("Rapidity");
 hRapidityPt_Eta_B_GG_rec_SmearedP->GetYaxis()->SetTitle("pT (GeV/c)");
 
-c109.SaveAs("plots/hRapidityPt_Eta_B_SmearedP.png");
+c109.SaveAs("histogramplots/hRapidityPt_Eta_B_SmearedP.png");
 
 
 
@@ -1990,7 +1990,7 @@ c110.cd(4);
 RapPt_ratio_MC_Conv_Pi0_B->Draw("colz");
 
 
-c110.SaveAs("plots/hRapPt_ratio_Pi0_B.png");
+c110.SaveAs("histogramplots/hRapPt_ratio_Pi0_B.png");
 
 
 
@@ -2031,7 +2031,7 @@ c111.cd(3);
 RapPt_ratio_MC_Conv_SmearedP_Pi0_B->Draw("colz");
 
 
-c111.SaveAs("plots/hRapPt_ratio_Pi0_B_SmearedP.png");
+c111.SaveAs("histogramplots/hRapPt_ratio_Pi0_B_SmearedP.png");
 
 
 
@@ -2076,7 +2076,7 @@ c112.cd(4);
 RapPt_ratio_MC_Conv_Eta_B->Draw("colz");
 
 
-c112.SaveAs("plots/hRapPt_ratio_Eta_B.png");
+c112.SaveAs("histogramplots/hRapPt_ratio_Eta_B.png");
 
 
 
@@ -2117,7 +2117,7 @@ c113.cd(3);
 RapPt_ratio_MC_Conv_SmearedP_Eta_B->Draw("colz");
 
 
-c113.SaveAs("plots/hRapPt_ratio_Eta_B_SmearedP.png");
+c113.SaveAs("histogramplots/hRapPt_ratio_Eta_B_SmearedP.png");
 
 
 
@@ -2133,8 +2133,8 @@ c116.Divide(2,1);
 c116.cd(1);
 //c116.cd(1)->SetLogy();
 
-SetStyleHistoTH1ForGraphs(hInvMassGGPi0B, "M_{#gamma#gamma} (GeV/c)^2)", "N_{ev}", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-//DrawGammaSetMarker(hInvMassGGPi0B , 0, 0, kBlack, kBlack);
+SetStyleHistoTH1ForGraphs(hInvMassGGB_SmearedP, "M_{#gamma#gamma} (GeV/c^2)", "N_{ev}", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+//DrawGammaSetMarker(hInvMassGGB_SmearedP , 0, 0, kBlack, kBlack);
 DrawGammaSetMarker(hInvMassGGPi0B_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 
@@ -2142,11 +2142,13 @@ TF1 *gs116_Pi0 = new TF1("gs116_Pi0", "gaus", 0.1, 0.2);
 gs116_Pi0->SetParameters(.10, 0.547, 0.01);
 hInvMassGGPi0B_SmearedP->Fit(gs116_Pi0,"RME+");
 gs116_Pi0->SetLineColor(kAzure+2);
-gs116_Pi0->SetLineWidth(1);
+gs116_Pi0->SetLineWidth(2);
 
 
-hInvMassGGPi0B->GetXaxis()->SetRangeUser(0.1,0.2); 
-hInvMassGGPi0B->Draw();
+hInvMassGGB_SmearedP->GetXaxis()->SetRangeUser(0.1,0.18); 
+hInvMassGGB_SmearedP->SetMinimum(0); 
+//hInvMassGGB_SmearedP->SetMaximum(10^6); 
+hInvMassGGB_SmearedP->DrawCopy();
 hInvMassGGPi0B_SmearedP->Draw("E1,SAME");
 gs116_Pi0->Draw("SAME");
 
@@ -2156,7 +2158,7 @@ l116_Pi0->SetHeader("");
 l116_Pi0->SetBorderSize(0);
 l116_Pi0->SetFillStyle(0);
 l116_Pi0->SetTextSize(TextSize);
-l116_Pi0->AddEntry(hInvMassGGPi0B,"Invariant Mass Histogram: #pi^0","l");
+l116_Pi0->AddEntry(hInvMassGGB_SmearedP,"Invariant Mass","l");
 l116_Pi0->AddEntry(hInvMassGGPi0B_SmearedP,"#splitline{Invariant Mass Histogram}{: With Smeared Momentum}","p");
 l116_Pi0->AddEntry(gs116_Pi0,"Gaussian Fit","l");
 l116_Pi0->Draw("SAME");
@@ -2172,13 +2174,13 @@ lt116_Pi0_b->Draw("SAME");
 
 
 /////  Eta   /////
-
+/*
 c116.cd(2);
-//c116.cd(2)->SetLogy();
+c116.cd(2)->SetLogy();
 
 
-SetStyleHistoTH1ForGraphs(hInvMassGGEtaB, "M_{#gamma#gamma} (GeV/c)^2)", "N_{ev}", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-//DrawGammaSetMarker(hInvMassGGEtaB , 0, 0, kBlack, kBlack);
+SetStyleHistoTH1ForGraphs(hInvMassGGB_SmearedP, "M_{#gamma#gamma} (GeV/c^2)", "N_{ev}", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+//DrawGammaSetMarker(hInvMassGGB_SmearedP , 0, 0, kBlack, kBlack);
 DrawGammaSetMarker(hInvMassGGEtaB_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 
@@ -2186,11 +2188,12 @@ TF1 *gs116_Eta = new TF1("gs116_Eta", "gaus", 0.5, 0.6);
 gs116_Eta->SetParameters(.10, 0.547, 0.01);
 hInvMassGGEtaB_SmearedP->Fit(gs116_Eta,"RME+");//RECOR MINWI Er
 gs116_Eta->SetLineColor(kAzure+2);
-gs116_Eta->SetLineWidth(1);
+gs116_Eta->SetLineWidth(2);
 
 
-hInvMassGGEtaB_SmearedP->GetXaxis()->SetRangeUser(0.48,0.65); 
-//hInvMassGGEtaB->Draw();
+hInvMassGGB_SmearedP->GetXaxis()->SetRangeUser(.5,.6); 
+hInvMassGGB_SmearedP->GetYaxis()->SetRangeUser(10^4,10^6); 
+hInvMassGGB_SmearedP->Draw();
 hInvMassGGEtaB_SmearedP->Draw("E1,SAME");
 gs116_Eta->Draw("SAME");
 
@@ -2200,7 +2203,7 @@ l116_Eta->SetHeader("");
 l116_Eta->SetBorderSize(0);
 l116_Eta->SetFillStyle(0);
 l116_Eta->SetTextSize(TextSize);
-//l116_Eta->AddEntry(hInvMassGGEtaB,"Invariant Mass Histogram: #pi^0","l");
+l116_Eta->AddEntry(hInvMassGGB_SmearedP,"Invariant Mass Histogram","l");
 l116_Eta->AddEntry(hInvMassGGEtaB_SmearedP,"#splitline{Invariant Mass Histogram}{: With Smeared Momentum}","p");
 l116_Eta->AddEntry(gs116_Eta,"Gaussian Fit","l");
 l116_Eta->Draw("SAME");
@@ -2213,8 +2216,8 @@ TLatex *lt116_Eta_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp, #sqrt{#
 SetStyleTLatex( lt116_Eta_b, 0.025,4);
 lt116_Eta_b->Draw("SAME");
 
-
-c116.SaveAs("plots/hInvMassGGB_FIT.png");
+*/
+c116.SaveAs("histogramplots/hInvMassGGB_FIT.png");
 
 
 
@@ -2261,7 +2264,7 @@ c117->cd(4);
 ConvGammaRebinWithBinCorrection2D(hInvMassPt_B_GG_rec,4,4,3);
 DrawAutoGammaHisto2D(hInvMassPt_B_GG_rec,"M_{#gamma#gamma}-pT of all tracks with same #pi^0 and #eta mother particle with Conversion Probability and Reconstruction eficiency","Invariant Mass #gamma#gamma (GeV/c^{2})","pT (GeV/c)","",1,-0.1,5.0,1,0,1);
 
-c117->SaveAs("plots/hInvMassPt_B.png");
+c117->SaveAs("histogramplots/hInvMassPt_B.png");
 c117->Close();
 
 
@@ -2287,7 +2290,7 @@ ConvGammaRebinWithBinCorrection2D(hInvMassPt_B_GG_rec_SmearedP,4,4,3);
 DrawAutoGammaHisto2D(hInvMassPt_B_GG_rec_SmearedP,"M_{#gamma#gamma}-pT of all tracks with same #pi^0 and #eta mother particle with smeared momentum with Conversion Probability and Reconstruction eficiency","Invariant Mass #gamma#gamma (GeV/c^{2})","pT (GeV/c)","",1,-0.1,5.0,1,0,1);
 
 
-c118->SaveAs("plots/hInvMassPt_B_SmearedP.png");
+c118->SaveAs("histogramplots/hInvMassPt_B_SmearedP.png");
 c118->Close();
 
 
@@ -2363,7 +2366,7 @@ TLatex *lt119b = new TLatex(0.7,0.9,"#splitline{ALICE 3 Study}{pp, #sqrt{#it{s}_
 SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
 
-c119->SaveAs("plots/hAcceptance_Pi0_Acceptance_B.png");
+c119->SaveAs("histogramplots/hAcceptance_Pi0_Acceptance_B.png");
 
 c119->Close();
 
