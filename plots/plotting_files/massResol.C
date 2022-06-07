@@ -7,14 +7,19 @@
 #include "TPad.h"
 #include "TLegend.h"
 #include "TLatex.h"
+#include "TString.h"
+
 #include "/home/abhishek/alice/AnalysisSoftware-master/CommonHeaders/PlottingGammaConversionHistos.h"
 #include "/home/abhishek/alice/AnalysisSoftware-master/CommonHeaders/PlottingMeson.h"
 void massResol(){
-gSystem->Exec("mkdir massResol");
+
+//SET THIS VARIABLES: 
+Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
 
 StyleSettings();
 SetPlotStyle();
 gStyle->SetOptTitle(0); //this will disable the title for all coming histograms or
+
 
 //gStyle->SetOptStat(0);
 //gStyle->SetLineWidth(2);
@@ -61,12 +66,39 @@ gStyle->SetPadTickY(1);
 //   TO VANISH STAT BOX 
                                                 ////////////////FORWARD///////////////
 
-//TFile * fileRec = new TFile("./ana_withft3.root");
-//TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3.root");
-TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
-//TFile * fileRec = new TFile("./output/pp/pcut_0.1/ana_pTcut_withft3.root");
+TFile * fileRec;
+TLatex *ltl_invMass_pi0_F_b;
+TLatex *ltl_invMass_pi0_B_b;
+Int_t ScaleFactor_Pi0;
+Int_t ScaleFactor_Eta;
 
+switch(collisionSystem){
+    case 0:{
+    cout << "pp system"<< endl;    
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/output/ana_pTcut_withft3.root");
+    ltl_invMass_pi0_F_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltl_invMass_pi0_B_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{pp, #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ScaleFactor_Pi0 = 1;
+    ScaleFactor_Eta = 10;
+    gSystem->Exec("mkdir massResol/pp");
+    gSystem->cd("./massResol/pp");
 
+        break;
+    }
+    case 1:{
+    cout << "PbPb system"<< endl;
+        //TFile * fileRec = new TFile("./ana_withft3.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
+    ltl_invMass_pi0_F_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltl_invMass_pi0_B_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ScaleFactor_Pi0 = 10;
+    ScaleFactor_Eta = 100;
+    gSystem->Exec("mkdir massResol/PbPb");
+    gSystem->cd("./massResol/PbPb");
+
+        break;
+    }
+}
 
 
 double fMaxPt=10.0;
@@ -112,7 +144,7 @@ DrawGammaSetMarker(hInvMassGGB_SmearedP,20,0.8, kBlack , kBlack);
 DrawGammaSetMarker(hInvMassGGPi0B_SmearedP,20,0.8, kRed+2 , kRed+2);
 
 
-hInvMassGGPi0B_SmearedP->Scale(10);
+hInvMassGGPi0B_SmearedP->Scale(ScaleFactor_Pi0);
 TF1 *gs_invMass_pi0_B = new TF1("gs_invMass_pi0_B", "gaus", 0.1, 0.2);
 gs_invMass_pi0_B->SetParameters(.10, 0.547, 0.01);
 hInvMassGGPi0B_SmearedP->Fit(gs_invMass_pi0_B,"RME+");
@@ -142,8 +174,6 @@ TLatex *ltl_invMass_pi0_B_a = new TLatex(0.6,0.7,"#splitline{#mu: 134.9474 MeV/c
 SetStyleTLatex( ltl_invMass_pi0_B_a, 0.025,4);
 ltl_invMass_pi0_B_a->Draw("SAME");
 
-
-TLatex *ltl_invMass_pi0_B_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltl_invMass_pi0_B_b, 0.025,4);
 ltl_invMass_pi0_B_b->Draw("SAME");
 
@@ -162,7 +192,7 @@ SetStyleHistoTH1ForGraphs(hInvMassGGF_SmearedP, "M_{#gamma#gamma} (GeV/c^{2})", 
 DrawGammaSetMarker(hInvMassGGF_SmearedP,20,0.8, kBlack , kBlack);
 DrawGammaSetMarker(hInvMassGGPi0F_SmearedP,20,0.8, kRed+2 , kRed+2);
 
-hInvMassGGPi0F_SmearedP->Scale(10);
+hInvMassGGPi0F_SmearedP->Scale(ScaleFactor_Pi0);
 TF1 *gs_invMass_pi0_F = new TF1("gs_invMass_pi0_F", "gaus", 0.1, 0.2);
 gs_invMass_pi0_F->SetParameters(.10, 0.547, 0.01);
 hInvMassGGPi0F_SmearedP->Fit(gs_invMass_pi0_F,"RME+");
@@ -191,13 +221,12 @@ TLatex *ltl_invMass_pi0_F_a = new TLatex(0.6,0.7,"#splitline{#mu: 134.926e MeV/c
 SetStyleTLatex( ltl_invMass_pi0_F_a, 0.025,4);
 ltl_invMass_pi0_F_a->Draw("SAME");
 
-TLatex *ltl_invMass_pi0_F_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltl_invMass_pi0_F_b, 0.025,4);
 ltl_invMass_pi0_F_b->Draw("SAME");
 
 
 
-c_invMass_pi0.SaveAs("massResol/hInvMassGG_Pi0_FIT.png");
+c_invMass_pi0.SaveAs("./hInvMassGG_Pi0_FIT.png");
 
 
 
@@ -218,7 +247,7 @@ SetStyleHistoTH1ForGraphs(hInvMassGGB_SmearedP, "M_{#gamma#gamma} (GeV/c^{2})", 
 DrawGammaSetMarker(hInvMassGGB_SmearedP,20,0.8, kBlack , kBlack);
 DrawGammaSetMarker(hInvMassGGEtaB_SmearedP,20,0.8, kRed+2 , kRed+2);
 
-hInvMassGGEtaB_SmearedP->Scale(100);
+hInvMassGGEtaB_SmearedP->Scale(ScaleFactor_Eta);
 
 TF1 *gs_invMass_Eta_B = new TF1("gs_invMass_Eta_B", "gaus", 0.45, 0.65);
 gs_invMass_Eta_B->SetParameters(.10, 0.547, 0.01);
@@ -264,7 +293,7 @@ SetStyleHistoTH1ForGraphs(hInvMassGGF_SmearedP, "M_{#gamma#gamma} (GeV/c^{2})", 
 DrawGammaSetMarker(hInvMassGGF_SmearedP,20,0.8, kBlack , kBlack);
 DrawGammaSetMarker(hInvMassGGEtaF_SmearedP,20,0.8, kRed+2 , kRed+2);
 
-hInvMassGGEtaF_SmearedP->Scale(100);
+hInvMassGGEtaF_SmearedP->Scale(ScaleFactor_Eta);
 
 TF1 *gs_invMass_Eta_F = new TF1("gs_invMass_Eta_F", "gaus", 0.45, 0.65);
 gs_invMass_Eta_F->SetParameters(.10, 0.547, 0.01);
@@ -300,7 +329,7 @@ ltl_invMass_Eta_F_b->Draw("SAME");
 
 
 
-c_invMass_Eta.SaveAs("massResol/hInvMassGG_Eta_FIT.png");
+c_invMass_Eta.SaveAs("./hInvMassGG_Eta_FIT.png");
 
 
 

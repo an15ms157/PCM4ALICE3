@@ -629,7 +629,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve485/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve486/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve487/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve488/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve488/o2sim_Kine.root");*/
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve489/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve490/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve491/o2sim_Kine.root");
@@ -640,10 +640,10 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve496/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve497/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve498/o2sim_Kine.root");
-*/
+
 
 // PbPb events
-
+/*
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve601/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve602/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve603/o2sim_Kine.root");
@@ -742,6 +742,104 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve698/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve699/o2sim_Kine.root");
 
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve701/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve702/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve703/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve704/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve705/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve706/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve707/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve708/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve709/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve710/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve711/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve712/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve713/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve714/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve715/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve716/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve717/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve718/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve719/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve720/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve721/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve722/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve724/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve725/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve726/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve727/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve728/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve729/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve730/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve731/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve732/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve733/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve734/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve735/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve736/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve738/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve739/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve740/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve741/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve742/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve743/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve744/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve745/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve746/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve747/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve748/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve749/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve750/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve751/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve752/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve753/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve754/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve755/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve756/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve757/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve758/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve759/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve760/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve761/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve762/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve763/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve764/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve765/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve766/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve767/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve768/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve769/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve770/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve771/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve772/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve773/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve774/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve775/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve776/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve777/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve778/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve779/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve780/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve781/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve782/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve783/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve784/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve785/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve786/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve787/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve788/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve789/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve790/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve791/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve792/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve793/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve794/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve795/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve796/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve797/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve798/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");
+*/
 
 	mcTree.SetBranchStatus("*", 0);
 	mcTree.SetBranchStatus("MCTrack*", 1);
@@ -884,6 +982,14 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     TH2D hInvMassPt_B_GG_conv_SmearedP {"hInvMassPt_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_B_GG_rec_SmearedP {"hInvMassPt_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
 
+    TH2D hInvMassPt_Pi0_B_SmearedP {"hInvMassPt_Pi0_B_SmearedP", "InvMass and Pt Pi0 in barrel region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Pi0_B_GG_SmearedP {"hInvMassPt_Pi0_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with pi0 as same mother in barrel region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Pi0_B_GG_conv_SmearedP {"hInvMassPt_Pi0_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in barrel region after convProb",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Pi0_B_GG_rec_SmearedP {"hInvMassPt_Pi0_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in barrel after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_B_SmearedP {"hInvMassPt_Eta_B_SmearedP", "InvMass and Pt of all Eta in barrel region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_B_GG_SmearedP{"hInvMassPt_Eta_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with eta as same mother in barrel region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_B_GG_conv_SmearedP {"hInvMassPt_Eta_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs with eta as same mother in barrel region after convProb",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_B_GG_rec_SmearedP {"hInvMassPt_Eta_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in barrel with eta as same mother after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
 
 ////////////////////////////////
 
@@ -980,7 +1086,16 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     TH2D hInvMassPt_F_GG_SmearedP {"hInvMassPt_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_F_GG_conv_SmearedP {"hInvMassPt_F_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_F_GG_rec_SmearedP {"hInvMassPt_F_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
-    
+
+    TH2D hInvMassPt_Pi0_F_SmearedP {"hInvMassPt_Pi0_F_SmearedP", "InvMass and Pt Pi0 in forward region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Pi0_F_GG_SmearedP {"hInvMassPt_Pi0_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Pi0_F_GG_conv_SmearedP {"hInvMassPt_Pi0_F_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Pi0_F_GG_rec_SmearedP {"hInvMassPt_Pi0_F_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_F_SmearedP {"hInvMassPt_Eta_F_SmearedP", "InvMass and Pt of all Eta in forward region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_F_GG_SmearedP{"hInvMassPt_Eta_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with eta as same mother in forward region",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_F_GG_conv_SmearedP {"hInvMassPt_Eta_F_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs with eta as same mother in forward region after convProb",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_Eta_F_GG_rec_SmearedP {"hInvMassPt_Eta_F_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
+
     TH1D hPrimPhotonPtF {"hPrimPhotonPtF", "primary Photon pT  F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
     TH1D hPhotonPtF {"hPhotonPtF", "reconstructed Photon pT forward e^{+}/e^{-} with same photon mother;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
 
@@ -1010,7 +1125,23 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     TH1D hLS2 {"hLS2","Like Sign spectrum of ++ pairs from all particles;m_{ee} (GeV/c^{2})", 100,0,1};
     TH1D hLS1prim {"hLS1prim","Like Sign spectrum of -- pairs from primary particles;m_{ee} (GeV/c^{2})", 100,0,1};
     TH1D hLS2prim {"hLS2prim","Like Sign spectrum of ++ pairs from primary particles;m_{ee} (GeV/c^{2})", 100,0,1};
-    
+
+
+    TH3D hRapidityP_Pi0_F_DaughterPhotons {"hRapidityP_Pi0_F_DaughterPhotons", "Rapidity and P for Pi0 daughter photons in forward region",10000,-5.,5.,10000,-5.,5.,10000,0.,10.};
+    TH3D hRapidityP_Eta_F_DaughterPhotons {"hRapidityP_Eta_F_DaughterPhotons", "Rapidity and P for Eta daughter photons in forward region",10000,-5.,5.,10000,-5.,5.,10000,0.,10.};
+    TH3D hRapidityP_Pi0_B_DaughterPhotons {"hRapidityP_Pi0_B_DaughterPhotons", "Rapidity and P for Pi0 daughter photons in Barrel region",10000,-5.,5.,10000,-5.,5.,10000,0.,10.};
+    TH3D hRapidityP_Eta_B_DaughterPhotons {"hRapidityP_Eta_B_DaughterPhotons", "Rapidity and P for Eta daughter photons in Barrel region",10000,-5.,5.,10000,-5.,5.,10000,0.,10.};
+
+    TH2D hRapidityOpeningangle_Pi0_F_DaughterPhotons {"hRapidityOpeningangle_Pi0_F_DaughterPhotons", "Rapidity and Opening angle for Pi0 daughter photons in forward region",10000,-5.,5.,10000,-5.,5.};
+    TH2D hRapidityOpeningangle_Eta_F_DaughterPhotons {"hRapidityOpeningangle_Eta_F_DaughterPhotons", "Rapidity and Opening angle for Eta daughter photons in forward region",10000,-5.,5.,10000,-5.,5.};
+    TH2D hRapidityOpeningangle_Pi0_B_DaughterPhotons {"hRapidityOpeningangle_Pi0_B_DaughterPhotons", "Rapidity and Opening angle for Pi0 daughter photons in barrel region",10000,-5.,5.,10000,-5.,5.};
+    TH2D hRapidityOpeningangle_Eta_B_DaughterPhotons {"hRapidityOpeningangle_Eta_B_DaughterPhotons", "Rapidity and Opening angle for Eta daughter photons in barrel region",10000,-5.,5.,10000,-5.,5.};
+
+    TH2D hOpeningangle_PT_Pi0_F_DaughterPhotons {"hOpeningangle_PT_Pi0_F_DaughterPhotons", "Pt and Opening angle for Pi0 daughter photons in forward region",10000,0.,10.,10000,-5.,5.};
+    TH2D hOpeningangle_PT_Eta_F_DaughterPhotons {"hOpeningangle_PT_Eta_F_DaughterPhotons", "Pt and Opening angle for Eta daughter photons in forward region",10000,0.,10.,10000,-5.,5.};
+    TH2D hOpeningangle_P_Pi0_B_DaughterPhotons {"hOpeningangle_P_Pi0_B_DaughterPhotons", "P and Opening angle for Pi0 daughter photons in barrel region",10000,0.,10.,10000,-5.,5.};
+    TH2D hOpeningangle_P_Eta_B_DaughterPhotons {"hOpeningangle_P_Eta_B_DaughterPhotons", "P and Opening angle for Eta daughter photons in barrel region",10000,0.,10.,10000,-5.,5.};
+
     
     double eMass = 0.000511;
     double minPt = 0.01;
@@ -1311,8 +1442,11 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
         hPtGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         hRapidityPt_Pi0_B_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
         hRapidityPt_Pi0_B_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-
-	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
+        //hRapidityP_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
+        hRapidityOpeningangle_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+        hOpeningangle_P_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).P(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+	      
+        if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
 		      hInvMassGGPi0BCut.Fill((LVgam1+LVgam2).M());
 		      hPtGGPi0BCut.Fill((LVgam1+LVgam2).Pt());
 	        hInvMassGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
@@ -1326,6 +1460,9 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
 	      hPtGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         hRapidityPt_Eta_B_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
         hRapidityPt_Eta_B_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        //hRapidityP_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),1);
+        hRapidityOpeningangle_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+        hOpeningangle_P_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).P(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
 
 	      if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
 		      hInvMassGGEtaBCut.Fill((LVgam1+LVgam2).M());
@@ -1436,8 +1573,11 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
                 hPtGGPi0B_rec.Fill((LVgam1+LVgam2).Pt());
                 hPtGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
                 hRapidityPt_Pi0_B_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
+
                 if(( LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
                   hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                  hInvMassPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+
                 }              
               if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
 		            hInvMassGGPi0BCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1450,12 +1590,12 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
               hInvMassGGEtaB_rec.Fill((LVgam1+LVgam2).M());
        	      hPtGGEtaB_rec.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_B_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-
               hInvMassGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	      hPtGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
 
               if( (LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
               hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
+              hInvMassPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
               }
               if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
                 hInvMassGGEtaBCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1638,6 +1778,9 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
         hPtGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         hRapidityPt_Pi0_F_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
         hRapidityPt_Pi0_F_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        //hRapidityP_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
+        hRapidityOpeningangle_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+        hOpeningangle_PT_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
 
 	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 		      hInvMassGGPi0FCut.Fill((LVgam1+LVgam2).M());
@@ -1653,6 +1796,9 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	      hPtGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
         hRapidityPt_Eta_F_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
         hRapidityPt_Eta_F_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        //hRapidityP_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
+        hRapidityOpeningangle_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+        hOpeningangle_PT_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
 
 	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
 		      hInvMassGGEtaFCut.Fill((LVgam1+LVgam2).M());
@@ -1800,6 +1946,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
                 hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
                 hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());              
+                hInvMassPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).P());
                 }
 
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
@@ -1819,6 +1966,8 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
        	        hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
                 hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
+                hInvMassPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).P());
+
               }
               if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
                 hInvMassGGEtaFCut_rec.Fill((LVgam1+LVgam2).M());
@@ -1901,7 +2050,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
 	l.Draw();
 	c.SaveAs("invMass.png");
 
-	std::unique_ptr<TFile> f {TFile::Open("ana_pTcut_withft3_PbPb.root", "RECREATE")};
+	std::unique_ptr<TFile> f {TFile::Open("ana_pTcut_withft3_check.root", "RECREATE")};
 	f->WriteTObject(&hVertex);
     f->WriteTObject(&hVertexR);
     f->WriteTObject(&hInvMassSame);
@@ -2059,6 +2208,25 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hInvMassPt_B_GG_conv_SmearedP);
     f->WriteTObject(&hInvMassPt_B_GG_rec_SmearedP);
     
+    f->WriteTObject(&hInvMassPt_Pi0_B_SmearedP);
+    f->WriteTObject(&hInvMassPt_Pi0_B_GG_SmearedP);
+    f->WriteTObject(&hInvMassPt_Pi0_B_GG_conv_SmearedP);
+    f->WriteTObject(&hInvMassPt_Pi0_B_GG_rec_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_B_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_B_GG_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_B_GG_conv_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_B_GG_rec_SmearedP);
+
+    f->WriteTObject(&hInvMassPt_Pi0_F_SmearedP);
+    f->WriteTObject(&hInvMassPt_Pi0_F_GG_SmearedP);
+    f->WriteTObject(&hInvMassPt_Pi0_F_GG_conv_SmearedP);
+    f->WriteTObject(&hInvMassPt_Pi0_F_GG_rec_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_F_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_F_GG_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_F_GG_conv_SmearedP);
+    f->WriteTObject(&hInvMassPt_Eta_F_GG_rec_SmearedP);
+
+
     f->WriteTObject(&hInvMassGGF_rec);
     f->WriteTObject(&hInvMassGGPi0F_rec);
     f->WriteTObject(&hInvMassGGEtaF_rec);
@@ -2131,7 +2299,27 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hElecPlusPt);
     f->WriteTObject(&hElecMinusPt);
     
-    
+
+    //f->WriteTObject(&hRapidityP_Pi0_F_DaughterPhotons);
+    //f->WriteTObject(&hRapidityP_Eta_F_DaughterPhotons);
+    //f->WriteTObject(&hRapidityP_Pi0_B_DaughterPhotons);
+    //f->WriteTObject(&hRapidityP_Eta_B_DaughterPhotons);
+    f->WriteTObject(&hRapidityOpeningangle_Pi0_F_DaughterPhotons);
+    f->WriteTObject(&hRapidityOpeningangle_Eta_F_DaughterPhotons);
+    f->WriteTObject(&hRapidityOpeningangle_Pi0_B_DaughterPhotons);
+    f->WriteTObject(&hRapidityOpeningangle_Eta_B_DaughterPhotons);
+
+    f->WriteTObject(&hOpeningangle_PT_Pi0_F_DaughterPhotons);
+    f->WriteTObject(&hOpeningangle_PT_Eta_F_DaughterPhotons);
+    f->WriteTObject(&hOpeningangle_P_Pi0_B_DaughterPhotons);
+    f->WriteTObject(&hOpeningangle_P_Eta_B_DaughterPhotons);
+
+
+
+
+
+
+
     cout<<"events, totGammaConv,totPiM, totPiP::"<<  nEvents << "  " <<totGammaConv<< "  "<< totPiM  << " " << totPiP<< endl;
     cout<< count << " " << countPi0 << " " << countEta << " "<< endl;
 }

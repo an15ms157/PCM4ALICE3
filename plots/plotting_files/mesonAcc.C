@@ -59,10 +59,42 @@ gStyle->SetPadTickY(1);
 //   TO VANISH STAT BOX 
                                                 ////////////////FORWARD///////////////
 
-//TFile * fileRec = new TFile("./ana_withft3.root");
-//TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3.root");
-TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
-//TFile * fileRec = new TFile("./output/pp/pcut_0.1/ana_pTcut_withft3.root");
+
+Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
+
+TFile * fileRec;
+TLatex *lt_mesonAcc_F_b;
+TLatex *lt_mesonAcc_B_b;
+Int_t ScaleFactor_Pi0;
+Int_t ScaleFactor_Eta;
+
+switch(collisionSystem){
+    case 0:{
+    cout << "pp system"<< endl;    
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/output/ana_pTcut_withft3.root");
+    lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ScaleFactor_Pi0 = 1;
+    ScaleFactor_Eta = 10;
+    gSystem->Exec("mkdir mesonAcc/pp");
+    gSystem->cd("./mesonAcc/pp");
+
+        break;
+    }
+    case 1:{
+    cout << "PbPb system"<< endl;
+        //TFile * fileRec = new TFile("./ana_withft3.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
+    lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
+    lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ScaleFactor_Pi0 = 10;
+    ScaleFactor_Eta = 100;
+    gSystem->Exec("mkdir mesonAcc/PbPb");
+    gSystem->cd("./mesonAcc/PbPb");
+
+        break;
+    }
+}
 
 double fMaxPt=10.0;
 Int_t Font=42;
@@ -81,21 +113,21 @@ Int_t nbinspt_proj  = sizeof(pt_bin_proj)/sizeof(*pt_bin_proj) -1;
 //Int_t nbinspt_proj_fine  = (sizeof(pt_bin_proj)/sizeof(*pt_bin_proj)) -1;
 
 
-Double_t pt_bin_proj_fine[13]={0.0,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,5.0,7.0,10.0 };
-Int_t nbinspt_proj_fine  = 12;
+Double_t pt_bin_proj_fine[15]={0.0,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,2.5,3.0,4.0,6.0,8.0,10.0 };
+Int_t nbinspt_proj_fine  = 14;
 
 
 Double_t etaF_low1 = 1.75;
 Double_t etaF_low2 = 3;
-Double_t etaF_high1 = 1.75;
+Double_t etaF_high1 = 3.0;
 Double_t etaF_high2 = 4.0;
-Double_t etaF_mid1 = 3;
+Double_t etaF_mid1 = 1.75;
 Double_t etaF_mid2 = 4.0;
 
 
-Double_t etaB_low1   = 0;
+Double_t etaB_low1   = 0.0;
 Double_t etaB_low2   = 0.8;
-Double_t etaB_high1  = 0;
+Double_t etaB_high1  = 0.;
 Double_t etaB_high2  = 1.3;
 Double_t etaB_mid1  = 0.8;
 Double_t etaB_mid2  = 1.3;
@@ -114,9 +146,6 @@ for(int i=0; i<nBinsPt+1; i++){
 }
 */
 
-
-///////////////  Acceptance at different rapidity PLOT    ///////////////
-
 TH2D * histRapPt_ALL_Pi0_F          = (TH2D*) fileRec->Get("hRapidityPt_Pi0_F");
 TH2D * histRapPt_ALL_Pi0_F_GG       = (TH2D*) fileRec->Get("hRapidityPt_Pi0_F_GG");
 TH2D * histRapPt_ALL_Eta_F          = (TH2D*) fileRec->Get("hRapidityPt_Eta_F");
@@ -126,6 +155,11 @@ TH2D * histRapPt_ALL_Pi0_B          = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B");
 TH2D * histRapPt_ALL_Pi0_B_GG       = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG");
 TH2D * histRapPt_ALL_Eta_B          = (TH2D*) fileRec->Get("hRapidityPt_Eta_B");
 TH2D * histRapPt_ALL_Eta_B_GG       = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG");
+
+
+
+///////////////  Acceptance at different rapidity PLOT    ///////////////
+
 
 histRapPt_ALL_Pi0_F->Sumw2();
 histRapPt_ALL_Pi0_F_GG->Sumw2();
@@ -252,15 +286,15 @@ histPt_Acceptance_rap_F_high1_to_high2_Eta->Sumw2();
 histPt_Acceptance_rap_F_mid1_to_mid2_Eta->Sumw2();
 
 // Labelling //
-SetStyleHistoTH1ForGraphs(histPt_Acceptance_rap_F_mid1_to_mid2_Pi0, "pT (GeV)", "Acceptance*BR", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-histPt_Acceptance_rap_F_mid1_to_mid2_Pi0->GetYaxis()->SetRangeUser(0.1,5.0);
+SetStyleHistoTH1ForGraphs(histPt_Acceptance_rap_F_low1_to_low2_Pi0, "pT (GeV)", "Acceptance*BR", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+histPt_Acceptance_rap_F_low1_to_low2_Pi0->GetYaxis()->SetRangeUser(0.1,5.0);
 
 // CHECKER LABELING //
-DrawGammaSetMarker(histPt_Acceptance_rap_F_mid1_to_mid2_Pi0,25,1.0, kRed , kRed);
-histPt_Acceptance_rap_F_mid1_to_mid2_Pi0->Draw("E1");
-DrawGammaSetMarker(histPt_Acceptance_rap_F_mid1_to_mid2_Eta,25,1.0, kGreen+3 , kGreen+3);
-histPt_Acceptance_rap_F_mid1_to_mid2_Eta->Draw("SAME,E1"); 
-DrawGammaSetMarker(histPt_Acceptance_rap_F_low1_to_low2_Pi0,26,1.0, kRed , kRed);
+//DrawGammaSetMarker(histPt_Acceptance_rap_F_mid1_to_mid2_Pi0,25,1.0, kRed , kRed);
+//histPt_Acceptance_rap_F_mid1_to_mid2_Pi0->Draw("E1");
+//DrawGammaSetMarker(histPt_Acceptance_rap_F_mid1_to_mid2_Eta,25,1.0, kGreen+3 , kGreen+3);
+//histPt_Acceptance_rap_F_mid1_to_mid2_Eta->Draw("SAME,E1"); 
+//DrawGammaSetMarker(histPt_Acceptance_rap_F_low1_to_low2_Pi0,26,1.0, kRed , kRed);
 histPt_Acceptance_rap_F_low1_to_low2_Pi0->Draw("SAME,P"); 
 DrawGammaSetMarker(histPt_Acceptance_rap_F_low1_to_low2_Eta,26,1.0, kGreen+3 , kGreen+3);
 histPt_Acceptance_rap_F_low1_to_low2_Eta->Draw("SAME,P"); 
@@ -294,10 +328,11 @@ l_mesonAcc_F->SetFillStyle(0);
 l_mesonAcc_F->SetTextSize(TextSize);
 l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_low1_to_low2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaF_low1,etaF_low2));
 l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_high1_to_high2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaF_high1,etaF_high2));
-l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_mid1_to_mid2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaF_mid1,etaF_mid2));
 l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_low1_to_low2_Eta,Form("#eta : %.2f < y < %.2f",etaF_low1,etaF_low2));
 l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_high1_to_high2_Eta,Form("#eta : %.2f < y < %.2f",etaF_high1,etaF_high2));
-l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_mid1_to_mid2_Eta,Form("#eta : %.2f < y < %.2f",etaF_mid1,etaF_mid2));
+//l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_mid1_to_mid2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaF_mid1,etaF_mid2));
+//l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_mid1_to_mid2_Eta,Form("#eta : %.2f < y < %.2f",etaF_mid1,etaF_mid2));
+
 //l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_low_plus_high_Pi0,Form("#pi^{0} : %.2f < |y| < %.2f",etaF_high1,etaF_high2));
 //l_mesonAcc_F->AddEntry(histPt_Acceptance_rap_F_low_plus_high_Eta,Form("#eta : %.2f < |y| < %.2f",etaF_high1,etaF_high2));
 l_mesonAcc_F->Draw("SAME");
@@ -306,7 +341,6 @@ TLatex *lt_mesonAcc_F_a = new TLatex(0.45,0.8,"Meson Acceptance at forward regio
 SetStyleTLatex( lt_mesonAcc_F_a, 0.03,4);
 lt_mesonAcc_F_a->Draw("SAME");
 
-TLatex *lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( lt_mesonAcc_F_b, 0.03,4);
 lt_mesonAcc_F_b->Draw("SAME");
 
@@ -430,14 +464,14 @@ histPt_Acceptance_rap_B_high1_to_high2_Eta->Sumw2();
 histPt_Acceptance_rap_B_mid1_to_mid2_Eta->Sumw2();
 
 // Labelling //
-SetStyleHistoTH1ForGraphs(histPt_Acceptance_rap_B_mid1_to_mid2_Pi0, "pT (GeV)", "Acceptance*BR", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-histPt_Acceptance_rap_B_mid1_to_mid2_Pi0->GetYaxis()->SetRangeUser(0.01,8.0);
+SetStyleHistoTH1ForGraphs(histPt_Acceptance_rap_B_low1_to_low2_Pi0, "pT (GeV)", "Acceptance*BR", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+histPt_Acceptance_rap_B_low1_to_low2_Pi0->GetYaxis()->SetRangeUser(0.1,5.0);
 
 //  CHECKER Labeling //
-DrawGammaSetMarker(histPt_Acceptance_rap_B_mid1_to_mid2_Pi0,25,1.0, kRed , kRed);
-histPt_Acceptance_rap_B_mid1_to_mid2_Pi0->Draw("E1");
-DrawGammaSetMarker(histPt_Acceptance_rap_B_mid1_to_mid2_Eta,25,1.0, kGreen+3 , kGreen+3);
-histPt_Acceptance_rap_B_mid1_to_mid2_Eta->Draw("SAME,E1");
+//DrawGammaSetMarker(histPt_Acceptance_rap_B_mid1_to_mid2_Pi0,25,1.0, kRed , kRed);
+//histPt_Acceptance_rap_B_mid1_to_mid2_Pi0->Draw("E1");
+//DrawGammaSetMarker(histPt_Acceptance_rap_B_mid1_to_mid2_Eta,25,1.0, kGreen+3 , kGreen+3);
+//histPt_Acceptance_rap_B_mid1_to_mid2_Eta->Draw("SAME,E1");
 DrawGammaSetMarker(histPt_Acceptance_rap_B_low1_to_low2_Pi0,26,1.0, kRed, kRed);
 histPt_Acceptance_rap_B_low1_to_low2_Pi0->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_Acceptance_rap_B_low1_to_low2_Eta,26,1.0, kGreen+3 , kGreen+3);
@@ -468,12 +502,13 @@ l_mesonAcc_B->SetHeader("");
 l_mesonAcc_B->SetBorderSize(0);
 l_mesonAcc_B->SetFillStyle(0);
 l_mesonAcc_B->SetTextSize(TextSize);
+//l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_mid1_to_mid2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaB_mid1,etaB_mid2));
+//l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_mid1_to_mid2_Eta,Form("#eta : %.2f < y < %.2f",etaB_mid1,etaB_mid2));
 l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_low1_to_low2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaB_low1,etaB_low2));
 l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_high1_to_high2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaB_high1,etaB_high2));
-l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_mid1_to_mid2_Pi0,Form("#pi^{0} : %.2f < y < %.2f",etaB_mid1,etaB_mid2));
 l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_low1_to_low2_Eta,Form("#eta : %.2f < y < %.2f",etaB_low1,etaB_low2));
 l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_high1_to_high2_Eta,Form("#eta : %.2f < y < %.2f",etaB_high1,etaB_high2));
-l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_mid1_to_mid2_Eta,Form("#eta : %.2f < y < %.2f",etaB_mid1,etaB_mid2));
+
 //l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_low_plus_high_Pi0,Form("#pi^{0} : %.2f < |y| < %.2f",etaB_high1,etaB_high2));
 //l_mesonAcc_B->AddEntry(histPt_Acceptance_rap_B_low_plus_high_Eta,Form("#eta : %.2f < |y| < %.2f",etaB_high1,etaB_high2));
 l_mesonAcc_B->Draw("SAME");
@@ -482,7 +517,6 @@ TLatex *lt_mesonAcc_B_a = new TLatex(0.45,0.8,"Meson Acceptance at barrel region
 SetStyleTLatex( lt_mesonAcc_B_a, 0.03,4);
 lt_mesonAcc_B_a->Draw("SAME");
 
-TLatex *lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( lt_mesonAcc_B_b, 0.03,4);
 lt_mesonAcc_B_b->Draw("SAME");
 
@@ -579,16 +613,17 @@ SetStyleTLatex( lt119a, 0.03,4);
 TLatex *lt119b = new TLatex(0.15,0.9,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
-//c_mesonAcc->Update();
-//histPt_Acceptance_Pi0_B->Draw("E1, SAME"); 
+histPt_Acceptance_Pi0_B->Draw("E1, SAME"); 
+
+
+TCanvas* c_mesonAcc = new TCanvas("c_mesonAcc","c_mesonAcc",0,0,1600,1600);  // gives the page size
+DrawGammaCanvasSettings( c_mesonAcc, 0.1, 0.02, 0.02, 0.1);
+c_mesonAcc->cd()->SetLogy();  
+c_mesonAcc->cd();
+
 */
-
 c_mesonAcc->Update();
-
-gSystem->Exec("mkdir mesonAcc");
-
-c_mesonAcc->SaveAs("./mesonAcc/hAcceptance_meson.png");
-
+c_mesonAcc->SaveAs("./Acceptance_meson.png");
 c_mesonAcc->Close();
 
 }

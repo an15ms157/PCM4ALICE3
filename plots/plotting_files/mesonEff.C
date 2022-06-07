@@ -61,10 +61,41 @@ gStyle->SetPadTickY(1);
 //   TO VANISH STAT BOX 
                                                 ////////////////FORWARD///////////////
 
-//TFile * fileRec = new TFile("./ana_withft3.root");
-//TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3.root");
-TFile * fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
-//TFile * fileRec = new TFile("./output/pp/pcut_0.1/ana_pTcut_withft3.root");
+Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
+
+TFile * fileRec;
+TLatex *ltb_eff_Eta_B;
+TLatex *ltb_eff_Pi0_F;
+TLatex *ltb_eff_Pi0_B;
+TLatex *ltb_eff_Eta_F;
+
+switch(collisionSystem){
+    case 0:{
+    cout << "pp system"<< endl;    
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/output/ana_pTcut_withft3.root");
+    ltb_eff_Eta_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_eff_Pi0_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_eff_Pi0_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_eff_Eta_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    gSystem->Exec("mkdir mesonEff/pp");
+    gSystem->cd("./mesonEff/pp");
+
+        break;
+    }
+    case 1:{
+    cout << "PbPb system"<< endl;
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
+    ltb_eff_Eta_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_eff_Pi0_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_eff_Pi0_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_eff_Eta_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    gSystem->Exec("mkdir mesonEff/PbPb");
+    gSystem->cd("./mesonEff/PbPb");
+
+        break;
+    }
+}
+
 
 double fMaxPt=10.0;
 Int_t Font=42;
@@ -88,7 +119,7 @@ Int_t nbinspt_proj_fine  = 12;
 
 Double_t etaF_low1 = 1.75;
 Double_t etaF_low2 = 3.0;
-Double_t etaF_high1 = 3.0;
+Double_t etaF_high1 = 1.75;
 Double_t etaF_high2 = 4.0;
 Double_t etaF_mid1 = 1.75;
 Double_t etaF_mid2 = 4.0;
@@ -254,8 +285,8 @@ histPt_RATIO_rap_F_low1_to_low2_Pi0_SmearedP->Draw("SAME,E1");
 DrawGammaSetMarker(histPt_RATIO_rap_F_low1_to_low2_Pi0_SmearedP,25,1.0, kBlue , kBlue);
 histPt_RATIO_rap_F_high1_to_high2_Pi0_SmearedP->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap_F_high1_to_high2_Pi0_SmearedP,25,1.0, kRed+2 , kRed+2);
-histPt_RATIO_rap_F_mid1_to_mid2_Pi0_SmearedP->Draw("SAME,E1"); 
-DrawGammaSetMarker(histPt_RATIO_rap_F_mid1_to_mid2_Pi0_SmearedP,25,1.0, kGreen+4 , kGreen+4);
+//histPt_RATIO_rap_F_mid1_to_mid2_Pi0_SmearedP->Draw("SAME,E1"); 
+//DrawGammaSetMarker(histPt_RATIO_rap_F_mid1_to_mid2_Pi0_SmearedP,25,1.0, kGreen+4 , kGreen+4);
 
 //LABELING
 SetStyleHistoTH1ForGraphs(histPt_RATIO_rap_F_low1_to_low2_Pi0_SmearedP, "pT", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
@@ -267,7 +298,7 @@ l_eff_Pi0_F->SetFillStyle(0);
 l_eff_Pi0_F->SetTextSize(TextSize);
 l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_low1_to_low2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaF_low1,etaF_low2));
 l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_high1_to_high2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaF_high1,etaF_high2));
-l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_mid1_to_mid2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaF_mid1,etaF_mid2));
+//l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_mid1_to_mid2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaF_mid1,etaF_mid2));
 //l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_low1_to_low2_Pi0, Form("%.2f < y < %.2f",etaF_low1,etaF_low2));
 //l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_high1_to_high2_Pi0,Form("%.2f < y < %.2f",etaF_high1,etaF_high2));
 //l_eff_Pi0_F->AddEntry(histPt_RATIO_rap_F_mid1_to_mid2_Pi0, Form("%.2f < y < %.2f",etaF_mid1,etaF_mid2));
@@ -277,7 +308,6 @@ TLatex *lta_eff_Pi0_F = new TLatex(0.2,0.8,"#splitline{Pi0 Effiiency at differen
 SetStyleTLatex( lta_eff_Pi0_F, 0.03,4);
 lta_eff_Pi0_F->Draw("SAME");
 
-TLatex *ltb_eff_Pi0_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltb_eff_Pi0_F, 0.03,4);
 ltb_eff_Pi0_F->Draw("SAME");
 
@@ -440,11 +470,11 @@ histPt_RATIO_rap_B_low1_to_low2_Pi0_SmearedP->Draw("SAME,E1");
 DrawGammaSetMarker(histPt_RATIO_rap_B_low1_to_low2_Pi0_SmearedP,25,1.0, kBlue , kBlue);
 histPt_RATIO_rap_B_high1_to_high2_Pi0_SmearedP->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap_B_high1_to_high2_Pi0_SmearedP,25,1.0, kRed+2 , kRed+2);
-histPt_RATIO_rap_B_mid1_to_mid2_Pi0_SmearedP->Draw("SAME,E1"); 
-DrawGammaSetMarker(histPt_RATIO_rap_B_mid1_to_mid2_Pi0_SmearedP,25,1.0, kGreen+4 , kGreen+4);
+//histPt_RATIO_rap_B_mid1_to_mid2_Pi0_SmearedP->Draw("SAME,E1"); 
+//DrawGammaSetMarker(histPt_RATIO_rap_B_mid1_to_mid2_Pi0_SmearedP,25,1.0, kGreen+4 , kGreen+4);
 
 //LABELING
-SetStyleHistoTH1ForGraphs(histPt_RATIO_rap_B_low1_to_low2_Pi0_SmearedP, "pT", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+SetStyleHistoTH1ForGraphs(histPt_RATIO_rap_B_low1_to_low2_Pi0_SmearedP, "pT(GeV)", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
 
 auto l_eff_Pi0_B = new TLegend(0.55, 0.15, 0.7, 0.35);
 l_eff_Pi0_B->SetHeader("Barrel","C");
@@ -453,7 +483,7 @@ l_eff_Pi0_B->SetFillStyle(0);
 l_eff_Pi0_B->SetTextSize(TextSize);
 l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_low1_to_low2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaB_low1,etaB_low2));
 l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_high1_to_high2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaB_high1,etaB_high2));
-l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_mid1_to_mid2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaB_mid1,etaB_mid2));
+//l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_mid1_to_mid2_Pi0_SmearedP,Form("%.2f < y < %.2f",etaB_mid1,etaB_mid2));
 //l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_low1_to_low2_Pi0,Form("%.2f < y < %.2f",etaB_low1,etaB_low2));
 //l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_high1_to_high2_Pi0,Form("%.2f < y < %.2f",etaB_high1,etaB_high2));
 //l_eff_Pi0_B->AddEntry(histPt_RATIO_rap_B_mid1_to_mid2_Pi0,Form("%.2f < y < %.2f",etaB_low1,etaB_high2));
@@ -463,7 +493,6 @@ TLatex *lta_eff_Pi0_B = new TLatex(0.2,0.8,"#splitline{Pi0 Effiiency at differen
 SetStyleTLatex( lta_eff_Pi0_B, 0.03,4);
 lta_eff_Pi0_B->Draw("SAME");
 
-TLatex *ltb_eff_Pi0_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltb_eff_Pi0_B, 0.03,4);
 ltb_eff_Pi0_B->Draw("SAME");
 
@@ -474,7 +503,7 @@ ltc_eff_Pi0_B->Draw("SAME");
 
 c_eff_Pi0->Update();
 
-c_eff_Pi0->SaveAs("mesonEff/hDiffRap_ratio_Pi0.png");
+c_eff_Pi0->SaveAs("./hDiffRap_ratio_Pi0.png");
 
 c_eff_Pi0->Close();
 
@@ -630,11 +659,11 @@ histPt_RATIO_rap_F_low1_to_low2_Eta_SmearedP->Draw("SAME,E1");
 DrawGammaSetMarker(histPt_RATIO_rap_F_low1_to_low2_Eta_SmearedP,25,1.0, kBlue , kBlue);
 histPt_RATIO_rap_F_high1_to_high2_Eta_SmearedP->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap_F_high1_to_high2_Eta_SmearedP,25,1.0, kRed+2 , kRed+2);
-histPt_RATIO_rap_F_mid1_to_mid2_Eta_SmearedP->Draw("SAME,E1"); 
-DrawGammaSetMarker(histPt_RATIO_rap_F_mid1_to_mid2_Eta_SmearedP,25,1.0, kGreen+4 , kGreen+4);
+//histPt_RATIO_rap_F_mid1_to_mid2_Eta_SmearedP->Draw("SAME,E1"); 
+//DrawGammaSetMarker(histPt_RATIO_rap_F_mid1_to_mid2_Eta_SmearedP,25,1.0, kGreen+4 , kGreen+4);
 
 //LABELING
-SetStyleHistoTH1ForGraphs(histPt_RATIO_rap_F_low1_to_low2_Eta_SmearedP, "pT", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+SetStyleHistoTH1ForGraphs(histPt_RATIO_rap_F_low1_to_low2_Eta_SmearedP, "pT(GeV)", "efficiency", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
 
 auto l_eff_Eta_F = new TLegend(0.55, 0.15, 0.7, 0.35);
 l_eff_Eta_F->SetHeader("Forward","C");
@@ -643,7 +672,7 @@ l_eff_Eta_F->SetFillStyle(0);
 l_eff_Eta_F->SetTextSize(TextSize);
 l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_low1_to_low2_Eta_SmearedP,Form("%.2f < y < %.2f",etaF_low1,etaF_low2));
 l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_high1_to_high2_Eta_SmearedP,Form("%.2f < y < %.2f",etaF_high1,etaF_high2));
-l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_mid1_to_mid2_Eta_SmearedP,Form("%.2f < y < %.2f",etaF_mid1,etaF_mid2));
+//l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_mid1_to_mid2_Eta_SmearedP,Form("%.2f < y < %.2f",etaF_mid1,etaF_mid2));
 //l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_low1_to_low2_Eta, Form("%.2f < y < %.2f",etaF_low1,etaF_low2));
 //l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_high1_to_high2_Eta,Form("%.2f < y < %.2f",etaF_high1,etaF_high2));
 //l_eff_Eta_F->AddEntry(histPt_RATIO_rap_F_mid1_to_mid2_Eta, Form("%.2f < y < %.2f",etaF_mid1,etaF_mid2));
@@ -653,7 +682,6 @@ TLatex *lta_eff_Eta_F = new TLatex(0.2,0.8,"#splitline{Eta Effiiency at differen
 SetStyleTLatex( lta_eff_Eta_F, 0.03,4);
 lta_eff_Eta_F->Draw("SAME");
 
-TLatex *ltb_eff_Eta_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltb_eff_Eta_F, 0.03,4);
 ltb_eff_Eta_F->Draw("SAME");
 
@@ -799,8 +827,8 @@ histPt_RATIO_rap_B_low1_to_low2_Eta_SmearedP->Draw("E1");
 DrawGammaSetMarker(histPt_RATIO_rap_B_low1_to_low2_Eta_SmearedP,25,1.0, kBlue , kBlue);
 histPt_RATIO_rap_B_high1_to_high2_Eta_SmearedP->Draw("SAME,E1"); 
 DrawGammaSetMarker(histPt_RATIO_rap_B_high1_to_high2_Eta_SmearedP,25,1.0, kRed+2 , kRed+2);
-histPt_RATIO_rap_B_mid1_to_mid2_Eta_SmearedP->Draw("SAME,E1"); 
-DrawGammaSetMarker(histPt_RATIO_rap_B_mid1_to_mid2_Eta_SmearedP,25,1.0, kGreen+4 , kGreen+4);
+//histPt_RATIO_rap_B_mid1_to_mid2_Eta_SmearedP->Draw("SAME,E1"); 
+//DrawGammaSetMarker(histPt_RATIO_rap_B_mid1_to_mid2_Eta_SmearedP,25,1.0, kGreen+4 , kGreen+4);
 
 
 
@@ -814,7 +842,7 @@ l_eff_Eta_B->SetFillStyle(0);
 l_eff_Eta_B->SetTextSize(TextSize);
 l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_low1_to_low2_Eta_SmearedP,Form("%.2f < y < %.2f",etaB_low1,etaB_low2));
 l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_high1_to_high2_Eta_SmearedP,Form("%.2f < y < %.2f",etaB_high1,etaB_high2));
-l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_mid1_to_mid2_Eta_SmearedP,Form("%.2f < y < %.2f",etaB_mid1,etaB_mid2));
+//l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_mid1_to_mid2_Eta_SmearedP,Form("%.2f < y < %.2f",etaB_mid1,etaB_mid2));
 //l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_low1_to_low2_Eta,Form("%.2f < y < %.2f",etaB_low1,etaB_low2));
 //l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_high1_to_high2_Eta,Form("%.2f < y < %.2f",etaB_high1,etaB_high2));
 //l_eff_Eta_B->AddEntry(histPt_RATIO_rap_B_mid1_to_mid2_Eta,Form("%.2f < y < %.2f",etaB_low1,etaB_high2));
@@ -824,7 +852,6 @@ TLatex *lta_eff_Eta_B = new TLatex(0.2,0.8,"#splitline{Eta Effiiency at differen
 SetStyleTLatex( lta_eff_Eta_B, 0.03,4);
 lta_eff_Eta_B->Draw("SAME");
 
-TLatex *ltb_eff_Eta_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltb_eff_Eta_B, 0.03,4);
 ltb_eff_Eta_B->Draw("SAME");
 
@@ -833,11 +860,9 @@ SetStyleTLatex( ltc_eff_Eta_B, 0.02,4);
 ltc_eff_Eta_B->Draw("SAME");
 
 
-//c_eff_Eta->Update();
+c_eff_Eta->Update();
 
-
-
-c_eff_Eta->SaveAs("mesonEff/hDiffRap_ratio_Eta.png");
+c_eff_Eta->SaveAs("./hDiffRap_ratio_Eta.png");
 
 c_eff_Eta->Close();
 
