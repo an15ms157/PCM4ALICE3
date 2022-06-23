@@ -43,6 +43,10 @@ TString     fEnergyFlag                                                 = "";
 TString     fPrefix                                                     = "";
 TString     fEventCutSelection                                          = "";
 
+Double_t* fMesonMassPlotRange_Alice3    = nullptr;
+
+
+
 TH1D* FillProjectionX (TH2*, TString, Double_t, Double_t, Int_t);                                           // Fill Projection in according to Y bins
 void FitSubtractedPureGaussianInvMassInPtBins(TH1D*, Int_t);                                                // Fits the invariant mass histos with a pure gaussian plus lin BG
 

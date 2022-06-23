@@ -12,14 +12,15 @@
 #ifndef __CINT__
 #include "Math/Vector3D.h"
 #include "Math/Vector4D.h"
+#include "progressbar.h"
 
 using namespace ROOT::Math;
 
 #endif
 
 std::ofstream outfile;
-FILE * myfile;
-FILE * myfile1;
+//FILE * myfile;
+//FILE * myfile1;
 
 //#include "DetectorsCommonDataFormats/DetID.h"
 //#include "SimulationDataFormat/MCTrack.h"
@@ -35,7 +36,8 @@ FILE * myfile1;
 //	}
 //}
 
-
+//TDatime t;
+//gRandom->SetSeed(t.GetDate() + t.GetYear() * t.GetHour() * t.GetMinute() * t.GetSecond()); // NB: gRandom is a global pointer ?
 
 
 //MOMENTUM SMEARING
@@ -69,12 +71,11 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
 }
 
 
-
-
 void ana()
 {
 	TChain mcTree("o2sim");
-/*  
+
+/*
 // pp events
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve1/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve2/o2sim_Kine.root");
@@ -158,7 +159,97 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/resul
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve78/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve79/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve80/o2sim_Kine.root");
-	
+
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve01/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve02/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve03/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve04/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve05/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve06/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve07/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve08/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve09/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve10/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve11/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve12/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve13/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve14/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve16/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve17/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve18/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve19/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve20/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve21/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve22/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve23/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve24/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve25/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve26/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve27/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve28/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve29/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve30/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve31/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve32/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve33/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve34/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve35/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve36/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve37/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve38/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve39/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve40/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve41/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve42/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve43/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve44/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve45/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve46/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve47/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve48/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve49/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve51/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve52/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve53/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve54/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve56/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve57/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve58/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve59/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve62/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve63/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve64/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve65/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve66/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve67/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve68/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve69/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve70/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve71/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve72/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve73/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve74/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve75/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve76/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve77/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve78/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve79/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve80/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve81/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve82/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve83/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve84/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve85/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve86/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve87/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve88/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve89/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve93/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve95/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve96/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve97/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve98/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve99/o2sim_Kine.root");	
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve101/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve102/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve103/o2sim_Kine.root");
@@ -355,96 +446,6 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve2
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve297/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve298/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve299/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve01/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve02/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve03/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve04/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve05/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve06/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve07/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve08/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve09/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve10/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve11/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve12/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve13/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve14/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve16/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve17/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve18/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve19/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve20/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve21/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve22/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve23/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve24/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve25/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve26/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve27/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve28/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve29/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve30/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve31/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve32/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve33/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve34/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve35/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve36/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve37/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve38/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve39/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve40/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve41/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve42/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve43/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve44/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve45/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve46/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve47/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve48/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve49/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve51/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve52/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve53/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve54/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve56/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve57/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve58/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve59/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve62/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve63/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve64/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve65/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve66/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve67/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve68/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve69/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve70/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve71/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve72/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve73/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve74/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve75/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve76/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve77/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve78/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve79/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve80/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve81/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve82/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve83/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve84/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve85/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve86/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve87/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve88/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve89/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve93/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve95/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve96/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve97/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve98/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve99/o2sim_Kine.root");
   
 
  	mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve301/o2sim_Kine.root");
@@ -629,7 +630,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve485/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve486/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve487/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve488/o2sim_Kine.root");*/
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve488/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve489/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve490/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve491/o2sim_Kine.root");
@@ -639,7 +640,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve4
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve495/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve496/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve497/o2sim_Kine.root");
-mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve498/o2sim_Kine.root");
+mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve498/o2sim_Kine.root");*/
 
 
 // PbPb events
@@ -841,6 +842,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
 mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");
 */
 
+
 	mcTree.SetBranchStatus("*", 0);
 	mcTree.SetBranchStatus("MCTrack*", 1);
 
@@ -888,6 +890,9 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     TH1D hPtGGEta{"hPtGGEta", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
     TH1D hPtGGPi0Cut{"hPtGGPi0Cut", "pT of #pi^0 #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
     TH1D hPtGGEtaCut{"hPtGGEtaCut", "pT of #h #gamma#gamma Barrel; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
+
+    TH2D hRapidityPt_Pi0 {"hRapidityPt_Pi0", "Rapidity and Pt Pi0",10000,-5.,5.,10000,0.,10.};
+    TH2D hRapidityPt_Eta {"hRapidityPt_Eta", "Rapidity and Pt Eta",10000,-5.,5.,10000,0.,10.};
 
 
 ////////////////////////
@@ -981,6 +986,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     TH2D hInvMassPt_B_GG_SmearedP {"hInvMassPt_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_B_GG_conv_SmearedP {"hInvMassPt_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_B_GG_rec_SmearedP {"hInvMassPt_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_B_GG_rec_SmearedP_All {"hInvMassPt_B_GG_rec_SmearedP_All", "InvMass and Pt of all Photons pairs in Barrel before convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
 
     TH2D hInvMassPt_Pi0_B_SmearedP {"hInvMassPt_Pi0_B_SmearedP", "InvMass and Pt Pi0 in barrel region",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_Pi0_B_GG_SmearedP {"hInvMassPt_Pi0_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with pi0 as same mother in barrel region",1000,0.,1.,10000,0.,10.};
@@ -1086,6 +1092,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     TH2D hInvMassPt_F_GG_SmearedP {"hInvMassPt_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_F_GG_conv_SmearedP {"hInvMassPt_F_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in forward region after convProb",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_F_GG_rec_SmearedP {"hInvMassPt_F_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in forward after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
+    TH2D hInvMassPt_F_GG_rec_SmearedP_All {"hInvMassPt_F_GG_rec_SmearedP_All", "InvMass and Pt of all Photons pairs in Barrel before convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
 
     TH2D hInvMassPt_Pi0_F_SmearedP {"hInvMassPt_Pi0_F_SmearedP", "InvMass and Pt Pi0 in forward region",1000,0.,1.,10000,0.,10.};
     TH2D hInvMassPt_Pi0_F_GG_SmearedP {"hInvMassPt_Pi0_F_GG_SmearedP", "InvMass and Pt of all Photons pairs with pi0 as same mother in forward region",1000,0.,1.,10000,0.,10.};
@@ -1179,8 +1186,10 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
     int countPi0=0;
     int countEta=0;
 
-    myfile=fopen("example.txt", "a");
-    myfile1=fopen("example1.txt", "a");
+    //myfile=fopen("example.txt", "a");
+    //myfile1=fopen("example1.txt", "a");
+  
+    ProgressBar bar1(nEvents); 
 
     for(int iEvent = 0; iEvent < nEvents; ++iEvent) {
       ep.clear();
@@ -1281,6 +1290,7 @@ mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/
 	if (track.GetPdgCode() == 11) ep.emplace_back(track);
 	else em.emplace_back(track);
       }
+
       totPiP+=pip_prim.size();
       totPiM+=pim_prim.size();
       
@@ -1553,7 +1563,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 
           hInvMassGGB_rec.Fill((LVgam1+LVgam2).M());
           hInvMassGGB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-
+          hInvMassPt_B_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
           // add that the two gammas have the same mother
 
           auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
@@ -1608,8 +1618,8 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
       	}
       }
 
-
-
+//    ELECTRON RESULTS
+/*
       for (auto p : ep_prim) {
 	TLorentzVector vp;
 	p.Get4Momentum(vp);
@@ -1657,7 +1667,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	  hLS2prim.Fill((LV1+LV2).M());
 	}
       }
-      
+      */
       
       //  Analysing forward region
       // Fig. 67 , Table 7 LOI, 122 cm is disk 6 (150 cm disk 7), still 6 more disks
@@ -1716,7 +1726,8 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	///////////
 	
       }
-
+// ELECTRON RESULTS
+/*
   for (auto pF : ep_F) {
 	  TLorentzVector vpF;
 	  pF.Get4Momentum(vpF);
@@ -1745,7 +1756,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	    hPrimPhotonPF.Fill(gammaF.P());
     }
          
-
+*/
       
       totPi0F+=pi0_prim_F.size();
       totEtaF+=eta_prim_F.size();
@@ -1811,8 +1822,8 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	}
       }	
       
-
-
+//    COMBINED BARREL FORWARD RESULTS
+/*
       for (auto gam1= gamma_prim.begin(); gam1!=gamma_prim.end();++gam1   ) {
 	TLorentzVector LVgam1;
 	gam1->Get4Momentum(LVgam1);
@@ -1840,7 +1851,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	    }
 	  }    
 	}
-      }	
+      }	*/
       
 /*        
 
@@ -1921,7 +1932,8 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
 
           hInvMassGGF_rec.Fill((LVgam1+LVgam2).M());
           hInvMassGGF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-
+          hInvMassPt_F_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+          
           // add that the two gammas have the same mother
 
           auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
@@ -1933,7 +1945,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
 		        hInvMassGGF_Samemother_rec.Fill((LVgam1+LVgam2).M());
 		        hInvMassGGF_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
         		count++;
-            fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
+            //fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
 	              //	cout<< gam1->getMotherTrackId() <<endl;
               if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
@@ -1978,18 +1990,23 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
             }
           }
       	}
-        fprintf(myfile1," End of big loop \n");
+        //fprintf(myfile1," End of big loop \n");
       }
 
-      fprintf(myfile1," End of event loop \n");
+      //fprintf(myfile1," End of event loop \n");
+    bar1.progress(iEvent+1);
     
     }
-    fclose(myfile);
-    fclose(myfile1);
+    //fclose(myfile);
+    //fclose(myfile1);
 
     // hLS1prim.Add(&hLS1prim);
     // FillLsHist(&hLS1,em);
     
+  ProgressBar bar2(10); 
+
+  bar2.progress(1);
+
     TCanvas c("c", "c", 1600, 1600);
     hVertex.Draw("colz");
     hVertex.SetStats(false);
@@ -2153,6 +2170,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hInvMassGGB_Samemother_conv_SmearedP);    
 ////////////////////////
 
+    bar2.progress(5);
 
 
 ////////////
@@ -2198,6 +2216,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hInvMassPt_F_GG_SmearedP);
     f->WriteTObject(&hInvMassPt_F_GG_conv_SmearedP);
     f->WriteTObject(&hInvMassPt_F_GG_rec_SmearedP);
+    f->WriteTObject(&hInvMassPt_F_GG_rec_SmearedP_All);
 
     f->WriteTObject(&hInvMassPt_B);
     f->WriteTObject(&hInvMassPt_B_GG);
@@ -2207,6 +2226,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hInvMassPt_B_GG_SmearedP);
     f->WriteTObject(&hInvMassPt_B_GG_conv_SmearedP);
     f->WriteTObject(&hInvMassPt_B_GG_rec_SmearedP);
+    f->WriteTObject(&hInvMassPt_B_GG_rec_SmearedP_All);
     
     f->WriteTObject(&hInvMassPt_Pi0_B_SmearedP);
     f->WriteTObject(&hInvMassPt_Pi0_B_GG_SmearedP);
@@ -2316,6 +2336,7 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
 
 
 
+    bar2.progress(9);
 
 
 

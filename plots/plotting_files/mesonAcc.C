@@ -520,10 +520,12 @@ lt_mesonAcc_B_a->Draw("SAME");
 SetStyleTLatex( lt_mesonAcc_B_b, 0.03,4);
 lt_mesonAcc_B_b->Draw("SAME");
 
+c_mesonAcc->Update();
+c_mesonAcc->SaveAs("./Acceptance_meson.png");
+c_mesonAcc->Close();
 
 
 
-/*
 /////////////////      Meson Acceptance Combined plot    ///////////
 StyleSettings();
 SetPlotStyle();
@@ -573,23 +575,23 @@ TH1F* histPt_Acceptance_Pi0_B  = (TH1F*) histPt_ALL_Pi0_B_Rebin->Clone("histPt_A
 histPt_Acceptance_Pi0_B->Divide(histPt_ALL_Pi0_B_GG_Rebin, histPt_ALL_Pi0_B_Rebin, 1,1,"B");
 SetStyleHistoTH1ForGraphs(histPt_Acceptance_Pi0_B, "p_{T} (GeV/c)", "acceptance*BR", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
 histPt_Acceptance_Pi0_B->Draw("E1"); 
-DrawGammaSetMarker(histPt_Acceptance_Pi0_B,25,0.5, kBlack , kBlack);
+DrawGammaSetMarker(histPt_Acceptance_Pi0_B,24,1.0, kRed , kRed);
 
 TH1F* histPt_Acceptance_Eta_B  = (TH1F*) histPt_ALL_Eta_B_Rebin->Clone("histPt_Acceptance_Eta_B");
 histPt_Acceptance_Eta_B->Divide(histPt_ALL_Eta_B_GG_Rebin, histPt_ALL_Eta_B_Rebin, 1,1,"B");
 histPt_Acceptance_Eta_B->Draw("E1, SAME"); 
-DrawGammaSetMarker(histPt_Acceptance_Eta_B,25,0.5, kBlue , kBlue);
+DrawGammaSetMarker(histPt_Acceptance_Eta_B,24,1.0, kGreen+3 , kGreen+3);
 
 
 TH1F* histPt_Acceptance_Pi0_F  = (TH1F*) histPt_ALL_Pi0_F_Rebin->Clone("histPt_Acceptance_Pi0_F");
 histPt_Acceptance_Pi0_F->Divide(histPt_ALL_Pi0_F_GG_Rebin, histPt_ALL_Pi0_F_Rebin, 1,1,"B");
 histPt_Acceptance_Pi0_F->Draw("E1, SAME"); 
-DrawGammaSetMarker(histPt_Acceptance_Pi0_F,21,0.5, kBlack , kBlack);
+DrawGammaSetMarker(histPt_Acceptance_Pi0_F,8,1.0, kRed , kRed);
 TH1F* histPt_Acceptance_Eta_F  = (TH1F*) histPt_ALL_Eta_F_Rebin->Clone("histPt_Acceptance_Eta_F");
 histPt_Acceptance_Eta_F->Divide(histPt_ALL_Eta_F_GG_Rebin, histPt_ALL_Eta_F_Rebin, 1,1,"B");
 
 histPt_Acceptance_Eta_F->Draw("E1, SAME"); 
-DrawGammaSetMarker(histPt_Acceptance_Eta_F,21,0.5, kBlue , kBlue);
+DrawGammaSetMarker(histPt_Acceptance_Eta_F,8,1.0, kGreen+3 , kGreen+3);
 
 //LABELING
 histPt_Acceptance_Pi0_B->GetYaxis()->SetRangeUser(0.1, 5);
@@ -615,15 +617,7 @@ SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
 histPt_Acceptance_Pi0_B->Draw("E1, SAME"); 
 
-
-TCanvas* c_mesonAcc = new TCanvas("c_mesonAcc","c_mesonAcc",0,0,1600,1600);  // gives the page size
-DrawGammaCanvasSettings( c_mesonAcc, 0.1, 0.02, 0.02, 0.1);
-c_mesonAcc->cd()->SetLogy();  
-c_mesonAcc->cd();
-
-*/
-c_mesonAcc->Update();
-c_mesonAcc->SaveAs("./Acceptance_meson.png");
-c_mesonAcc->Close();
+c_eff_combined->SaveAs("./Acceptance_meson_ALL.png");
+c_eff_combined->Close();
 
 }

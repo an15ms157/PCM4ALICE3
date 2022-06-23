@@ -59,19 +59,22 @@ gStyle->SetPadTickY(1);
 //   TO VANISH STAT BOX 
                                                 ////////////////FORWARD///////////////
 
-Int_t collisionSystem = 1 ;//  pp = 0 || PbPb = 1; 
+Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
 
 TFile * fileRec;
 TLatex *lt_mesonAcc_B_b;
 TLatex *lt_mesonAcc_F_b;
+TString colli_Sys; 
+
 switch(collisionSystem){
     case 0:{
         cout << "pp system"<< endl;
-        fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/output/ana_pTcut_withft3.root");
+        fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_pp_check.root");
         lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
         lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
         gSystem->Exec("mkdir mesonRec_BR_Acc/pp");
         gSystem->cd("./mesonRec_BR_Acc/pp");
+        colli_Sys = "pp";
         break;
     }
     case 1:{
@@ -82,6 +85,7 @@ switch(collisionSystem){
 
     gSystem->Exec("mkdir mesonRec_BR_Acc/PbPb");
     gSystem->cd("./mesonRec_BR_Acc/PbPb");
+    colli_Sys = "PbPb";
 
         break;
     }
@@ -278,14 +282,14 @@ histPt_AccBrREC_rap_F_low1_to_low2_Pi0_SmearedP->GetXaxis()->SetRangeUser(0.0,5.
 
 // CHECKER LABELING //
 //DrawGammaSetMarker(histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP,25,1.0, kRed+3 , kRed+3);
-//histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP->Draw("E1");
+histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP->Draw("E1");
 DrawGammaSetMarker(histPt_AccBrREC_rap_F_low1_to_low2_Pi0_SmearedP,26,1.0, kRed , kRed);
 histPt_AccBrREC_rap_F_low1_to_low2_Pi0_SmearedP->Draw("SAME,P"); 
 DrawGammaSetMarker(histPt_AccBrREC_rap_F_high1_to_high2_Pi0_SmearedP,20,1.0, kRed , kRed);
 histPt_AccBrREC_rap_F_high1_to_high2_Pi0_SmearedP->Draw("SAME,P"); 
 
 //DrawGammaSetMarker(histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP,25,1.0, kGreen+3 , kGreen+3);
-//histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP->Draw("SAME,E1");
+histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP->Draw("SAME,E1");
 DrawGammaSetMarker(histPt_AccBrREC_rap_F_low1_to_low2_Eta_SmearedP,26,1.0, kGreen+3 , kGreen+3);
 histPt_AccBrREC_rap_F_low1_to_low2_Eta_SmearedP->Draw("SAME,P"); 
 DrawGammaSetMarker(histPt_AccBrREC_rap_F_high1_to_high2_Eta_SmearedP,20,1.0, kGreen+3 , kGreen+3);
@@ -301,8 +305,8 @@ mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_low1_to_low2_Pi0_SmearedP,Form
 mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_high1_to_high2_Pi0_SmearedP,Form("#pi^{0} : %.2f < y < %.2f",eta_F_high1,eta_F_high2));
 mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_low1_to_low2_Eta_SmearedP,Form("#eta : %.2f < y < %.2f",eta_F_low1,eta_F_low2));
 mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_high1_to_high2_Eta_SmearedP,Form("#eta : %.2f < y < %.2f",eta_F_high1,eta_F_high2));
-//mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP,Form("#eta : %.2f < y < %.2f",eta_F_mid1,eta_F_mid2));
-//mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP,Form("#pi^{0} : %.2f < y < %.2f",eta_F_mid1,eta_F_mid2));
+mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP,Form("#eta : %.2f < y < %.2f",eta_F_mid1,eta_F_mid2));
+mesonRec_BR_Acc_F->AddEntry(histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP,Form("#pi^{0} : %.2f < y < %.2f",eta_F_mid1,eta_F_mid2));
 //mesonRec_BR_Acc_F->AddEntry(histPt_Acceptance_rap_F_low_plus_high_Pi0,Form("#pi^{0} : %.2f < |y| < %.2f",eta_F_high1,eta_F_high2));
 //mesonRec_BR_Acc_F->AddEntry(histPt_Acceptance_rap_F_low_plus_high_Eta,Form("#eta : %.2f < |y| < %.2f",eta_F_high1,eta_F_high2));
 mesonRec_BR_Acc_F->Draw("SAME");
@@ -488,15 +492,40 @@ c_eff_Pi0->SaveAs("./hAccBR_REC.png");
 
 c_eff_Pi0->Close();
 
+const char *outputFile = "../../ALICE3_significance_input.root"; // merge output files after analysis was run to keep file size moderate
+auto fout = TFile::Open(outputFile, "UPDATE");
+//TFile *outputfile = TFile::Open("../../ALICE3_significance_input.root","UPDATE");
+fout->cd();
+fout->mkdir(colli_Sys);
+fout->cd(colli_Sys);
+
+histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP->GetXaxis()->SetTitle("pT (GeV/c)");
+histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP->GetYaxis()->SetTitle("Acc*BR*RecEff");
+histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP->SetName(Form("histPt_AccBrREC_rap_F_%0.2f_to_%0.2f_Pi0_SmearedP",eta_F_mid1,eta_F_mid2));
+histPt_AccBrREC_rap_F_mid1_to_mid2_Pi0_SmearedP->Write();
+
+histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP->GetXaxis()->SetTitle("pT (GeV/c)");
+histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP->GetYaxis()->SetTitle("Acc*BR*RecEff");
+histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP->SetName(Form("histPt_AccBrREC_rap_F_%0.2f_to_%0.2f_Eta_SmearedP",eta_F_mid1,eta_F_mid2));
+histPt_AccBrREC_rap_F_mid1_to_mid2_Eta_SmearedP->Write();
+
+histPt_AccBrREC_rap_B_high1_to_high2_Pi0_SmearedP->GetXaxis()->SetTitle("pT (GeV/c)");
+histPt_AccBrREC_rap_B_high1_to_high2_Pi0_SmearedP->GetYaxis()->SetTitle("Acc*BR*RecEff");
+histPt_AccBrREC_rap_B_high1_to_high2_Pi0_SmearedP->SetName(Form("histPt_AccBrREC_rap_B_%0.2f_to_%0.2f_Pi0_SmearedP",eta_B_high1,eta_B_high2));
+histPt_AccBrREC_rap_B_high1_to_high2_Pi0_SmearedP->Write();
+
+histPt_AccBrREC_rap_B_high1_to_high2_Eta_SmearedP->GetXaxis()->SetTitle("pT (GeV/c)");
+histPt_AccBrREC_rap_B_high1_to_high2_Eta_SmearedP->GetYaxis()->SetTitle("Acc*BR*RecEff");
+histPt_AccBrREC_rap_B_high1_to_high2_Eta_SmearedP->SetName(Form("histPt_AccBrREC_rap_B_%0.2f_to_%0.2f_Eta_SmearedP",eta_B_high1,eta_B_high2));
+histPt_AccBrREC_rap_B_high1_to_high2_Eta_SmearedP->Write();
+
+fout->Close();
 
 
 
 
 
 
-
-
-/*
 ///////////////  Acceptance*BR*efficiency combined PLOT    ///////////////
 
 TCanvas* c_mesonRec_BR_Acc = new TCanvas("c_mesonRec_BR_Acc","c_mesonRec_BR_Acc",0,0,700,700);  // gives the page size
@@ -504,7 +533,6 @@ DrawGammaCanvasSettings( c_mesonRec_BR_Acc, 0.1, 0.02, 0.02, 0.1);
 //c_mesonRec_BR_Acc->Divide(2,1);
 c_mesonRec_BR_Acc->SetLogy();  
 
-c_mesonRec_BR_Acc->cd(1);
 //Barrel
 TH2D * histRapPt_All_Pi0_B          = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B");
 TH2D * histRapPt_All_Pi0_B_GG       = (TH2D*) fileRec->Get("hRapidityPt_Pi0_B_GG");
@@ -601,28 +629,31 @@ histPt_Efficiency_Eta_F->Divide(histPt_REC_Eta_F_GG_Rebin, histPt_All_Eta_F_GG_R
 TH1F* histPt_Eff_BR_Acc_Eta_F  = (TH1F*) histPt_All_Eta_F_Rebin->Clone("histPt_Eff_BR_Acc_Eta_F");
 histPt_Eff_BR_Acc_Eta_F->Divide(histPt_REC_Eta_F_GG_Rebin, histPt_All_Eta_F_Rebin, 1,1,"B");
 
-SetStyleHistoTH1ForGraphs(histPt_Eff_BR_Acc_Eta_F, "p_{T} (GeV/c)", "acceptance*BR", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_F,25,0.5, kGreen+3 , kGreen+3);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_F,25,0.5, kRed , kRed);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_B,8,0.5, kGreen+3 , kGreen+3);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_B,8,0.5, kRed , kRed);
+SetStyleHistoTH1ForGraphs(histPt_Eff_BR_Acc_Pi0_F, "p_{T} (GeV/c)", "acceptance*BR*RecEff", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_F,24,1.0, kGreen+3 , kGreen+3);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_F,24,1.0, kRed , kRed);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_B,8,1.0, kGreen+3 , kGreen+3);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_B,8,1.0, kRed , kRed);
 
 //LABELING
-histPt_Eff_BR_Acc_Pi0_B->GetYaxis()->SetRangeUser(0.00000001,.1);
+histPt_Eff_BR_Acc_Pi0_F->GetYaxis()->SetRangeUser(1e-8,1.0);
+histPt_Eff_BR_Acc_Pi0_F->Draw(" E1");
 histPt_Eff_BR_Acc_Pi0_B->Draw("SAME E1");
 histPt_Eff_BR_Acc_Eta_B->Draw("SAME E1");
-histPt_Eff_BR_Acc_Pi0_F->Draw("SAME E1");
 histPt_Eff_BR_Acc_Eta_F->Draw("SAME E1");
 
-auto l_mesonRec_BR_Acc = new TLegend(0.7, 0.65, 0.9, 0.8);
+auto l_mesonRec_BR_Acc = new TLegend(0.5,0.2, 0.7, 0.4);
 l_mesonRec_BR_Acc->SetHeader("");
 l_mesonRec_BR_Acc->SetBorderSize(0);
 l_mesonRec_BR_Acc->SetFillStyle(0);
 l_mesonRec_BR_Acc->SetTextSize(TextSize);
 l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Pi0_B,"#pi^{0} :  0<|y|<1.3 ","p");
+l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Pi0_F,"#pi^{0} :  1.75<|y|<4.0 ","p");
+l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Eta_B,"#eta :  0<|y|<1.3 ","p");
+l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Eta_F,"#eta :  1.75<|y|<4.0 ","p");
 l_mesonRec_BR_Acc->Draw("SAME");
 
-TLatex *lt119a = new TLatex(0.7,0.8,"Meson Acceptance*BR*Efficiency ");
+TLatex *lt119a = new TLatex(0.7,0.9,"Meson Acceptance*BR*Efficiency ");
 SetStyleTLatex( lt119a, 0.03,4);
 //lt119a->Draw("SAME");
 
@@ -631,11 +662,11 @@ SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
 //c_mesonRec_BR_Acc->Update();
 //histPt_Eff_BR_Acc_Pi0_B->Draw("E1, SAME"); 
-gSystem->Exec("mkdir mesonRec_BR_Acc");
-c_mesonRec_BR_Acc->SaveAs("./mesonRec_BR_Acc/hAccBR_REC.png");
+//gSystem->Exec("mkdir mesonRec_BR_Acc");
+c_mesonRec_BR_Acc->SaveAs("./mesonRec_BR_Acc_ALL.png");
 
-c_mesonRec_BR_Acc->Close();
+//c_mesonRec_BR_Acc->Close();
 
-*/
+
 
 }
