@@ -71,8 +71,8 @@ TLatex *l_meson_signalVSbackground;
 TLatex *l_mesonbackground_b;
 
 Int_t collisionSystem                      = 1 ;//  pp = 0 || PbPb = 1; 
-TString fRap                               = "B";
-fMesonId                                   = 221;
+TString fRap                               = "B"; // F or B
+fMesonId                                   = 221; // 111 or 221
 
 float_t fEnergy;            
 TString fMesonName;
@@ -124,7 +124,7 @@ switch(collisionSystem){
     
 case 0:{
     cout << "pp system"<< endl;
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_pp_check.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_pp_ALL.root");
     fcollisionSystem = "pp";
     fEnergy = 14;
     l_meson_signalVSbackground = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
@@ -148,7 +148,7 @@ case 1:{
     l_meson_signalVSbackground = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
     l_mesonbackground_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
 
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb_check.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_check_PbPb_ALL.root");
     if (fMesonId==111) {
         gSystem->Exec(Form("mkdir meson_background/PbPb/Pi0_%s",fRap.Data()));
         gSystem->cd(Form("meson_background/PbPb/Pi0_%s",fRap.Data()));

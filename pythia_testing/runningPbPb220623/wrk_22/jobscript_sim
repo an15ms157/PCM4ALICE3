@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#NEVENTS=1
+NEVENTS=5
+NCPUS=1
+
+DIR=`pwd`
+
+# options to pass to every workflow
+gloOpt=" -b --run --shm-segment-size 10000000000"
+
+result=od -An -N3 -i /dev/random
+echo $result
+
+sed -i "s/Random:seed =[0-9]*/Random:seed =$RANDOM/g" /misc/alidata110/alice_u/nath/alice/sw/ubuntu2004_x86-64/O2/dev-local2/share/Generators/egconfig/pythia8_hi.cfg
+
+sed -i "s/Random:seed =[0-9]*/Random:seed =$RANDOM/g" /misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia8_hi.cfg   
+
+echo "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+o2-sim-serial -j ${NCPUS} --field 5 -e TGeant3 -n ${NEVENTS} -g pythia8hi -m TRK FT3 A3IP -o o2-sim --trigger external --configKeyValues 'GeneratorPythia8.config=/misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia8_hi.cfg;TriggerExternal.fileName=trigger_multiplicity.C;TriggerExternal.funcName=trigger_multiplicity(-1.5,1.5, 11)'
+echo "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+
+
+#root.exe -q -b run_strangenesstracking_01.C+
+#root.exe -q -b runtracking.C+
+#root.exe -q -b run_analysis_example.C+
+
+echo  ${LD_LIBRARY_PATH}
+ls -al 
+mv *.root *.dat ${result_dir}

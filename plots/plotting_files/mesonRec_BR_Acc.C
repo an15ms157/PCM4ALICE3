@@ -32,26 +32,6 @@ gStyle->SetOptTitle(0); //this will disable the title for all coming histograms 
 //gStyle->SetPadTickX(1);
 //gStyle->SetPadTickY(1);
 
-/*
-gStyle->SetOptTitle(0);
-//gStyle->SetOptStat(0);
-gStyle->SetLineWidth(2);
-gStyle->SetPadLeftMargin(0.15);
-gStyle->SetPadBottomMargin(0.15);
-gStyle->SetPadTopMargin(0.05);
-gStyle->SetPadRightMargin(0.05);
-gStyle->SetTitleSize(0.06);
-gStyle->SetTitleSize(0.06,"Y");
-gStyle->SetTitleOffset(1,"Y");
-gStyle->SetTitleOffset(1,"X");
-gStyle->SetLabelSize(0.05);
-gStyle->SetLabelSize(0.05,"Y");
-gStyle->SetFrameLineWidth(2);
-gStyle->SetNdivisions(505,"X");
-gStyle->SetNdivisions(505,"Y");
-gStyle->SetPadTickX(1);
-gStyle->SetPadTickY(1);
-*/
 //   TO MOVE STATBOX
 //gStyle->SetStatX(.44);
 //gStyle->SetStatY(.83);
@@ -69,7 +49,7 @@ TString colli_Sys;
 switch(collisionSystem){
     case 0:{
         cout << "pp system"<< endl;
-        fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_pp_check.root");
+        fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_pp_ALL.root");
         lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
         lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
         gSystem->Exec("mkdir mesonRec_BR_Acc/pp");
@@ -94,10 +74,11 @@ switch(collisionSystem){
 double fMaxPt=10.0;
 Int_t Font=42;
 Double_t TextSize=0.025;
-Double_t TextSize_lable=0.03;
-Double_t TextSize_title=0.04;
+Double_t TextSize_lable=0.025;
+Double_t TextSize_title=0.025;
 Double_t TextSize_latex=20;
-Double_t LabelOffsetLog=-0.015;
+Double_t LabelOffsetX=1.1;
+Double_t LabelOffsetY=1.7;
 
 //const int nBinsPt=100;
 
@@ -528,8 +509,8 @@ fout->Close();
 
 ///////////////  Acceptance*BR*efficiency combined PLOT    ///////////////
 
-TCanvas* c_mesonRec_BR_Acc = new TCanvas("c_mesonRec_BR_Acc","c_mesonRec_BR_Acc",0,0,700,700);  // gives the page size
-DrawGammaCanvasSettings( c_mesonRec_BR_Acc, 0.1, 0.02, 0.02, 0.1);
+TCanvas* c_mesonRec_BR_Acc = new TCanvas("c_mesonRec_BR_Acc","c_mesonRec_BR_Acc",0,0,600,600);  // gives the page size
+DrawGammaCanvasSettings( c_mesonRec_BR_Acc, 0.1, 0.05, 0.1, 0.1);
 //c_mesonRec_BR_Acc->Divide(2,1);
 c_mesonRec_BR_Acc->SetLogy();  
 
@@ -629,11 +610,11 @@ histPt_Efficiency_Eta_F->Divide(histPt_REC_Eta_F_GG_Rebin, histPt_All_Eta_F_GG_R
 TH1F* histPt_Eff_BR_Acc_Eta_F  = (TH1F*) histPt_All_Eta_F_Rebin->Clone("histPt_Eff_BR_Acc_Eta_F");
 histPt_Eff_BR_Acc_Eta_F->Divide(histPt_REC_Eta_F_GG_Rebin, histPt_All_Eta_F_Rebin, 1,1,"B");
 
-SetStyleHistoTH1ForGraphs(histPt_Eff_BR_Acc_Pi0_F, "p_{T} (GeV/c)", "acceptance*BR*RecEff", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_F,24,1.0, kGreen+3 , kGreen+3);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_F,24,1.0, kRed , kRed);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_B,8,1.0, kGreen+3 , kGreen+3);
-DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_B,8,1.0, kRed , kRed);
+SetStyleHistoTH1ForGraphs(histPt_Eff_BR_Acc_Pi0_F, "p_{T} (GeV/c)", "acc. #times BR #times p_{conv} #times #varepsilon_{reco} ", TextSize_lable, TextSize_title, TextSize_lable,TextSize_title,LabelOffsetX,LabelOffsetY);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_F,24,1.0,  kRed , kRed);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Pi0_B,8,1.0,kRed+2 , kRed+2);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_F,24,1.0, kGreen+2 , kGreen+2);
+DrawGammaSetMarker(histPt_Eff_BR_Acc_Eta_B,8,1.0,kGreen+3 , kGreen+3);
 
 //LABELING
 histPt_Eff_BR_Acc_Pi0_F->GetYaxis()->SetRangeUser(1e-8,1.0);
@@ -647,22 +628,23 @@ l_mesonRec_BR_Acc->SetHeader("");
 l_mesonRec_BR_Acc->SetBorderSize(0);
 l_mesonRec_BR_Acc->SetFillStyle(0);
 l_mesonRec_BR_Acc->SetTextSize(TextSize);
-l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Pi0_B,"#pi^{0} :  0<|y|<1.3 ","p");
+l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Pi0_B,"#pi^{0} :  |y|<1.3 ","p");
 l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Pi0_F,"#pi^{0} :  1.75<|y|<4.0 ","p");
-l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Eta_B,"#eta :  0<|y|<1.3 ","p");
-l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Eta_F,"#eta :  1.75<|y|<4.0 ","p");
+l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Eta_B,"#eta  :  |y|<1.3 ","p");
+l_mesonRec_BR_Acc->AddEntry(histPt_Eff_BR_Acc_Eta_F,"#eta  :  1.75<|y|<4.0 ","p");
 l_mesonRec_BR_Acc->Draw("SAME");
 
-TLatex *lt119a = new TLatex(0.7,0.9,"Meson Acceptance*BR*Efficiency ");
+TLatex *lt119a = new TLatex(0.7,0.9,"");
 SetStyleTLatex( lt119a, 0.03,4);
 //lt119a->Draw("SAME");
 
-TLatex *lt119b = new TLatex(0.15,0.9,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
+TLatex *lt119b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{}");
 SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
 //c_mesonRec_BR_Acc->Update();
 //histPt_Eff_BR_Acc_Pi0_B->Draw("E1, SAME"); 
 //gSystem->Exec("mkdir mesonRec_BR_Acc");
+//c_mesonRec_BR_Acc->GetYaxis()->SetTitleOffset(1);
 c_mesonRec_BR_Acc->SaveAs("./mesonRec_BR_Acc_ALL.png");
 
 //c_mesonRec_BR_Acc->Close();

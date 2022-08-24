@@ -71,7 +71,7 @@ Int_t ScaleFactor_Eta;
 switch(collisionSystem){
     case 0:{
     cout << "pp system"<< endl;    
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/output/ana_pTcut_withft3.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_pp_ALL.root");
     lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     ScaleFactor_Pi0 = 1;
@@ -84,7 +84,7 @@ switch(collisionSystem){
     case 1:{
     cout << "PbPb system"<< endl;
         //TFile * fileRec = new TFile("./ana_withft3.root");
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_check_PbPb_ALL.root");
     lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
     lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
     ScaleFactor_Pi0 = 10;
@@ -612,7 +612,7 @@ TLatex *lt119a = new TLatex(0.7,0.8,"Meson Acceptance");
 SetStyleTLatex( lt119a, 0.03,4);
 //lt119a->Draw("SAME");
 
-TLatex *lt119b = new TLatex(0.15,0.9,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
+TLatex *lt119b = new TLatex(0.15,0.9,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
 histPt_Acceptance_Pi0_B->Draw("E1, SAME"); 
