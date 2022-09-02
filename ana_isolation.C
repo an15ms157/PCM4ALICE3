@@ -73,7 +73,9 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
 void ana_isolation(){
   TChain mcTree("o2sim");
 
-  //mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve1/o2sim_Kine.root");
+mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve21/o2sim_Kine.root");
+mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve22/o2sim_Kine.root");
+mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve23/o2sim_Kine.root");
   /*  
   // pp events
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve1/o2sim_Kine.root");
