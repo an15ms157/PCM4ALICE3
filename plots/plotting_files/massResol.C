@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "TCanvas.h"
 #include "TChain.h"
 #include "TFile.h"
@@ -11,37 +10,16 @@
 
 #include "/home/abhishek/alice/AnalysisSoftware-master/CommonHeaders/PlottingGammaConversionHistos.h"
 #include "/home/abhishek/alice/AnalysisSoftware-master/CommonHeaders/PlottingMeson.h"
+
+#include "./ALICE3_setup.h"
+
 void massResol(){
 
 //SET THIS VARIABLES: 
-Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
 
 StyleSettings();
 SetPlotStyle();
 gStyle->SetOptTitle(0); //this will disable the title for all coming histograms or
-
-
-//gStyle->SetOptStat(0);
-//gStyle->SetLineWidth(2);
-//gStyle->SetPadLeftMargin(0.15);
-//gStyle->SetPadBottomMargin(0.15);
-//gStyle->SetPadTopMargin(0.05);
-//gStyle->SetPadRightMargin(0.05);
-//gStyle->SetTitleSize(0.06);
-//gStyle->SetTitleSize(0.06,"Y");
-//gStyle->SetTitleOffset(1,"Y");
-//gStyle->SetTitleOffset(1,"X");
-//gStyle->SetLabelSize(0.05);
-//gStyle->SetLabelSize(0.05,"Y");
-//gStyle->SetFrameLineWidth(2);
-//gStyle->SetNdivisions(505,"X");
-//gStyle->SetNdivisions(505,"Y");
-//gStyle->SetPadTickX(1);
-//gStyle->SetPadTickY(1);
-
-/*
-gStyle->SetOptTitle(0);
-//gStyle->SetOptStat(0);
 gStyle->SetLineWidth(2);
 gStyle->SetPadLeftMargin(0.15);
 gStyle->SetPadBottomMargin(0.15);
@@ -58,26 +36,29 @@ gStyle->SetNdivisions(505,"X");
 gStyle->SetNdivisions(505,"Y");
 gStyle->SetPadTickX(1);
 gStyle->SetPadTickY(1);
-*/
+
 //   TO MOVE STATBOX
 //gStyle->SetStatX(.44);
 //gStyle->SetStatY(.83);
 
-//   TO VANISH STAT BOX 
+
                                                 ////////////////FORWARD///////////////
 
-TFile * fileRec;
-TLatex *ltl_invMass_pi0_F_b;
-TLatex *ltl_invMass_pi0_B_b;
 Int_t ScaleFactor_Pi0;
 Int_t ScaleFactor_Eta;
+
+double_t mu_Pi0_F, mu_error_Pi0_F, sigma_Pi0_F,sigma_error_Pi0_F, mu_Pi0_B, mu_error_Pi0_B, sigma_Pi0_B,sigma_error_Pi0_B;
+double_t mu_Eta_F, mu_error_Eta_F, sigma_Eta_F,sigma_error_Eta_F, mu_Eta_B, mu_error_Eta_B, sigma_Eta_B,sigma_error_Eta_B;
+
+fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/ana_pTcut_withft3_check.root");
 
 switch(collisionSystem){
     case 0:{
     cout << "pp system"<< endl;    
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/output/ana_pTcut_withft3.root");
-    ltl_invMass_pi0_F_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
-    ltl_invMass_pi0_B_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{pp, #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_invMass_Eta_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_invMass_Pi0_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_invMass_Pi0_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_invMass_Eta_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     ScaleFactor_Pi0 = 1;
     ScaleFactor_Eta = 10;
     gSystem->Exec("mkdir massResol/pp");
@@ -87,10 +68,10 @@ switch(collisionSystem){
     }
     case 1:{
     cout << "PbPb system"<< endl;
-        //TFile * fileRec = new TFile("./ana_withft3.root");
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
-    ltl_invMass_pi0_F_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
-    ltl_invMass_pi0_B_b = new TLatex(0.2,0.8,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_invMass_Eta_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_invMass_Pi0_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_invMass_Pi0_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_invMass_Eta_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
     ScaleFactor_Pi0 = 10;
     ScaleFactor_Eta = 100;
     gSystem->Exec("mkdir massResol/PbPb");
@@ -100,30 +81,8 @@ switch(collisionSystem){
     }
 }
 
-
-double fMaxPt=10.0;
-Int_t Font=42;
-Double_t TextSize=0.025;
-Double_t TextSize_lable=0.03;
-Double_t TextSize_title=0.04;
-Double_t TextSize_latex=20;
-Double_t LabelOffsetLog=-0.015;
-
-//const int nBinsPt=100;
-
-Double_t pt_bin_proj[]={0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4.0,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5.0};
-Int_t nbinspt_proj  = sizeof(pt_bin_proj)/sizeof(*pt_bin_proj) -1;
-
 //Double_t pt_bin_proj_fine[]={0.0,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,5.0,7.0,10.0 };
 //Int_t nbinspt_proj_fine  = (sizeof(pt_bin_proj)/sizeof(*pt_bin_proj)) -1;
-
-
-Double_t pt_bin_proj_fine[13]={0.0,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,5.0,7.0,10.0 };
-Int_t nbinspt_proj_fine  = 12;
-
-
-
-
 
 
 ///////////////  Pi0 InVmass FIT PLOT    ///////////////
@@ -198,7 +157,7 @@ gs_invMass_pi0_F->SetParameters(.10, 0.547, 0.01);
 hInvMassGGPi0F_SmearedP->Fit(gs_invMass_pi0_F,"RME+");
 gs_invMass_pi0_F->SetLineColor(kAzure+2);
 gs_invMass_pi0_F->SetLineWidth(2);
-
+gs_invMass_pi0_F
 
 hInvMassGGF_SmearedP->GetXaxis()->SetRangeUser(0.1,0.18); 
 hInvMassGGF_SmearedP->SetMinimum(0); 
@@ -301,6 +260,11 @@ hInvMassGGEtaF_SmearedP->Fit(gs_invMass_Eta_F,"RME+");
 gs_invMass_Eta_F->SetLineColor(kAzure+2);
 gs_invMass_Eta_F->SetLineWidth(2);
 
+//Fitted values
+mu_Eta_F  = gs_invMass_Eta_F->GetParameter(1);
+mu_error_Eta_F = gs_invMass_Eta_F->GetParError(1);
+sigma_Eta_F  = gs_invMass_Eta_F->GetParameter(2);
+sigma_error_Eta_F = gs_invMass_Eta_F->GetParError(2);
 
 hInvMassGGF_SmearedP->GetXaxis()->SetRangeUser(0.45,0.65); 
 hInvMassGGF_SmearedP->SetMinimum(0); 
@@ -319,14 +283,16 @@ l_invMass_Eta_F->AddEntry(hInvMassGGEtaF_SmearedP,"#splitline{Invariant Mass His
 l_invMass_Eta_F->AddEntry(gs_invMass_Eta_F,"Gaussian Fit","l");
 l_invMass_Eta_F->Draw("SAME");
 
-TLatex *ltl_invMass_Eta_F_a = new TLatex(0.15,0.6,"#splitline{#mu: 547.64 MeV/c^{2}}{#sigma: 15.78 MeV/c^{2}} ");
+TLatex *ltl_invMass_Eta_F_a = new TLatex(0.15,0.6,"{#mu: 547.64 MeV/c^{2} ");
 SetStyleTLatex( ltl_invMass_Eta_F_a, 0.025,4);
 ltl_invMass_Eta_F_a->Draw("SAME");
 
-TLatex *ltl_invMass_Eta_F_b = new TLatex(0.6,0.83,"#splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
+TLatex *ltl_invMass_Eta_F_b = new TLatex(0.6,0.83,"}{#sigma: 15.78 MeV/c^{2}} #splitline{ALICE 3 Study}{PbPb, #sqrt{#it{s}_{NN}} = 14 TeV}");
 SetStyleTLatex( ltl_invMass_Eta_F_b, 0.025,4);
 ltl_invMass_Eta_F_b->Draw("SAME");
 
+SetStyleTLatex( ltb_invMass_Eta_F, 0.025,4);
+ltb_invMass_Eta_F->Draw("SAME");
 
 
 c_invMass_Eta.SaveAs("./hInvMassGG_Eta_FIT.png");

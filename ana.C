@@ -6,13 +6,14 @@
 #include "TH2.h"
 #include "TPad.h"
 #include "TLegend.h"
-
+#include "TRandom3.h"  
+#include "TDatime.h"
 
 // CINT does not understand some files included by LorentzVector
 #ifndef __CINT__
 #include "Math/Vector3D.h"
 #include "Math/Vector4D.h"
-#include "progressbar.h"
+#include "analysis_files/progressbar.h"
 
 using namespace ROOT::Math;
 
@@ -36,10 +37,6 @@ std::ofstream outfile;
 //	}
 //}
 
-//TDatime t;
-//gRandom->SetSeed(t.GetDate() + t.GetYear() * t.GetHour() * t.GetMinute() * t.GetSecond()); // NB: gRandom is a global pointer ?
-
-
 //MOMENTUM SMEARING
 TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
   float sigmaPF0 = 0.04082;
@@ -51,14 +48,19 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
   double phi = p4True.Phi();
   double theta = p4True.Theta();
   double sigmaP;  
-  
+  cout<< __LINE__ << "\n";
+
+  TDatime t1;
+  cout<< t1.GetDate() + t1.GetYear() * t1.GetHour() * t1.GetMinute() * t1.GetSecond()<< endl ;
+  TRandom3* random_number1 = new TRandom3(t1.GetDate() + t1.GetYear() * t1.GetHour() * t1.GetMinute() * t1.GetSecond());
+
   if( TMath::Abs(p4True.Eta()) < 1.3) {
     sigmaP = pTrue * TMath::Sqrt(sigmaPt0 * sigmaPt0 + (sigmaPt1 * pTrue) * (sigmaPt1 * pTrue));
   }
   else if ( TMath::Abs(p4True.Eta()) > 1.75   &&  TMath::Abs(p4True.Eta()) < 4 ) {
     sigmaP = pTrue * TMath::Sqrt(sigmaPF0 * sigmaPF0 );
   }
-  double pSmearedMag = gRandom->Gaus(pTrue, sigmaP);
+  double pSmearedMag = random_number1->Gaus(pTrue, sigmaP);
   if (pSmearedMag < 0) pSmearedMag = 0;
   // Calculate smeared components of 3-vector
   Double_t pxSmeared = pSmearedMag * TMath::Cos(phi) * TMath::Sin(theta);
@@ -71,7 +73,16 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
 }
 
 void ana(){
+cout<< __LINE__ << "\n";
+
+  TDatime t;
+  cout<< t.GetDate() + t.GetYear() * t.GetHour() * t.GetMinute() * t.GetSecond()<< endl ;
+  TRandom3* random_number = new TRandom3(t.GetDate() + t.GetYear() * t.GetHour() * t.GetMinute() * t.GetSecond());
+
   TChain mcTree("o2sim");
+mcTree.AddFile("/home/abhishek/PhD/Work/work_A/photons/input/pythia_testing/resultsPbPb220623/eve22/o2sim_Kine.root");
+//mcTree.AddFile("/misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve22/o2sim_Kine.root");
+//mcTree.AddFile("/misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve23/o2sim_Kine.root");
   //mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve1/o2sim_Kine.root");
   /*  
   // pp events
@@ -832,12 +843,14 @@ void ana(){
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve791/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve792/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve793/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve794/o2sim_Kine.root");*/
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve794/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve795/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve796/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve797/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve798/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");*/
+
+cout<< __LINE__ << "\n";
 
   mcTree.SetBranchStatus("*", 0);
   mcTree.SetBranchStatus("MCTrack*", 1);
@@ -847,6 +860,7 @@ void ana(){
   const float r = 130.;
   //	const float r = 15.;
   const float maxZ = 150.;
+
   TH2D hVertex {"hVertex", "prod. vertices of e^{+}/e^{-} with photon mother;x (cm);y (cm)", 1000, -r, r, 1000, -r, r};
   TH2D hVertexR {"hVertexR", "prod. vertices of e^{+}/e^{-} with photon mother;z (cm);r (cm)", 1000, -maxZ, maxZ, 1000, 0., r};
   TH2D hVertexR_F {"hVertexR_F", "prod. vertices of e^{+}/e^{-} with photon mother in Forwards disks;z (cm);r (cm)", 1000, -maxZ, maxZ, 1000, 0., r};
@@ -995,6 +1009,8 @@ void ana(){
   TH1D hInvMassF {"hInvMassF", "invariant mass of e^{+}/e^{-} with photon mother Forward;m (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassSameF {"hInvMassSameF", "invariant mass of e^{+}/e^{-} with same photon mother Forward;m (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
+  cout<< __LINE__ << "\n";
+
   TH1D hInvMassGGF{"hInvMassGGF", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGPi0F{"hInvMassGGPi0F", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGEtaF{"hInvMassGGEtaF", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
@@ -1025,7 +1041,7 @@ void ana(){
   TH1D hPtGGEtaF_rec{"hPtGGEtaF_rec", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hPtGGPi0F_rec{"hPtGGPi0F_rec", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hInvMassGGF_Samemother_rec{"hInvMassGGF_Samemother_rec", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
-    
+
   TH1D hInvMassGGF_rec_SmearedP{"hInvMassGGF_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGPi0F_rec_SmearedP{"hInvMassGGPi0F_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGEtaF_rec_SmearedP{"hInvMassGGEtaF_rec_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
@@ -1047,7 +1063,7 @@ void ana(){
   TH1D hPtGGEtaF_conv{"hPtGGEtaF_conv", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hPtGGPi0F_conv{"hPtGGPi0F_conv", "pT of #h #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hInvMassGGF_Samemother_conv{"hInvMassGGF_Samemother_conv", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
-    
+
   TH1D hInvMassGGF_conv_SmearedP{"hInvMassGGF_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGPi0F_conv_SmearedP{"hInvMassGGPi0F_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGEtaF_conv_SmearedP{"hInvMassGGEtaF_conv_SmearedP", "invariant mass of #gamma#gamma Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
@@ -1067,6 +1083,7 @@ void ana(){
   TH2D hRapidityPt_Eta_F_GG{"hRapidityPt_Eta_F_GG", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",10000,-5.,5.,10000,0.,10.};
   TH2D hRapidityPt_Eta_F_GG_conv {"hRapidityPt_Eta_F_GG_conv", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",10000,-5.,5.,10000,0.,10.};
   TH2D hRapidityPt_Eta_F_GG_rec {"hRapidityPt_Eta_F_GG_rec", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",10000,-5.,5.,10000,0.,10.};
+          cout<< __LINE__ << "\n";
 
   TH2D hRapidityPt_Pi0_F_SmearedP {"hRapidityPt_Pi0_F_SmearedP", "Rapidity and Pt Pi0 in forward region",10000,-5.,5.,10000,0.,10.};
   TH2D hRapidityPt_Pi0_F_GG_SmearedP {"hRapidityPt_Pi0_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with pi0 as same mother in forward region",10000,-5.,5.,10000,0.,10.};
@@ -1076,6 +1093,7 @@ void ana(){
   TH2D hRapidityPt_Eta_F_GG_SmearedP{"hRapidityPt_Eta_F_GG_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region",10000,-5.,5.,10000,0.,10.};
   TH2D hRapidityPt_Eta_F_GG_conv_SmearedP {"hRapidityPt_Eta_F_GG_conv_SmearedP", "Rapidity and Pt of all Photons pairs with eta as same mother in forward region after convProb",10000,-5.,5.,10000,0.,10.};
   TH2D hRapidityPt_Eta_F_GG_rec_SmearedP {"hRapidityPt_Eta_F_GG_rec_SmearedP", "Rapidity and Pt of all Photons pairs in forward with eta as same mother after convProb*ParamRecEff",10000,-5.,5.,10000,0.,10.};
+          cout<< __LINE__ << "\n";
 
   TH2D hInvMassPt_F {"hInvMassPt_F", "InvMass and Pt in forward region",1000,0.,1.,10000,0.,10.};
   TH2D hInvMassPt_F_GG {"hInvMassPt_F_GG", "InvMass and Pt of all Photons pairs with as same mother in forward region",1000,0.,1.,10000,0.,10.};
@@ -1115,11 +1133,17 @@ void ana(){
   TH1D hPtGGEtaBFCut{"hPtGGEtaBFCut", "pT of #h #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 10000, 0., 10.};
  
 
+  TH1D h_LVgam1_B {"h_LVgam1_B", "InvMass and Pt of first gamma Barrel",10000,0.,10.};
+  TH1D h_LVgam1_F {"h_LVgam1_F", "InvMass and Pt of first gamma Forward",10000,0.,10.};
 
+  TH1D hNPrimChPiP {"hNPrimChPiP", "number of primary charged pi+; N#pi+  ;N / N_{ev}", 2000, -0.5, 1999.5};
+  TH1D hNPrimChPiM {"hNPrimChPiM", "number of primary charged pi-; N#pi-  ;N / N_{ev}", 2000, -0.5, 1999.5};
+  TH1D hNPrimChProtonPlus {"hNPrimChProtonPlus", "number of primary charged proton+; N#proton+  ;N / N_{ev}", 2000, -0.5, 1999.5};
+  TH1D hNPrimChProtonMinus {"hNPrimChProtonMinus", "number of primary charged proton-; N#proton-  ;N / N_{ev}", 2000, -0.5, 1999.5};
+  TH1D hNPrimChKaonP {"hNPrimChKaonP", "number of primary charged kaon+; N#kaon+  ;N / N_{ev}", 2000, -0.5, 1999.5};
+  TH1D hNPrimChKaonM {"hNPrimChKaonM", "number of primary charged kaon-; N#kaon-  ;N / N_{ev}", 2000, -0.5, 1999.5};
 
-  TH1D hNPrimChPiP {"hNPrimChPiP", "number of primary charged pi+; N#pi+  ;N / N_{ev}", 2000, -0.5, 199.5};
-  TH1D hNPrimChPiM {"hNPrimChPiM", "number of primary charged pi-; N#pi-  ;N / N_{ev}", 2000, -0.5, 199.5};
-  TH1D hNPhotonConv{"hNPhotonConv", "number of Photon conversions; N#g  ;N / N_{ev}", 2000, -0.5, 199.5};
+  TH1D hNPhotonConv{"hNPhotonConv", "number of Photon conversions; N#g  ;N / N_{ev}", 2000, -0.5, 1999.5};
 
   TH1D hLS1 {"hLS1","Like Sign spectrum of -- pairs from all particles;m_{ee} (GeV/c^{2})", 100,0,1};
   TH1D hLS2 {"hLS2","Like Sign spectrum of ++ pairs from all particles;m_{ee} (GeV/c^{2})", 100,0,1};
@@ -1142,7 +1166,8 @@ void ana(){
   TH2D hOpeningangle_P_Pi0_B_DaughterPhotons {"hOpeningangle_P_Pi0_B_DaughterPhotons", "P and Opening angle for Pi0 daughter photons in barrel region",10000,0.,10.,10000,-5.,5.};
   TH2D hOpeningangle_P_Eta_B_DaughterPhotons {"hOpeningangle_P_Eta_B_DaughterPhotons", "P and Opening angle for Eta daughter photons in barrel region",10000,0.,10.,10000,-5.,5.};
 
-    
+    cout<< __LINE__ << "\n";
+
   double eMass = 0.000511;
   double minPt = 0.01;
   double minPtG = 0.1;
@@ -1211,8 +1236,10 @@ void ana(){
 	  //BARREL
 
     for (const auto track : *mcTracks) {
+cout<< __LINE__ << "\n";
 
 	    if (TMath::Abs(track.GetRapidity()) > 1.3) continue;
+cout<< __LINE__ << "\n";
 
 	    if (track.isPrimary()) {
  	      float convProb,eff;
@@ -1247,8 +1274,8 @@ void ana(){
 
         //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	      if (track.GetPdgCode() == 22 )   gamma_prim_B.emplace_back(track);
-	      if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
-        if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamB_rec_conv.emplace_back(track);
+	      if ( (random_number->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
+        if ( (random_number->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamB_rec_conv.emplace_back(track);
 
 	      //continue;
 	    }	
@@ -1288,7 +1315,12 @@ void ana(){
     
     hNPrimChPiP.Fill(pip_prim.size());
     hNPrimChPiM.Fill(pim_prim.size());
-      
+    hNPrimChProtonPlus.Fill(prop_prim.size());
+    hNPrimChProtonMinus.Fill(prom_prim.size());
+    hNPrimChKaonP.Fill(kap_prim.size());
+    hNPrimChKaonM.Fill(kam_prim.size());  
+    cout << pip_prim.size()<< " " << pim_prim.size()<<" " <<prop_prim.size()<<" " << prom_prim.size()<<" " << kap_prim.size()<<" " << kam_prim.size()<<" "<<endl;
+
     //printf("nConv / nTracks = %i / %zu\n", nConv, mcTracks->size());
     int nConvSame = 0;
     for (auto p : ep) {
@@ -1377,6 +1409,8 @@ void ana(){
     for (auto gam1= gamma_prim_B.begin(); gam1!=gamma_prim_B.end();++gam1   ) {
 	    TLorentzVector LVgam1, LVgam1_Smear_P;
 	    gam1->Get4Momentum(LVgam1);
+      h_LVgam1_B.Fill( LVgam1.Pt());
+      //cout << h_LVgam1_B<< endl;
       LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
 	    for (auto gam2= gam1+1;  gam2!= gamma_prim_B.end(); ++gam2 ) {
 	      TLorentzVector LVgam2, LVgam2_Smear_P;
@@ -1575,7 +1609,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
     }
 
 //    ELECTRON RESULTS
-/*
+
       for (auto p : ep_prim) {
 	TLorentzVector vp;
 	p.Get4Momentum(vp);
@@ -1623,7 +1657,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	  hLS2prim.Fill((LV1+LV2).M());
 	}
       }
-      */
+      
       
       //  Analysing forward region
       // Fig. 67 , Table 7 LOI, 122 cm is disk 6 (150 cm disk 7), still 6 more disks
@@ -1655,8 +1689,8 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
        hRapidityPt_Eta_F_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());}
     //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
 	  if (track.GetPdgCode() == 22 )   gamma_prim_F.emplace_back(track);
-	  if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
-    if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
+	  if ( (random_number->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
+    if ( (random_number->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
     
 	}
 	// Conversions in forward
@@ -1683,7 +1717,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	
       }
 // ELECTRON RESULTS
-/*
+
   for (auto pF : ep_F) {
 	  TLorentzVector vpF;
 	  pF.Get4Momentum(vpF);
@@ -1712,7 +1746,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 	    hPrimPhotonPF.Fill(gammaF.P());
     }
          
-*/
+
       
       totPi0F+=pi0_prim_F.size();
       totEtaF+=eta_prim_F.size();
@@ -1720,6 +1754,7 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
   for (auto gam1= gamma_prim_F.begin(); gam1!=gamma_prim_F.end();++gam1   ) {
 	TLorentzVector LVgam1, LVgam1_Smear_P;
 	gam1->Get4Momentum(LVgam1);
+  h_LVgam1_F.Fill( LVgam1.Pt());
   LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
 	for (auto gam2= gam1+1;  gam2!= gamma_prim_F.end(); ++gam2 ) {
 	  TLorentzVector LVgam2, LVgam2_Smear_P;
@@ -2262,6 +2297,11 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hNPrimChPiM);
     f->WriteTObject(&hNPhotonConv);
     f->WriteTObject(&hNPrimChPiP);
+    f->WriteTObject(&hNPrimChProtonPlus);
+    f->WriteTObject(&hNPrimChProtonMinus);
+    f->WriteTObject(&hNPrimChKaonP);
+    f->WriteTObject(&hNPrimChKaonM);
+
     f->WriteTObject(&hPrimPhotonPt);
     f->WriteTObject(&hPiPlusPt);
     f->WriteTObject(&hPi0Pt);
@@ -2290,7 +2330,8 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hOpeningangle_P_Pi0_B_DaughterPhotons);
     f->WriteTObject(&hOpeningangle_P_Eta_B_DaughterPhotons);
 
-
+    f->WriteTObject(&h_LVgam1_B);
+    f->WriteTObject(&h_LVgam1_F);
 
     bar2.progress(9);
 

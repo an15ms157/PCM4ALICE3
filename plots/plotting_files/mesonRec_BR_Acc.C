@@ -39,7 +39,7 @@ gStyle->SetOptTitle(0); //this will disable the title for all coming histograms 
 //   TO VANISH STAT BOX 
                                                 ////////////////FORWARD///////////////
 
-Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
+Int_t collisionSystem = 1 ;//  pp = 0 || PbPb = 1; 
 
 TFile * fileRec;
 TLatex *lt_mesonAcc_B_b;
@@ -59,7 +59,7 @@ switch(collisionSystem){
     }
     case 1:{
     cout << "PbPb system"<< endl;
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/ana_pTcut_withft3_PbPb.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/ana_pTcut_withft3_check.root");
     lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
     lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
 
@@ -128,7 +128,7 @@ Double_t eta_B_mid1   = 0.8;
 Double_t eta_B_mid2   = 1.3;
 
 
-
+/*
 
 
 ///////////////  Pi0 Effiiency at different Forward rapidity PLOT    ///////////////
@@ -504,7 +504,7 @@ fout->Close();
 
 
 
-
+*/
 
 
 ///////////////  Acceptance*BR*efficiency combined PLOT    ///////////////

@@ -60,13 +60,17 @@ gStyle->SetPadTickY(1);
                                                 ////////////////FORWARD///////////////
 
 
-Int_t collisionSystem = 0 ;//  pp = 0 || PbPb = 1; 
+Int_t collisionSystem = 1 ;//  pp = 0 || PbPb = 1; 
 
 TFile * fileRec;
 TLatex *lt_mesonAcc_F_b;
 TLatex *lt_mesonAcc_B_b;
 Int_t ScaleFactor_Pi0;
 Int_t ScaleFactor_Eta;
+
+TString fcollisionSystem;
+
+bool SWITCH_write_to_file               = false;
 
 switch(collisionSystem){
     case 0:{
@@ -84,13 +88,15 @@ switch(collisionSystem){
     case 1:{
     cout << "PbPb system"<< endl;
         //TFile * fileRec = new TFile("./ana_withft3.root");
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_check_PbPb_ALL.root");
+    //fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/ana_pTcut_withft3_check.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/ana_pTcut_withft3_check.root");
     lt_mesonAcc_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
     lt_mesonAcc_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
     ScaleFactor_Pi0 = 10;
     ScaleFactor_Eta = 100;
     gSystem->Exec("mkdir mesonAcc/PbPb");
     gSystem->cd("./mesonAcc/PbPb");
+    fcollisionSystem = "PbPb";
 
         break;
     }
@@ -158,6 +164,7 @@ TH2D * histRapPt_ALL_Eta_B_GG       = (TH2D*) fileRec->Get("hRapidityPt_Eta_B_GG
 
 
 
+/*
 ///////////////  Acceptance at different rapidity PLOT    ///////////////
 
 
@@ -524,6 +531,10 @@ c_mesonAcc->Update();
 c_mesonAcc->SaveAs("./Acceptance_meson.png");
 c_mesonAcc->Close();
 
+*////
+
+
+
 
 
 /////////////////      Meson Acceptance Combined plot    ///////////
@@ -612,12 +623,41 @@ TLatex *lt119a = new TLatex(0.7,0.8,"Meson Acceptance");
 SetStyleTLatex( lt119a, 0.03,4);
 //lt119a->Draw("SAME");
 
-TLatex *lt119b = new TLatex(0.15,0.9,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+TLatex *lt119b = new TLatex(0.15,0.9,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 5.5 TeV}");
 SetStyleTLatex( lt119b, 0.03,4);
 lt119b->Draw("SAME");
 histPt_Acceptance_Pi0_B->Draw("E1, SAME"); 
 
 c_eff_combined->SaveAs("./Acceptance_meson_ALL.png");
 c_eff_combined->Close();
+
+
+if (SWITCH_write_to_file){
+const char *outputFile = "../../../ALICE3_significance_input.root"; // merge output files after analysis was run to keep file size moderate
+auto fout = TFile::Open(outputFile, "UPDATE");
+//TFile *outputfile = TFile::Open("../../ALICE3_significance_input.root","UPDATE");
+fout->cd();
+fout->mkdir(Form("%s",fcollisionSystem.Data()));
+fout->cd(Form("%s",fcollisionSystem.Data()));
+
+histPt_Acceptance_Pi0_B->SetName("histPt_Acceptance_Pi0_B");
+histPt_Acceptance_Pi0_B->Write();
+
+histPt_Acceptance_Pi0_B->GetXaxis()->SetTitle("p_{T} (GeV/c)");
+histPt_Acceptance_Pi0_B->GetYaxis()->SetTitle("#Acceptance");
+histPt_Acceptance_Pi0_B->GetXaxis()->SetRangeUser(0.0, 10);
+//histPt_Acceptance_Pi0_B->GetYaxis()->SetRangeUser(1e-5, 1e5);
+
+histPt_Acceptance_Pi0_F->SetName("histPt_Acceptance_Pi0_F");
+histPt_Acceptance_Pi0_F->Write();
+
+histPt_Acceptance_Eta_B->SetName("histPt_Acceptance_Eta_B");
+histPt_Acceptance_Eta_B->Write();
+
+histPt_Acceptance_Eta_F->SetName("histPt_Acceptance_Eta_F");
+histPt_Acceptance_Eta_F->Write();
+
+fout->Close();
+}
 
 }

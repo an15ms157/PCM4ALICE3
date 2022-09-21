@@ -11,15 +11,16 @@
 // CINT does not understand some files included by LorentzVector
 #ifndef __CINT__
 #include "Math/Vector3D.h"
-#include "Math/Vector4D.h"
-#include "progressbar.h"
+ #include <Math/Vector4D.h>
+#include "TLorentzVector.h"
+#include "analysis_files/progressbar.h"
 
 using namespace ROOT::Math;
 
 #endif
 
 std::ofstream outfile;
-//FILE * myfile;
+FILE * myfile;
 //FILE * myfile1;
 
 //#include "DetectorsCommonDataFormats/DetID.h"
@@ -66,19 +67,28 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
   Double_t pzSmeared = pSmearedMag * TMath::Cos(theta);
   // Construct new 4-momentum from smeared energy and 3-momentum
   TLorentzVector pSmeared;
+  //pSmeared.SetXYZT(pxSmeared, pySmeared, pzSmeared, 0.);
   pSmeared.SetXYZM(pxSmeared, pySmeared, pzSmeared, 0.);
   return pSmeared;
 }
 
+void print_MCTrack(std::vector<o2::MCTrack> const &a ) {
+   std::cout << "The vector elements are : ";
+
+   //for(int i=0; i < a.size(); i++)
+   //std::cout << a.at(i) << ' ';
+}
+
+
 void ana_isolation(){
   TChain mcTree("o2sim");
 
-mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve21/o2sim_Kine.root");
-mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve22/o2sim_Kine.root");
-mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve23/o2sim_Kine.root");
-  /*  
+//mcTree.AddFile("/misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve21/o2sim_Kine.root");
+//mcTree.AddFile("/misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve22/o2sim_Kine.root");
+//mcTree.AddFile("/misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pythia_testing/pythia_gRandom_different/resultsPbPb220623/eve23/o2sim_Kine.root");
+//mcTree.AddFile("/home/abhishek/PhD/Work/work_A/photons/input/pythia_testing/resultsPbPb220623/eve22");
   // pp events
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve1/o2sim_Kine.root");
+/*  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve1/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve2/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve3/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack-210701/results/eve4/o2sim_Kine.root");
@@ -446,7 +456,7 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve96/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve97/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve98/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve99/o2sim_Kine.root");
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve99/o2sim_Kine.root");*/
 
 
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve301/o2sim_Kine.root");
@@ -641,7 +651,7 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve495/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve496/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve497/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve498/o2sim_Kine.root");*/
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/results/eve498/o2sim_Kine.root");
 
 
   // PbPb events
@@ -742,7 +752,7 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve696/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve697/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve698/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve699/o2sim_Kine.root");*/
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve699/o2sim_Kine.root");
 
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve701/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve702/o2sim_Kine.root");
@@ -840,7 +850,8 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve796/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve797/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve798/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");*/
+
 
 
   mcTree.SetBranchStatus("*", 0);
@@ -851,7 +862,6 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   const float r = 130.;
   //	const float r = 15.;
   const float maxZ = 150.;
-
   TH2D hVertex {"hVertex", "prod. vertices of e^{+}/e^{-} with photon mother;x (cm);y (cm)", 1000, -r, r, 1000, -r, r};
   TH2D hVertexR {"hVertexR", "prod. vertices of e^{+}/e^{-} with photon mother;z (cm);r (cm)", 1000, -maxZ, maxZ, 1000, 0., r};
   TH2D hVertexR_F {"hVertexR_F", "prod. vertices of e^{+}/e^{-} with photon mother in Forwards disks;z (cm);r (cm)", 1000, -maxZ, maxZ, 1000, 0., r};
@@ -981,6 +991,7 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   TH2D hInvMassPt_B_GG_conv {"hInvMassPt_B_GG_conv", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,0.,1.,10000,0.,10.};
   TH2D hInvMassPt_B_GG_rec {"hInvMassPt_B_GG_rec", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.}; 
   TH2D hInvMassPt_B_SmearedP {"hInvMassPt_B_SmearedP", "InvMass and Pt in Barrel region",1000,0.,1.,10000,0.,10.};
+  TH2D hInvMassPt_B_SmearedP_Global {"hInvMassPt_B_SmearedP_Global", "InvMass and Pt in Barrel region",1000,0.,1.,10000,0.,10.};
   TH2D hInvMassPt_B_GG_SmearedP {"hInvMassPt_B_GG_SmearedP", "InvMass and Pt of all Photons pairs with as same mother in Barrel region",1000,0.,1.,10000,0.,10.};
   TH2D hInvMassPt_B_GG_conv_SmearedP {"hInvMassPt_B_GG_conv_SmearedP", "InvMass and Pt of all Photons pairs in Barrel region after convProb",1000,0.,1.,10000,0.,10.};
   TH2D hInvMassPt_B_GG_rec_SmearedP {"hInvMassPt_B_GG_rec_SmearedP", "InvMass and Pt of all Photons pairs in Barrel after convProb*ParamRecEff",1000,0.,1.,10000,0.,10.};
@@ -1147,7 +1158,9 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   TH2D hOpeningangle_P_Pi0_B_DaughterPhotons {"hOpeningangle_P_Pi0_B_DaughterPhotons", "P and Opening angle for Pi0 daughter photons in barrel region",10000,0.,10.,10000,-5.,5.};
   TH2D hOpeningangle_P_Eta_B_DaughterPhotons {"hOpeningangle_P_Eta_B_DaughterPhotons", "P and Opening angle for Eta daughter photons in barrel region",10000,0.,10.,10000,-5.,5.};
 
-    
+
+
+
   double eMass = 0.000511;
   double minPt = 0.01;
   double minPtG = 0.1;
@@ -1159,13 +1172,13 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
 
   std::vector<o2::MCTrack> ep, em, ep_prim, em_prim, pip_prim, pim_prim;
   std::vector<o2::MCTrack> gamma_prim_B, gamB_rec_conv, gamB_conv;
-  std::vector<ROOT::Math::XYZTVector> gamma_prim_B_P4;
   std::vector<o2::MCTrack> pi0_prim, eta_prim;
   std::vector<o2::MCTrack> kap_prim, kam_prim, prom_prim, prop_prim;
   std::vector<o2::MCTrack> pi0_prim_F, eta_prim_F;
   std::vector<o2::MCTrack> gamma_prim_F, gamF_rec_conv, gamF_conv;
-  std::vector<ROOT::Math::XYZTVector> gamma_prim_F_P4;
   std::vector<o2::MCTrack> ep_F, em_F;
+
+  std::vector<pair<o2::MCTrack, TLorentzVector >> gamma_prim_B_SmearedP;
 
   float totPiP=0;
   float totGammaConv= 0;
@@ -1177,10 +1190,11 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
   int count=0;
   int countPi0=0;
   int countEta=0;
-  //myfile=fopen("example.txt", "a");
+  myfile=fopen("example.txt", "w");
   //myfile1=fopen("example1.txt", "a");
 
   ProgressBar bar1(nEvents); 
+
   for(int iEvent = 0; iEvent < nEvents; ++iEvent) {
     ep.clear();
     em.clear();
@@ -1202,12 +1216,13 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
 
     gamma_prim_B.clear();
     gamB_rec_conv.clear();
+    gamma_prim_B_SmearedP.clear();
+
+    //gamB_rec_conv_SmearedP.clear();
     gamB_conv.clear();
-    gamma_prim_B_P4.clear();
     gamma_prim_F.clear();
     gamF_rec_conv.clear();
     gamF_conv.clear();
-    gamma_prim_F_P4.clear();
 
     mcTree.GetEntry(iEvent);
     int nConv = 0;
@@ -1219,874 +1234,134 @@ mcTree.AddFile("//misc/alidata120/alice_u/nath/electron-pack/pTcut/anaConV3/pyth
 	    if (TMath::Abs(track.GetRapidity()) > 1.3) continue;
 
 	    if (track.isPrimary()) {
+        
  	      float convProb,eff;
-
         convProb = 3.54334e-02 * TMath::Power(track.GetPt(), 1.47512) / (1.56461e-02 + TMath::Power(track.GetPt(), 1.43599));
         //convProb = -8.24825e-03  *( TMath::Power(track.GetP(), -5.03182e-01 )-1.13113e+01*track.GetP()) / (2.23495e-01 + TMath::Power(track.GetP(), 1.08338e+00 ));
         if (convProb > 0.04)	convProb = 0.04;
-
         eff = 5.89182e-01 * TMath::Power(track.GetPt(), 3.85834) / (2.96558e-03 + TMath::Power(track.GetPt(), 3.72573));
         if (eff > 1.)	eff = 1.;
-
-	      if (track.GetPdgCode() == 211 )  pip_prim.emplace_back(track);
-	      if (track.GetPdgCode() == -211 ) pim_prim.emplace_back(track);
-
-	      if (track.GetPdgCode() == 2212 )  prop_prim.emplace_back(track);
-	      if (track.GetPdgCode() == -2212 ) prom_prim.emplace_back(track);
-
-	      if (track.GetPdgCode() == 321 )  kap_prim.emplace_back(track);
-	      if (track.GetPdgCode() == -321 ) kam_prim.emplace_back(track);
-
+        if (track.GetPdgCode() == 211 )  pip_prim.emplace_back(track);
+        if (track.GetPdgCode() == -211 ) pim_prim.emplace_back(track);
+        if (track.GetPdgCode() == 2212 )  prop_prim.emplace_back(track);
+        if (track.GetPdgCode() == -2212 ) prom_prim.emplace_back(track);
+        if (track.GetPdgCode() == 321 )  kap_prim.emplace_back(track);
+        if (track.GetPdgCode() == -321 ) kam_prim.emplace_back(track);
         if (track.GetPdgCode() == 111 ) {
           pi0_prim.emplace_back(track);
           hRapidityPt_Pi0_B.Fill((track.GetRapidity()) ,track.GetPt());
           hRapidityPt_Pi0_B_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());
         }
-
-	      if (track.GetPdgCode() == 221 )  {
+        if (track.GetPdgCode() == 221 )  {
           eta_prim.emplace_back(track);
           hRapidityPt_Eta_B.Fill((track.GetRapidity()) ,track.GetPt());
           hRapidityPt_Eta_B_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());
         }
-
         //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
-	      if (track.GetPdgCode() == 22 )   gamma_prim_B.emplace_back(track);
-	      if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
+        if (track.GetPdgCode() == 22 ) {  
+
+          gamma_prim_B.emplace_back(track);     
+          TLorentzVector LVgam, LVgam_Smear_P;   
+          (gamma_prim_B.back()).Get4Momentum(LVgam);
+          LVgam_Smear_P = ApplyMomentumSmearing_F(LVgam);
+          gamma_prim_B_SmearedP.emplace_back(make_pair(track, LVgam_Smear_P));        
+
+        }
+        if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
         if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamB_rec_conv.emplace_back(track);
-
-	    }	
-	    // Take only electron/positron 
-	    if (TMath::Abs(track.GetPdgCode()) != 11  ) continue;
-
-	    if (track.GetPt() < minPt) continue;
-	    // AM- I am interested in conversions all the way
-	    if (sqrt(track.GetStartVertexCoordinatesX()*track.GetStartVertexCoordinatesX()+ track.GetStartVertexCoordinatesY()*track.GetStartVertexCoordinatesY())> maxR) continue;
-	    
-      if (track.isPrimary()) {
-	      if (track.GetPdgCode() > 0) ep_prim.emplace_back(track);
-	      else em_prim.emplace_back(track);
-	      //continue;
-	    }
-	    auto motherId = track.getMotherTrackId();
-	    if (motherId < 0) continue;
-	    auto mTrack = (*mcTracks)[motherId];
-	    //cout<<"checking mother pdgcode, primary, Z of photon origin::" << mTrack.GetPdgCode()  << "  " << mTrack.isPrimary() << "  "<< mTrack.GetStartVertexCoordinatesZ()<< endl;
-	    if (mTrack.GetPdgCode() != 22) continue;
-	    if (!mTrack.isPrimary() ) continue;
-	    hVertex.Fill(track.GetStartVertexCoordinatesX(), track.GetStartVertexCoordinatesY());
-	    const auto r_vtx = std::sqrt(std::pow(track.GetStartVertexCoordinatesX(), 2) + std::pow(track.GetStartVertexCoordinatesY(), 2));
-	    hVertexR.Fill(track.GetStartVertexCoordinatesZ(), r_vtx);
-	    ++nConv;
-	    if (track.GetPdgCode() == 11) ep.emplace_back(track);
-	    else em.emplace_back(track);
+        //continue;
+      }	
+      fprintf(myfile, "End of loop over tracks in #event: %d \n", iEvent) ;
     }
 
-
-    totPiP+=pip_prim.size();
-    totPiM+=pim_prim.size();
-    
-    totPi0+=pi0_prim.size();
-    totEta+=eta_prim.size();
-    
-    
-    hNPrimChPiP.Fill(pip_prim.size());
-    hNPrimChPiM.Fill(pim_prim.size());
+    for (auto gam1= gamma_prim_B_SmearedP.begin(); gam1!=gamma_prim_B_SmearedP.end();++gam1   ) {
       
-    //printf("nConv / nTracks = %i / %zu\n", nConv, mcTracks->size());
-    int nConvSame = 0;
-    for (auto p : ep) {
-	    TLorentzVector vp;
-	    p.Get4Momentum(vp);
-	    for (auto e : em) {
-	      TLorentzVector ve;
-	      e.Get4Momentum(ve);
-	      //cout<< "mother id of e+e-::"<< p.getMotherTrackId()<< "   " << e.getMotherTrackId()<< endl;
-	      const float mass = (ve + vp).M();
-	      const float gammaPt = (ve + vp).Pt();
-	      hInvMass.Fill(mass);
-	      if (p.getMotherTrackId() ==  e.getMotherTrackId()){
-	        hInvMassSame.Fill(mass);
-	        hPhotonPt.Fill(gammaPt);
-	        nConvSame++;
-	      }
-	    }
-    }
-
-    hNPhotonConv.Fill(nConvSame);
-    totGammaConv+=nConvSame;
-    for (auto pip : pip_prim) {
-	    TLorentzVector vpip;
-	    pip.Get4Momentum(vpip);
-	    hChargedPionPt.Fill(vpip.Pt());
-	    hPiPlusPt.Fill(vpip.Pt());
-    }
-
-    for (auto pim : pim_prim) {
-	    TLorentzVector vpim;
-	    pim.Get4Momentum(vpim);
-	    hChargedPionPt.Fill(vpim.Pt());
-	    hPiMinusPt.Fill(vpim.Pt());
-    }
-      
-    for (auto pi0 : pi0_prim) {
-	    TLorentzVector vpi0;
-	    pi0.Get4Momentum(vpi0);
-	    hPi0Pt.Fill(vpi0.Pt());
-    }
-    
-    for (auto eta : eta_prim) {
-	    TLorentzVector veta;
-	    eta.Get4Momentum(veta);
-	    hEtaPt.Fill(veta.Pt());
-    }      
-    
-    for (auto kap : kap_prim) {
-	    TLorentzVector vkap;
-	    kap.Get4Momentum(vkap);
-	    hKaonPlusPt.Fill(vkap.Pt());
-    }
-    
-    for (auto kam : kam_prim) {
-	    TLorentzVector vkam;
-	    kam.Get4Momentum(vkam);
-	    hKaonMinusPt.Fill(vkam.Pt());
-    }
-      
-    for (auto prop : prop_prim) {
-	    TLorentzVector vprop;
-	    prop.Get4Momentum(vprop);
-	    hProtonPlusPt.Fill(vprop.Pt());
-    }
-      
-    for (auto prom : prom_prim) {
-	    TLorentzVector vprom;
-	    prom.Get4Momentum(vprom);
-	    hProtonMinusPt.Fill(vprom.Pt());
-    }
-      
-    for (auto elp : ep_prim) {
-	    TLorentzVector velp;
-	    elp.Get4Momentum(velp);
-	    hElecPlusPt.Fill(velp.Pt());
-    }
-
-    for (auto elm : em_prim) {
-	    TLorentzVector velm;
-	    elm.Get4Momentum(velm);
-	    hElecMinusPt.Fill(velm.Pt());
-    }	
-
-    for (auto gam1= gamma_prim_B.begin(); gam1!=gamma_prim_B.end();++gam1   ) {
-	    TLorentzVector LVgam1, LVgam1_Smear_P;
-	    gam1->Get4Momentum(LVgam1);
+      TLorentzVector LVgam1, LVgam1_Smear_P, LVgam1_Smear_P_Global;
+      (gam1->first).Get4Momentum(LVgam1);
+      fprintf(myfile,"ORIGINAL GAM 1: %f, %f, %f, %f, %f \n",LVgam1.Px(), LVgam1.Py(), LVgam1.Pz(), LVgam1.E(), LVgam1.M());
       LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-	    for (auto gam2= gam1+1;  gam2!= gamma_prim_B.end(); ++gam2 ) {
-	      TLorentzVector LVgam2, LVgam2_Smear_P;
-	      gam2->Get4Momentum(LVgam2); 
+      LVgam1_Smear_P_Global=gam1->second ;
+      fprintf(myfile,"LOCAL SMEARING: %f, %f, %f, %f, %f \n",LVgam1_Smear_P.Px(), LVgam1_Smear_P.Py(), LVgam1_Smear_P.Pz(), LVgam1_Smear_P.E(), LVgam1_Smear_P.M());
+      fprintf(myfile,"GLOBAL SMEARING: %f, %f, %f, %f, %f \n\n",LVgam1_Smear_P_Global.Px(), LVgam1_Smear_P_Global.Py(), LVgam1_Smear_P_Global.Pz(), LVgam1_Smear_P_Global.E(), LVgam1_Smear_P_Global.M());
+      
+
+      for (auto gam2= gam1+1;  gam2!= gamma_prim_B_SmearedP.end(); ++gam2 ) {
+
+        TLorentzVector LVgam2, LVgam2_Smear_P, LVgam2_Smear_P_Global;
+        (gam2->first).Get4Momentum(LVgam2); 
+        fprintf(myfile,"ORIGINAL GAM 2: %f, %f, %f, %f, %f \n",LVgam2.Px(), LVgam2.Py(), LVgam2.Pz(), LVgam2.E(), LVgam2.M());
         LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
-        //cout<<LVgam2_Smear_P.Px()<<" "<<LVgam2.Px()<< endl;
         hInvMassGGB.Fill((LVgam1+LVgam2).M());
         hInvMassGGB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-
         hInvMassPt_B.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
         hInvMassPt_B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-	      // add that the two gammas have the same mother
-	      auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
+        LVgam2_Smear_P_Global=gam2->second ;
+        hInvMassPt_B_SmearedP_Global.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
+        fprintf(myfile,"LOCAL SMEARING: %f, %f, %f, %f, %f \n",LVgam2_Smear_P.Px(), LVgam2_Smear_P.Py(), LVgam2_Smear_P.Pz(), LVgam2_Smear_P.E(), LVgam2_Smear_P.M());
+        fprintf(myfile,"GLOBAL SMEARING: %f, %f, %f, %f, %f \n\n",LVgam2_Smear_P_Global.Px(), LVgam2_Smear_P_Global.Py(), LVgam2_Smear_P_Global.Pz(), LVgam2_Smear_P_Global.E(), LVgam2_Smear_P_Global.M());
+      /*
+        // add that the two gammas have the same mother
+        auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
         auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
 
-	      if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
+        if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
           hInvMassPt_B_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
           hInvMassPt_B_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-      
-          if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
-	          hInvMassGGPi0B.Fill((LVgam1+LVgam2).M());
-            hInvMassGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-	          hPtGGPi0B.Fill((LVgam1+LVgam2).Pt());
-            hPtGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            hRapidityPt_Pi0_B_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hRapidityPt_Pi0_B_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            //hRapidityP_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
-            hRapidityOpeningangle_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-            hOpeningangle_P_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).P(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-  
-            if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
-		          hInvMassGGPi0BCut.Fill((LVgam1+LVgam2).M());
-		          hPtGGPi0BCut.Fill((LVgam1+LVgam2).Pt());
-	            hInvMassGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
 
-          }
-
-          if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
-	          hInvMassGGEtaB.Fill((LVgam1+LVgam2).M());
-	          hInvMassGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-	          hPtGGEtaB.Fill((LVgam1+LVgam2).Pt());
-	          hPtGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            hRapidityPt_Eta_B_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hRapidityPt_Eta_B_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            //hRapidityP_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),1);
-            hRapidityOpeningangle_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-            hOpeningangle_P_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).P(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-
-	          if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
-		          hInvMassGGEtaBCut.Fill((LVgam1+LVgam2).M());
-		          hPtGGEtaBCut.Fill((LVgam1+LVgam2).Pt());
-		          hInvMassGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-	        }
-	      }    
-	    }
-    }
-
-  
-
-    for (auto gam1= gamB_rec_conv.begin(); gam1!=gamB_rec_conv.end();++gam1   ) {
-      TLorentzVector LVgam1, LVgam1_Smear_P;
-      gam1->Get4Momentum(LVgam1);
-      LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-
-      for (auto gam2= gam1+1;  gam2!= gamB_rec_conv.end(); ++gam2 ) {
-        TLorentzVector LVgam2, LVgam2_Smear_P;
-        gam2->Get4Momentum(LVgam2);
-        LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
-
-        hInvMassGGB_rec.Fill((LVgam1+LVgam2).M());
-        hInvMassGGB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-        hInvMassPt_B_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        // add that the two gammas have the same mother
-
-        auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-        auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
-
-        if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
-          hInvMassPt_B_GG_rec.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-          hInvMassPt_B_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-		      hInvMassGGB_Samemother_rec.Fill((LVgam1+LVgam2).M());
-		      hInvMassGGB_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-
-	        //	cout<< gam1->getMotherTrackId() <<endl;
-          if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
-
-	          hInvMassGGPi0B_rec.Fill((LVgam1+LVgam2).M());
-            hInvMassGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-            hPtGGPi0B_rec.Fill((LVgam1+LVgam2).Pt());
-            hPtGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            hRapidityPt_Pi0_B_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-
-            if(( LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
-              hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hInvMassPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }          
-
-            if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
-		          hInvMassGGPi0BCut_rec.Fill((LVgam1+LVgam2).M());
-              hPtGGPi0BCut_rec.Fill((LVgam1+LVgam2).Pt());
-		          hInvMassGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-          }
-
-          if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
-            hInvMassGGEtaB_rec.Fill((LVgam1+LVgam2).M());
-       	    hPtGGEtaB_rec.Fill((LVgam1+LVgam2).Pt());
-            hRapidityPt_Eta_B_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hInvMassGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-       	    hPtGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-
-            if( (LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
-              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
-              hInvMassPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-
-            if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
-              hInvMassGGEtaBCut_rec.Fill((LVgam1+LVgam2).M());
-              hPtGGEtaBCut_rec.Fill((LVgam1+LVgam2).Pt());
-              hInvMassGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-          }
-        }
+        } */   
       }
+      fprintf(myfile, "End of a loop over pairing in #event: %d \n", iEvent) ;
     }
-
-  
-
-
-    // ELECTRON RESULTS
-    
-    for (auto p : ep_prim) {
-    	TLorentzVector vp;
-    	p.Get4Momentum(vp);
-    	for (auto e : em_prim) {
-    	  TLorentzVector ve;
-    	  e.Get4Momentum(ve);
-    	  const float mass = (ve + vp).M();
-    	  hInvMassPrim.Fill(mass);
-    	}
-    }
-
-    for (auto track1 = em.begin(); track1!=em.end(); ++track1) {
-    	TLorentzVector LV1;
-    	track1->Get4Momentum(LV1);
-    	for (auto track2 = track1+1; track2!=em.end(); ++track2) {
-    	  TLorentzVector LV2;
-    	  track2->Get4Momentum(LV2);
-    	  hLS1.Fill((LV1+LV2).M());
-    	}
-    }
-
-    for (auto track1 = ep.begin(); track1!=ep.end(); ++track1) {
-    	TLorentzVector LV1;
-    	track1->Get4Momentum(LV1);
-    	for (auto track2 = track1+1; track2!=ep.end(); ++track2) {
-    	  TLorentzVector LV2;
-    	  track2->Get4Momentum(LV2);
-    	  hLS2.Fill((LV1+LV2).M());
-    	}
-    }
-
-    for (auto track1 = em_prim.begin(); track1!=em_prim.end(); ++track1){
-    	TLorentzVector LV1;
-    	track1->Get4Momentum(LV1);
-    	for (auto track2 = track1+1; track2!=em_prim.end(); ++track2){
-    	  TLorentzVector LV2;
-    	  track2->Get4Momentum(LV2);
-    	  hLS1prim.Fill((LV1+LV2).M());
-    	}
-    }
-
-    for (auto track1 = ep_prim.begin(); track1!=ep_prim.end(); ++track1) {
-      TLorentzVector LV1;
-      track1->Get4Momentum(LV1);
-      for (auto track2 = track1+1; track2!=ep_prim.end(); ++track2) {
-        TLorentzVector LV2;
-        track2->Get4Momentum(LV2);
-        hLS2prim.Fill((LV1+LV2).M());
-      }
-    }
-          
-      
-    //  Analysing forward region
-    // Fig. 67 , Table 7 LOI, 122 cm is disk 6 (150 cm disk 7), still 6 more disks
-      
-    float maxZConv=135;  
-    ep_F.clear();
-    em_F.clear();
-    int nConvF=0;
-
-
-    for (const auto track : *mcTracks) {
-  	  //  Forward	
-	    if ( (TMath::Abs(track.GetRapidity()) < 1.75) ||  (TMath::Abs(track.GetRapidity()) > 4.) )  continue;
-  
-  	  if (track.isPrimary()) {
-	      float convProb,eff;
-        convProb = -8.24825e-03  *( TMath::Power(track.GetP(), -5.03182e-01 )-1.13113e+01*track.GetP()) / (2.23495e-01 + TMath::Power(track.GetP(), 1.08338e+00 ));
-        eff = 5.89182e-01 * TMath::Power(track.GetP(), 3.85834) / (2.96558e-03 + TMath::Power(track.GetP(), 3.72573));
-        if (eff > 1.)	eff = 1.;
-    
-        if (track.GetPdgCode() == 111 ) {
-          pi0_prim_F.emplace_back(track);
-          hRapidityPt_Pi0_F.Fill((track.GetRapidity()) ,track.GetPt());
-          hRapidityPt_Pi0_F_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());
-        }
-
-	      if (track.GetPdgCode() == 221 )  {
-          eta_prim_F.emplace_back(track);
-          hRapidityPt_Eta_F.Fill((track.GetRapidity()) ,track.GetPt());
-          hRapidityPt_Eta_F_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());
-        }
-
-        //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
-	      if (track.GetPdgCode() == 22 )   gamma_prim_F.emplace_back(track);
-	      if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
-        if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
-    
-	    }
-	
-      // Conversions in forward
-	    if (TMath::Abs(track.GetPdgCode()) != 11  ) continue;
-      if (track.GetP()< minPFG  ) continue;
-	    //// Under construction
-      // AM- I am interested in conversions in forward direction
-      if ( TMath::Abs(track.GetStartVertexCoordinatesZ()) > maxZConv) continue;
-
-      auto motherId = track.getMotherTrackId();
-      if (motherId < 0) continue;
-      auto mTrack = (*mcTracks)[motherId];
-      //cout<<"checking mother pdgcode, primary, Z of photon origin::" << mTrack.GetPdgCode()  << "  " << mTrack.isPrimary() << "  "<< mTrack.GetStartVertexCoordinatesZ()<< endl;
-      if (mTrack.GetPdgCode() != 22) continue;
-      if (!mTrack.isPrimary() ) continue;
-
-      const auto r_vtx = std::sqrt(std::pow(track.GetStartVertexCoordinatesX(), 2) + std::pow(track.GetStartVertexCoordinatesY(), 2));
-      hVertexR_F.Fill(track.GetStartVertexCoordinatesZ(), r_vtx);
-      ++nConvF;
-      if (track.GetPdgCode() == 11) ep_F.emplace_back(track);
-      else em_F.emplace_back(track);
-	
-	    ///////////
-	
-    }
-
-    // ELECTRON RESULTS
-    
-    for (auto pF : ep_F) {
-	    TLorentzVector vpF;
-	    pF.Get4Momentum(vpF);
-	    for (auto eF : em_F) {
-	      TLorentzVector veF;
-	      eF.Get4Momentum(veF);
-	      //cout<< "mother id of e+e-::"<< p.getMotherTrackId()<< "   " << e.getMotherTrackId()<< endl;
-	      const float massF = (veF + vpF).M();
-	      const float gammaPtF = (veF + vpF).Pt();
-	      const float gammaPF = (veF + vpF).P();
-	      hInvMassF.Fill(massF);
-	      if (pF.getMotherTrackId() ==  eF.getMotherTrackId()){
-	        hInvMassSameF.Fill(massF);
-	        hPhotonPtF.Fill(gammaPtF);
-	        hPhotonPF.Fill(gammaPF);
-	        nConvSame++;
-	      }
-	    }
-    }
-
-
-    for (auto gamF : gamma_prim_F) {
-	    TLorentzVector gammaF;
-	    gamF.Get4Momentum(gammaF);
-	    hPrimPhotonPtF.Fill(gammaF.Pt());
-	    hPrimPhotonPF.Fill(gammaF.P());
-    }
-      
-    totPi0F+=pi0_prim_F.size();
-    totEtaF+=eta_prim_F.size();
-      
-    for (auto gam1= gamma_prim_F.begin(); gam1!=gamma_prim_F.end();++gam1   ) {
-	    TLorentzVector LVgam1, LVgam1_Smear_P;
-	    gam1->Get4Momentum(LVgam1);
-      LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-	    for (auto gam2= gam1+1;  gam2!= gamma_prim_F.end(); ++gam2 ) {
-	      TLorentzVector LVgam2, LVgam2_Smear_P;
-	      gam2->Get4Momentum(LVgam2); 
-        LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
-        //cout<<LVgam2_Smear_P.Px()<<" "<<LVgam2.Px()<< endl;
-        hInvMassGGF.Fill((LVgam1+LVgam2).M());
-        hInvMassGGF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-        hInvMassPt_F.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-        hInvMassPt_F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-	      // add that the two gammas have the same mother
-	      auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-        auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
-
-	      if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
-          hInvMassPt_F_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-          hInvMassPt_F_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-
-    	    if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
-	          hInvMassGGPi0F.Fill((LVgam1+LVgam2).M());
-            hInvMassGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-	          hPtGGPi0F.Fill((LVgam1+LVgam2).Pt());
-            hPtGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            hRapidityPt_Pi0_F_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hRapidityPt_Pi0_F_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            //hRapidityP_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
-            hRapidityOpeningangle_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-            hOpeningangle_PT_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-
-	          if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
-	  	        hInvMassGGPi0FCut.Fill((LVgam1+LVgam2).M());
-	  	        hPtGGPi0FCut.Fill((LVgam1+LVgam2).Pt());
-	            hInvMassGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-	        }
-
-          if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
-            hInvMassGGEtaF.Fill((LVgam1+LVgam2).M());
-            hInvMassGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-            hPtGGEtaF.Fill((LVgam1+LVgam2).Pt());
-            hPtGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            hRapidityPt_Eta_F_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hRapidityPt_Eta_F_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            //hRapidityP_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
-            hRapidityOpeningangle_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-            hOpeningangle_PT_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-
-           if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
- 	            hInvMassGGEtaFCut.Fill((LVgam1+LVgam2).M());
- 	            hPtGGEtaFCut.Fill((LVgam1+LVgam2).Pt());
- 	            hInvMassGGEtaFCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGEtaFCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-          }
-        }    
-      }
-    }	
-
-
-
-    for (auto gam1= gamF_rec_conv.begin(); gam1!=gamF_rec_conv.end();++gam1   ) {
-      TLorentzVector LVgam1, LVgam1_Smear_P;
-      gam1->Get4Momentum(LVgam1);
-      LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-
-      for (auto gam2= gam1+1;  gam2!= gamF_rec_conv.end(); ++gam2 ) {
-        TLorentzVector LVgam2, LVgam2_Smear_P;
-        gam2->Get4Momentum(LVgam2);
-        LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
-
-        hInvMassGGF_rec.Fill((LVgam1+LVgam2).M());
-        hInvMassGGF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-        hInvMassPt_F_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-          
-        // add that the two gammas have the same mother
-
-        auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-        auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
-
-        if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
-          hInvMassPt_F_GG_rec.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-          hInvMassPt_F_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-		      hInvMassGGF_Samemother_rec.Fill((LVgam1+LVgam2).M());
-		      hInvMassGGF_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-      		count++;
-          //fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
-
-	        //	cout<< gam1->getMotherTrackId() <<endl;
-          if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
-	          countPi0++;
-	          hInvMassGGPi0F_rec.Fill((LVgam1+LVgam2).M());
-            hRapidityPt_Pi0_F_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hPtGGPi0F_rec.Fill((LVgam1+LVgam2).Pt());
-
-            if( (LVgam1_Smear_P).P()> minPFG && (LVgam2_Smear_P).P() > minPFG){
-              hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());              
-              hInvMassPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).P());
-            }
-
-            if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
-              countEta++;
-		          hInvMassGGPi0FCut_rec.Fill((LVgam1+LVgam2).M());
-              hPtGGPi0FCut_rec.Fill((LVgam1+LVgam2).Pt());
-		          hInvMassGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-          }
-
-     
-          if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
-            hInvMassGGEtaF_rec.Fill((LVgam1+LVgam2).M());
-       	    hPtGGEtaF_rec.Fill((LVgam1+LVgam2).Pt());
-            hRapidityPt_Eta_F_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-          
-            if( (LVgam1_Smear_P).P()> minPFG && (LVgam2_Smear_P).P() > minPFG){
-              hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-       	      hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
-              hInvMassPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).P());
-
-            }
-            if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
-              hInvMassGGEtaFCut_rec.Fill((LVgam1+LVgam2).M());
-              hPtGGEtaFCut_rec.Fill((LVgam1+LVgam2).Pt());
-              hInvMassGGEtaFCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGEtaFCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-            }
-          }
-        }
-      }
-
-      //fprintf(myfile1," End of small loop \n");
-
-    }
-
-    //fprintf(myfile1," End of big loop \n");
-
+    bar1.progress(iEvent+1);
+    fprintf(myfile, "End of #event: %d \n", iEvent) ;
   }
 
   ProgressBar bar2(10); 
-
+  bar2.progress(1);
   std::unique_ptr<TFile> f {TFile::Open("ana_pTcut_withft3_check.root", "RECREATE")};
 
-	f->WriteTObject(&hVertex);
-  f->WriteTObject(&hVertexR);
-  f->WriteTObject(&hInvMassSame);
-  f->WriteTObject(&hInvMass);
-  f->WriteTObject(&hInvMassPrim);
-   
-  f->WriteTObject(&hInvMassGG);
-  f->WriteTObject(&hInvMassGGPi0);
-  f->WriteTObject(&hInvMassGGPi0_SmearedP);
-  f->WriteTObject(&hInvMassGGEta);
-  f->WriteTObject(&hPtGGPi0);
-  f->WriteTObject(&hPtGGEta);
-  f->WriteTObject(&hPtGGPi0Cut);
-  f->WriteTObject(&hPtGGEtaCut);
-
-  f->WriteTObject(&hInvMassF);
-  f->WriteTObject(&hInvMassSameF);
-  f->WriteTObject(&hVertexR_F);
-  f->WriteTObject(&hPrimPhotonPtF);
-  f->WriteTObject(&hPhotonPtF);
-  f->WriteTObject(&hPrimPhotonPF);
-  f->WriteTObject(&hPhotonPF);
-
-////////////
   f->WriteTObject(&hInvMassGGB);
-  f->WriteTObject(&hInvMassGGPi0B);
-  f->WriteTObject(&hInvMassGGEtaB);
-  f->WriteTObject(&hPtGGPi0B);
-  f->WriteTObject(&hPtGGEtaB);
-  f->WriteTObject(&hPtGGPi0BCut);
-  f->WriteTObject(&hPtGGEtaBCut);
-
   f->WriteTObject(&hInvMassGGB_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0B_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaB_SmearedP);
-  f->WriteTObject(&hPtGGPi0B_SmearedP);
-  f->WriteTObject(&hPtGGEtaB_SmearedP);
-  f->WriteTObject(&hPtGGPi0BCut_SmearedP);
-  f->WriteTObject(&hPtGGEtaBCut_SmearedP);
+  f->WriteTObject(&hInvMassPt_B);
+  f->WriteTObject(&hInvMassPt_B_SmearedP);
+  f->WriteTObject(&hInvMassPt_B_SmearedP_Global);
 
   f->WriteTObject(&hRapidityPt_Pi0_B);
-  f->WriteTObject(&hRapidityPt_Pi0_B_GG);
-  f->WriteTObject(&hRapidityPt_Pi0_B_GG_conv);
-  f->WriteTObject(&hRapidityPt_Pi0_B_GG_rec);
-  f->WriteTObject(&hRapidityPt_Eta_B);
-  f->WriteTObject(&hRapidityPt_Eta_B_GG);
-  f->WriteTObject(&hRapidityPt_Eta_B_GG_conv);
-  f->WriteTObject(&hRapidityPt_Eta_B_GG_rec);
-
   f->WriteTObject(&hRapidityPt_Pi0_B_SmearedP);
-  f->WriteTObject(&hRapidityPt_Pi0_B_GG_SmearedP);
-  f->WriteTObject(&hRapidityPt_Pi0_B_GG_conv_SmearedP);
-  f->WriteTObject(&hRapidityPt_Pi0_B_GG_rec_SmearedP);
+  f->WriteTObject(&hRapidityPt_Eta_B);
   f->WriteTObject(&hRapidityPt_Eta_B_SmearedP);
+
+  f->WriteTObject(&hInvMassGGPi0B);
+  f->WriteTObject(&hInvMassGGPi0B_SmearedP);
+  f->WriteTObject(&hPtGGPi0B);
+  f->WriteTObject(&hPtGGPi0B_SmearedP);
+
+  f->WriteTObject(&hInvMassGGPi0BCut);
+  f->WriteTObject(&hPtGGPi0BCut);
+  f->WriteTObject(&hInvMassGGPi0BCut_SmearedP);
+  f->WriteTObject(&hPtGGPi0BCut_SmearedP);
+
+  f->WriteTObject(&hInvMassGGEtaB);
+  f->WriteTObject(&hInvMassGGEtaB_SmearedP);
+  f->WriteTObject(&hPtGGEtaB);
+  f->WriteTObject(&hPtGGEtaB_SmearedP);
+
+  f->WriteTObject(&hRapidityPt_Eta_B_GG);
   f->WriteTObject(&hRapidityPt_Eta_B_GG_SmearedP);
-  f->WriteTObject(&hRapidityPt_Eta_B_GG_conv_SmearedP);
-  f->WriteTObject(&hRapidityPt_Eta_B_GG_rec_SmearedP);
+  f->WriteTObject(&hRapidityPt_Pi0_B_GG);
+  f->WriteTObject(&hRapidityPt_Pi0_B_GG_SmearedP);
 
-  f->WriteTObject(&hInvMassGGB_rec);
-  f->WriteTObject(&hInvMassGGPi0B_rec);
-  f->WriteTObject(&hInvMassGGEtaB_rec);
-  f->WriteTObject(&hInvMassGGPi0BCut_rec);
-  f->WriteTObject(&hInvMassGGEtaBCut_rec);
-  f->WriteTObject(&hPtGGPi0BCut_rec);
-  f->WriteTObject(&hPtGGEtaBCut_rec);
-  f->WriteTObject(&hPtGGEtaB_rec);
-  f->WriteTObject(&hPtGGPi0B_rec);
+  f->WriteTObject(&hInvMassGGEtaBCut);
+  f->WriteTObject(&hPtGGEtaBCut);
+  f->WriteTObject(&hInvMassGGEtaBCut_SmearedP);
+  f->WriteTObject(&hPtGGEtaBCut_SmearedP);
 
-  f->WriteTObject(&hInvMassGGB_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0B_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaB_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0BCut_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaBCut_rec_SmearedP);
-  f->WriteTObject(&hPtGGPi0BCut_rec_SmearedP);
-  f->WriteTObject(&hPtGGEtaBCut_rec_SmearedP);
-  f->WriteTObject(&hPtGGEtaB_rec_SmearedP);
-  f->WriteTObject(&hPtGGPi0B_rec_SmearedP);
-
-  f->WriteTObject(&hInvMassGGB_conv);
-  f->WriteTObject(&hInvMassGGPi0B_conv);
-  f->WriteTObject(&hInvMassGGEtaB_conv);
-  f->WriteTObject(&hInvMassGGPi0BCut_conv);
-  f->WriteTObject(&hInvMassGGEtaBCut_conv);
-  f->WriteTObject(&hPtGGPi0BCut_conv);
-  f->WriteTObject(&hPtGGEtaBCut_conv);
-  f->WriteTObject(&hPtGGEtaB_conv);
-  f->WriteTObject(&hPtGGPi0B_conv);
-  f->WriteTObject(&hInvMassGGB_Samemother_conv);
-
-  f->WriteTObject(&hInvMassGGB_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0B_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaB_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0BCut_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaBCut_conv_SmearedP);
-  f->WriteTObject(&hPtGGPi0BCut_conv_SmearedP);
-  f->WriteTObject(&hPtGGEtaBCut_conv_SmearedP);
-  f->WriteTObject(&hPtGGEtaB_conv_SmearedP);
-  f->WriteTObject(&hPtGGPi0B_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGB_Samemother_conv_SmearedP);    
-
-  ////////////////////////
-
-  bar2.progress(5);
-
-
-  ////////////
-  f->WriteTObject(&hInvMassGGF);
-  f->WriteTObject(&hInvMassGGPi0F);
-  f->WriteTObject(&hInvMassGGEtaF);
-  f->WriteTObject(&hPtGGPi0F);
-  f->WriteTObject(&hPtGGEtaF);
-  f->WriteTObject(&hPtGGPi0FCut);
-  f->WriteTObject(&hPtGGEtaFCut);
-
-  f->WriteTObject(&hInvMassGGF_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0F_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaF_SmearedP);
-  f->WriteTObject(&hPtGGPi0F_SmearedP);
-  f->WriteTObject(&hPtGGEtaF_SmearedP);
-  f->WriteTObject(&hPtGGPi0FCut_SmearedP);
-  f->WriteTObject(&hPtGGEtaFCut_SmearedP);
-
-  f->WriteTObject(&hRapidityPt_Pi0_F);
-  f->WriteTObject(&hRapidityPt_Pi0_F_GG);
-  f->WriteTObject(&hRapidityPt_Pi0_F_GG_conv);
-  f->WriteTObject(&hRapidityPt_Pi0_F_GG_rec);
-  f->WriteTObject(&hRapidityPt_Eta_F);
-  f->WriteTObject(&hRapidityPt_Eta_F_GG);
-  f->WriteTObject(&hRapidityPt_Eta_F_GG_conv);
-  f->WriteTObject(&hRapidityPt_Eta_F_GG_rec);
-
-  f->WriteTObject(&hRapidityPt_Pi0_F_SmearedP);
-  f->WriteTObject(&hRapidityPt_Pi0_F_GG_SmearedP);
-  f->WriteTObject(&hRapidityPt_Pi0_F_GG_conv_SmearedP);
-  f->WriteTObject(&hRapidityPt_Pi0_F_GG_rec_SmearedP);
-  f->WriteTObject(&hRapidityPt_Eta_F_SmearedP);
-  f->WriteTObject(&hRapidityPt_Eta_F_GG_SmearedP);
-  f->WriteTObject(&hRapidityPt_Eta_F_GG_conv_SmearedP);
-  f->WriteTObject(&hRapidityPt_Eta_F_GG_rec_SmearedP);
-
-  f->WriteTObject(&hInvMassPt_F);
-  f->WriteTObject(&hInvMassPt_F_GG);
-  f->WriteTObject(&hInvMassPt_F_GG_conv);
-  f->WriteTObject(&hInvMassPt_F_GG_rec);
-  f->WriteTObject(&hInvMassPt_F_SmearedP);
-  f->WriteTObject(&hInvMassPt_F_GG_SmearedP);
-  f->WriteTObject(&hInvMassPt_F_GG_conv_SmearedP);
-  f->WriteTObject(&hInvMassPt_F_GG_rec_SmearedP);
-  f->WriteTObject(&hInvMassPt_F_GG_rec_SmearedP_All);
-
-  f->WriteTObject(&hInvMassPt_B);
-  f->WriteTObject(&hInvMassPt_B_GG);
-  f->WriteTObject(&hInvMassPt_B_GG_conv);
-  f->WriteTObject(&hInvMassPt_B_GG_rec);
-  f->WriteTObject(&hInvMassPt_B_SmearedP);
-  f->WriteTObject(&hInvMassPt_B_GG_SmearedP);
-  f->WriteTObject(&hInvMassPt_B_GG_conv_SmearedP);
-  f->WriteTObject(&hInvMassPt_B_GG_rec_SmearedP);
-  f->WriteTObject(&hInvMassPt_B_GG_rec_SmearedP_All);
-    
-  f->WriteTObject(&hInvMassPt_Pi0_B_SmearedP);
-  f->WriteTObject(&hInvMassPt_Pi0_B_GG_SmearedP);
-  f->WriteTObject(&hInvMassPt_Pi0_B_GG_conv_SmearedP);
-  f->WriteTObject(&hInvMassPt_Pi0_B_GG_rec_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_B_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_B_GG_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_B_GG_conv_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_B_GG_rec_SmearedP);
-
-  f->WriteTObject(&hInvMassPt_Pi0_F_SmearedP);
-  f->WriteTObject(&hInvMassPt_Pi0_F_GG_SmearedP);
-  f->WriteTObject(&hInvMassPt_Pi0_F_GG_conv_SmearedP);
-  f->WriteTObject(&hInvMassPt_Pi0_F_GG_rec_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_F_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_F_GG_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_F_GG_conv_SmearedP);
-  f->WriteTObject(&hInvMassPt_Eta_F_GG_rec_SmearedP);
-
-
-  f->WriteTObject(&hInvMassGGF_rec);
-  f->WriteTObject(&hInvMassGGPi0F_rec);
-  f->WriteTObject(&hInvMassGGEtaF_rec);
-  f->WriteTObject(&hInvMassGGPi0FCut_rec);
-  f->WriteTObject(&hInvMassGGEtaFCut_rec);
-  f->WriteTObject(&hPtGGPi0FCut_rec);
-  f->WriteTObject(&hPtGGEtaFCut_rec);
-  f->WriteTObject(&hPtGGEtaF_rec);
-  f->WriteTObject(&hPtGGPi0F_rec);
-
-  f->WriteTObject(&hInvMassGGF_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0F_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaF_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0FCut_rec_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaFCut_rec_SmearedP);
-  f->WriteTObject(&hPtGGPi0FCut_rec_SmearedP);
-  f->WriteTObject(&hPtGGEtaFCut_rec_SmearedP);
-  f->WriteTObject(&hPtGGEtaF_rec_SmearedP);
-  f->WriteTObject(&hPtGGPi0F_rec_SmearedP);
-
-  f->WriteTObject(&hInvMassGGF_conv);
-  f->WriteTObject(&hInvMassGGPi0F_conv);
-  f->WriteTObject(&hInvMassGGEtaF_conv);
-  f->WriteTObject(&hInvMassGGPi0FCut_conv);
-  f->WriteTObject(&hInvMassGGEtaFCut_conv);
-  f->WriteTObject(&hPtGGPi0FCut_conv);
-  f->WriteTObject(&hPtGGEtaFCut_conv);
-  f->WriteTObject(&hPtGGEtaF_conv);
-  f->WriteTObject(&hPtGGPi0F_conv);
-  f->WriteTObject(&hInvMassGGF_Samemother_conv);
-
-  f->WriteTObject(&hInvMassGGF_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0F_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaF_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGPi0FCut_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGEtaFCut_conv_SmearedP);
-  f->WriteTObject(&hPtGGPi0FCut_conv_SmearedP);
-  f->WriteTObject(&hPtGGEtaFCut_conv_SmearedP);
-  f->WriteTObject(&hPtGGEtaF_conv_SmearedP);
-  f->WriteTObject(&hPtGGPi0F_conv_SmearedP);
-  f->WriteTObject(&hInvMassGGF_Samemother_conv_SmearedP);    
-  
-  ////////////////////////
-
-
-
-  f->WriteTObject(&hInvMassGGBF);
-  f->WriteTObject(&hInvMassGGPi0BF);
-  f->WriteTObject(&hInvMassGGEtaBF);
-  f->WriteTObject(&hPtGGPi0BF);
-  f->WriteTObject(&hPtGGEtaBF);
-  f->WriteTObject(&hPtGGPi0BFCut);
-  f->WriteTObject(&hPtGGEtaBFCut);
-
-
-  f->WriteTObject(&hChargedPionPt);
-  f->WriteTObject(&hPhotonPt);
-  f->WriteTObject(&hNPrimChPiM);
-  f->WriteTObject(&hNPhotonConv);
-  f->WriteTObject(&hNPrimChPiP);
-  f->WriteTObject(&hPrimPhotonPt);
-  f->WriteTObject(&hPiPlusPt);
-  f->WriteTObject(&hPi0Pt);
-  f->WriteTObject(&hEtaPt);
-
-  f->WriteTObject(&hPiMinusPt);
-  f->WriteTObject(&hProtonPlusPt);
-  f->WriteTObject(&hProtonMinusPt);
-  f->WriteTObject(&hKaonPlusPt);
-  f->WriteTObject(&hKaonMinusPt);
-  f->WriteTObject(&hElecPlusPt);
-  f->WriteTObject(&hElecMinusPt);
-  
-    //f->WriteTObject(&hRapidityP_Pi0_F_DaughterPhotons);
-    //f->WriteTObject(&hRapidityP_Eta_F_DaughterPhotons);
-    //f->WriteTObject(&hRapidityP_Pi0_B_DaughterPhotons);
-    //f->WriteTObject(&hRapidityP_Eta_B_DaughterPhotons);
-  f->WriteTObject(&hRapidityOpeningangle_Pi0_F_DaughterPhotons);
-  f->WriteTObject(&hRapidityOpeningangle_Eta_F_DaughterPhotons);
-  f->WriteTObject(&hRapidityOpeningangle_Pi0_B_DaughterPhotons);
   f->WriteTObject(&hRapidityOpeningangle_Eta_B_DaughterPhotons);
-
-  f->WriteTObject(&hOpeningangle_PT_Pi0_F_DaughterPhotons);
-  f->WriteTObject(&hOpeningangle_PT_Eta_F_DaughterPhotons);
-  f->WriteTObject(&hOpeningangle_P_Pi0_B_DaughterPhotons);
   f->WriteTObject(&hOpeningangle_P_Eta_B_DaughterPhotons);
-
-
+  f->WriteTObject(&hRapidityOpeningangle_Pi0_B_DaughterPhotons);
+  f->WriteTObject(&hOpeningangle_P_Pi0_B_DaughterPhotons);
 
   bar2.progress(9);
-
-
-
-
-  cout<<"events, totGammaConv,totPiM, totPiP::"<<  nEvents << "  " <<totGammaConv<< "  "<< totPiM  << " " << totPiP<< endl;
-  cout<< count << " " << countPi0 << " " << countEta << " "<< endl;
-
-
+  fprintf(myfile, "End of analysis: \n") ;
+  fclose(myfile);
 }

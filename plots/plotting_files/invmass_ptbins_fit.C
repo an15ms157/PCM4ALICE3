@@ -124,7 +124,7 @@ switch(collisionSystem){
     
 case 0:{
     cout << "pp system"<< endl;
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_pp_ALL.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/ana_pTcut_withft3_check.root");
     fcollisionSystem = "pp";
     fEnergy = 14;
     l_meson_signalVSbackground = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
@@ -148,7 +148,7 @@ case 1:{
     l_meson_signalVSbackground = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
     l_mesonbackground_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
 
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_check_PbPb_ALL.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/ana_pTcut_withft3_check.root");
     if (fMesonId==111) {
         gSystem->Exec(Form("mkdir meson_background/PbPb/Pi0_%s",fRap.Data()));
         gSystem->cd(Form("meson_background/PbPb/Pi0_%s",fRap.Data()));

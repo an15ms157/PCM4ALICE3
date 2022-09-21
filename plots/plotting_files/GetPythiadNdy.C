@@ -38,7 +38,7 @@ switch(collisionSystem){
     case 1:{
     cout << "PbPb system"<< endl;
         //TFile * fileRec = new TFile("./ana_withft3.root");
-    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/latest/ana_pTcut_withft3_check_PbPb_ALL.root");
+    fileRec = new TFile("/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/ana_pTcut_withft3_check.root");
     lt_dNdy_Pythia_F_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
     lt_dNdy_Pythia_B_b = new TLatex(0.15,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 14 TeV}");
     gSystem->Exec("mkdir dNdy_Pythia/PbPb");
