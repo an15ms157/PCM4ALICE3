@@ -72,6 +72,7 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
 
 void ana(){
   TChain mcTree("o2sim");
+mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1002/o2sim_Kine.root");
 // NEW PBPB
 /*
 mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1001/o2sim_Kine.root");
