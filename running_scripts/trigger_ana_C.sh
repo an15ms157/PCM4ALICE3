@@ -2,4 +2,4 @@
 ############
 
 ${PWD}
-root -l ana.C
+root -l -q ana.C

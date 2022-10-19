@@ -12,7 +12,7 @@
 #ifndef __CINT__
 #include "Math/Vector3D.h"
 #include "Math/Vector4D.h"
-#include "analysis_files/progressbar.h"
+#include "analysis_files/progressbar/progressbar.h"
 
 using namespace ROOT::Math;
 
@@ -74,7 +74,7 @@ void ana(){
   TChain mcTree("o2sim");
 // NEW PBPB
 
-mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1001/o2sim_Kine.root");
+mcTree.AddFile("/home/abhishek/PhD/Work/work_A/photons/input/pythia_testing/resultsPbPb220623/eve22/o2sim_Kine.root");
 /*mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1002/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1003/o2sim_Kine.root");
 mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1004/o2sim_Kine.root");
@@ -942,12 +942,12 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve791/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve792/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve793/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve794/o2sim_Kine.root");*/
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve794/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve795/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve796/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve797/o2sim_Kine.root");
   mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve798/o2sim_Kine.root");
-  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");
+  mcTree.AddFile("/misc/alidata120/alice_u/marin/ALICE3/electron-pack/resultsPbPb/eve799/o2sim_Kine.root");*/
 
   mcTree.SetBranchStatus("*", 0);
   mcTree.SetBranchStatus("MCTrack*", 1);
