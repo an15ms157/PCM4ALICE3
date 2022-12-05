@@ -16,8 +16,6 @@
 
 void meson_openingangle(){
 
-//SET THESE VARIABLES: 
-
 StyleSettings();
 SetPlotStyle();
 gStyle->SetOptTitle(0); //this will disable the title for all coming histograms or
@@ -42,14 +40,15 @@ gStyle->SetPadTickY(1);
 //gStyle->SetStatX(.44);
 //gStyle->SetStatY(.83);
 
+//SET THESE VARIABLES: 
 
-// INPUT SETUP 
+    // INPUT SETUP 
 
 bool SWITCH_write_to_file = TRUE ;
 
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/PbPb_100event_perfile/ana_pTcut_withft3_check.root";
-gSystem->Exec("mkdir ./plots/meson_openingangle");
-gSystem->cd("./plots/meson_openingangle");
+gSystem->Exec("mkdir ./meson_openingangle");
+gSystem->cd("./meson_openingangle");
 
 
 switch(collisionSystem){
@@ -57,7 +56,7 @@ switch(collisionSystem){
         
     fcollisionSystem = "pp";
     fileRec = new TFile(input_file_loc.Data());
-    ltb_general_Additional_text = new TLatex(0.7,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
+    ltb_general_Additional_text = new TLatex(0.6,0.85,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     gSystem->Exec(Form("mkdir %s",fcollisionSystem.Data()));
     gSystem->cd(Form("./%s",fcollisionSystem.Data()));
     gSystem->pwd();
@@ -69,7 +68,7 @@ switch(collisionSystem){
 
     fcollisionSystem = "PbPb";
     fileRec = new TFile(input_file_loc.Data());
-    ltb_general_Additional_text = new TLatex(0.7,0.8,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
+    ltb_general_Additional_text = new TLatex(0.6,0.85,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
     gSystem->Exec(Form("mkdir %s",fcollisionSystem.Data()));
     gSystem->cd(Form("./%s",fcollisionSystem.Data()));
     gSystem->pwd();
@@ -79,7 +78,7 @@ switch(collisionSystem){
     }
 }
 
-// INPUT CONDITIONS:
+    // INPUT CONDITIONS:
 plot_minPt = 0.01;
 plot_maxPt = 5.0;
 plot_minY = 0.01;

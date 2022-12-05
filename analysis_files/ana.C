@@ -72,6 +72,8 @@ TLorentzVector  ApplyMomentumSmearing_F (const TLorentzVector& p4True) {
 
 void ana(){
   TChain mcTree("o2sim");
+//  mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPP220930/eve2001/o2sim_Kine.root");
+
 // NEW PBPB
 /*
 mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb220623/eve1001/o2sim_Kine.root");
@@ -976,8 +978,16 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
   TH1D hElecPlusPt {"hElecPlusPt", "Positron pT  ; p_{T}(GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hElecMinusPt {"hElecMinusPt", "Electron pT  ; p_{T}(GeV/c);N / N_{ev}", 10000, 0., 10.};
           
+
+  TH1D hPrimPhoton_from_B_Pt {"hPrimPhoton_from_B_Pt", "primary Photon pT from_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Pi0_B_Pt {"hPrimPhoton_from_Pi0_B_Pt", "primary Photon pT from_Pi0_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Eta_B_Pt {"hPrimPhoton_from_Eta_B_Pt", "primary Photon pT from_Eta_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Omega_B_Pt {"hPrimPhoton_from_Omega_B_Pt", "primary Photon pT from_Omega_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_EtaPrime_B_Pt {"hPrimPhoton_from_EtaPrime_B_Pt", "primary Photon pT from_EtaPrime_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+
+
   TH1D hPrimPhotonPt {"hPrimPhotonPt", "primary Photon pT  ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
-    
+
   TH1D hPhotonPt {"hPhotonPt", "reconstructed Photon pT  e^{+}/e^{-} with same photon mother;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hInvMassPrim {"hInvMassPrim", "invariant mass of primary e^{+}/e^{-}; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
 
@@ -1212,7 +1222,14 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
   TH1D hPrimPhotonPF {"hPrimPhotonPF", "primary Photon p  F ;p_{T} (GeV/c);N / N_{ev}", 5000, 0., 100.};
   TH1D hPhotonPF {"hPhotonPF", "reconstructed Photon p forward e^{+}/e^{-} with same photon mother;p (GeV/c);N / N_{ev}", 5000, 0., 100.};
 
-                    
+
+  TH1D hPrimPhoton_from_F_Pt {"hPrimPhoton_from_F_Pt", "primary Photon pT from_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Pi0_F_Pt {"hPrimPhoton_from_Pi0_F_Pt", "primary Photon pT from_Pi0_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Eta_F_Pt {"hPrimPhoton_from_Eta_F_Pt", "primary Photon pT from_Eta_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Omega_F_Pt {"hPrimPhoton_from_Omega_F_Pt", "primary Photon pT from_Omega_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_EtaPrime_F_Pt {"hPrimPhoton_from_EtaPrime_F_Pt", "primary Photon pT from_EtaPrime_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+
+
   TH1D hInvMassGGBF{"hInvMassGGBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGPi0BF{"hInvMassGGPi0BF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGEtaBF{"hInvMassGGEtaBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
@@ -1258,15 +1275,15 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
     
   double eMass = 0.000511;
   double minPt = 0.01;
-  double minPtG = 0.1;
-  double minPFG = 0.1;
+  double minPtG = 0.01;
+  double minPFG = 0.01;
   //double maxR  = 15;
   double maxR  = 22;
   //    double maxR  = 120;
   bool momentum_cut = TRUE;
 
   std::vector<o2::MCTrack> ep, em, ep_prim, em_prim, pip_prim, pim_prim;
-  std::vector<o2::MCTrack> gamma_prim_B, gamB_rec_conv, gamB_conv;
+  std::vector<o2::MCTrack> gamma_prim_B, gamB_rec_conv, gamB_conv, All_Track_B,All_Track_F ;
   std::vector<ROOT::Math::XYZTVector> gamma_prim_B_P4;
   std::vector<o2::MCTrack> pi0_prim, eta_prim;
   std::vector<o2::MCTrack> kap_prim, kam_prim, prom_prim, prop_prim;
@@ -1274,6 +1291,9 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
   std::vector<o2::MCTrack> gamma_prim_F, gamF_rec_conv, gamF_conv;
   std::vector<ROOT::Math::XYZTVector> gamma_prim_F_P4;
   std::vector<o2::MCTrack> ep_F, em_F;
+
+  std::vector<pair<o2::MCTrack, TLorentzVector >> gamma_prim_B_SmearedP,gamma_B_conv_rec_SmearedP;
+  std::vector<pair<o2::MCTrack, TLorentzVector >> gamma_prim_F_SmearedP,gamma_F_conv_rec_SmearedP;
 
   float totPiP=0;
   float totGammaConv= 0;
@@ -1318,6 +1338,15 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
     gamF_conv.clear();
     gamma_prim_F_P4.clear();
 
+    All_Track_B.clear();
+    All_Track_F.clear();
+
+    gamma_prim_B_SmearedP.clear();
+    gamma_B_conv_rec_SmearedP.clear();
+
+    gamma_prim_F_SmearedP.clear();
+    gamma_F_conv_rec_SmearedP.clear();
+
     mcTree.GetEntry(iEvent);
     int nConv = 0;
 
@@ -1357,12 +1386,27 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
           hRapidityPt_Eta_B.Fill((track.GetRapidity()) ,track.GetPt());
           hRapidityPt_Eta_B_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());
         }
+          TLorentzVector LVgamB, LVgamB_Smear_P;
+          All_Track_B.emplace_back(track);        
+          (All_Track_B.back()).Get4Momentum(LVgamB);
+          LVgamB_Smear_P = ApplyMomentumSmearing_F(LVgamB);
 
-        //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
-	      if (track.GetPdgCode() == 22 )   gamma_prim_B.emplace_back(track);
-	      if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
-        if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamB_rec_conv.emplace_back(track);
+       //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
+        if (track.GetPdgCode() == 22 ) {  
+          gamma_prim_B.emplace_back(track);     
+          gamma_prim_B_SmearedP.emplace_back(make_pair(track, LVgamB_Smear_P));     
 
+          hPrimPhoton_from_B_Pt.Fill(track.GetPt());
+
+        auto mTrackMother_gam0_B = (*mcTracks)[track.getMotherTrackId()];
+          if (mTrackMother_gam0_B.GetPdgCode() == 111) {hPrimPhoton_from_Pi0_B_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_B.GetPdgCode() == 221) {hPrimPhoton_from_Eta_B_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_B.GetPdgCode() == 223) {hPrimPhoton_from_Omega_B_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_B.GetPdgCode() == 331) {hPrimPhoton_from_EtaPrime_B_Pt.Fill(track.GetPt());}    
+        
+	        if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
+          if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamma_B_conv_rec_SmearedP.emplace_back(make_pair(track, LVgamB_Smear_P));      
+        }
 	      //continue;
 	    }	
 	    // Take only electron/positron 
@@ -1490,64 +1534,66 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
     }	
 
 
-    for (auto gam1= gamma_prim_B.begin(); gam1!=gamma_prim_B.end();++gam1   ) {
-	    TLorentzVector LVgam1, LVgam1_Smear_P;
-	    gam1->Get4Momentum(LVgam1);
-      LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-	    for (auto gam2= gam1+1;  gam2!= gamma_prim_B.end(); ++gam2 ) {
-	      TLorentzVector LVgam2, LVgam2_Smear_P;
-	      gam2->Get4Momentum(LVgam2); 
-        LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
+    for (auto gam1= gamma_prim_B_SmearedP.begin(); gam1!=gamma_prim_B_SmearedP.end();++gam1   ) { // gam1 is a pair and not a track
+      TLorentzVector LVgam1, LVgam1_Smear_P_Global;
+      (gam1->first).Get4Momentum(LVgam1);
+      LVgam1_Smear_P_Global=gam1->second ;
+      
+
+      for (auto gam2= gam1+1;  gam2!= gamma_prim_B_SmearedP.end(); ++gam2 ) {
+        TLorentzVector LVgam2, LVgam2_Smear_P_Global;
+        (gam2->first).Get4Momentum(LVgam2); 
+        LVgam2_Smear_P_Global=gam2->second ;
         //cout<<LVgam2_Smear_P.Px()<<" "<<LVgam2.Px()<< endl;
         hInvMassGGB.Fill((LVgam1+LVgam2).M());
-        hInvMassGGB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+        hInvMassGGB_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
 
         hInvMassPt_B.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-        hInvMassPt_B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hInvMassPt_B_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
 	      // add that the two gammas have the same mother
-	      auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-        auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
+	      auto mTrackMother_gam1 = (*mcTracks)[(gam1->first).getMotherTrackId()];
+        auto mTrackMother_gam2 = (*mcTracks)[(gam1->first).getMotherTrackId()];
 
-	      if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
+	      if ((gam1->first).getMotherTrackId() ==  (gam2->first).getMotherTrackId()){
           hInvMassPt_B_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-          hInvMassPt_B_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+          hInvMassPt_B_GG_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
       
           if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	          hInvMassGGPi0B.Fill((LVgam1+LVgam2).M());
-            hInvMassGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+            hInvMassGGPi0B_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
 	          hPtGGPi0B.Fill((LVgam1+LVgam2).Pt());
-            hPtGGPi0B_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            hPtGGPi0B_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             hRapidityPt_Pi0_B_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hRapidityPt_Pi0_B_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            hRapidityPt_Pi0_B_GG_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             //hRapidityP_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
-            hRapidityOpeningangle_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-            hOpeningangle_P_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).P(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+            hRapidityOpeningangle_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
+            hOpeningangle_P_Pi0_B_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).P(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
   
-            if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
+            if( (gam1->first).GetPt()> minPtG && (gam2->first).GetPt()> minPtG){
 		          hInvMassGGPi0BCut.Fill((LVgam1+LVgam2).M());
 		          hPtGGPi0BCut.Fill((LVgam1+LVgam2).Pt());
-	            hInvMassGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+	            hInvMassGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+              hPtGGPi0BCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             }
 
           }
 
           if ((mTrackMother_gam1.GetPdgCode() == 221) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 	          hInvMassGGEtaB.Fill((LVgam1+LVgam2).M());
-	          hInvMassGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+	          hInvMassGGEtaB_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
 	          hPtGGEtaB.Fill((LVgam1+LVgam2).Pt());
-	          hPtGGEtaB_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+	          hPtGGEtaB_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             hRapidityPt_Eta_B_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hRapidityPt_Eta_B_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            hRapidityPt_Eta_B_GG_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             //hRapidityP_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),1);
-            hRapidityOpeningangle_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-            hOpeningangle_P_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).P(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+            hRapidityOpeningangle_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
+            hOpeningangle_P_Eta_B_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).P(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
 
-	          if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
+	          if( (gam1->first).GetPt()> minPtG && (gam2->first).GetPt()> minPtG){
 		          hInvMassGGEtaBCut.Fill((LVgam1+LVgam2).M());
 		          hPtGGEtaBCut.Fill((LVgam1+LVgam2).Pt());
-		          hInvMassGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+		          hInvMassGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+              hPtGGEtaBCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             }
 	        }
 	      }    
@@ -1621,49 +1667,49 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
 
 */
 
-    for (auto gam1= gamB_rec_conv.begin(); gam1!=gamB_rec_conv.end();++gam1   ) {
-      TLorentzVector LVgam1, LVgam1_Smear_P;
-      gam1->Get4Momentum(LVgam1);
-      LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-
-      for (auto gam2= gam1+1;  gam2!= gamB_rec_conv.end(); ++gam2 ) {
-        TLorentzVector LVgam2, LVgam2_Smear_P;
-        gam2->Get4Momentum(LVgam2);
-        LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
+    for (auto gam1= gamma_B_conv_rec_SmearedP.begin(); gam1!=gamma_B_conv_rec_SmearedP.end();++gam1   ) {
+      TLorentzVector LVgam1, LVgam1_Smear_P_Global;
+      (gam1->first).Get4Momentum(LVgam1);
+      LVgam1_Smear_P_Global=gam1->second ;
+      
+      for (auto gam2= gam1+1;  gam2!= gamma_B_conv_rec_SmearedP.end(); ++gam2 ) {
+        TLorentzVector LVgam2, LVgam2_Smear_P_Global;
+        (gam2->first).Get4Momentum(LVgam2); 
+        LVgam2_Smear_P_Global=gam2->second ;
 
         hInvMassGGB_rec.Fill((LVgam1+LVgam2).M());
-        hInvMassGGB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-        hInvMassPt_B_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hInvMassGGB_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+        hInvMassPt_B_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
         // add that the two gammas have the same mother
 
-        auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-        auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
+	      auto mTrackMother_gam1 = (*mcTracks)[(gam1->first).getMotherTrackId()];
+        auto mTrackMother_gam2 = (*mcTracks)[(gam1->first).getMotherTrackId()];
 
-        if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
+	      if ((gam1->first).getMotherTrackId() ==  (gam2->first).getMotherTrackId()){
           hInvMassPt_B_GG_rec.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-          hInvMassPt_B_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+          hInvMassPt_B_GG_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
 		      hInvMassGGB_Samemother_rec.Fill((LVgam1+LVgam2).M());
-		      hInvMassGGB_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+		      hInvMassGGB_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
 
 	        //	cout<< gam1->getMotherTrackId() <<endl;
           if ((mTrackMother_gam1.GetPdgCode() == 111) && (0<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<1.3) ){
 
 	          hInvMassGGPi0B_rec.Fill((LVgam1+LVgam2).M());
-            hInvMassGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+            hInvMassGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
             hPtGGPi0B_rec.Fill((LVgam1+LVgam2).Pt());
-            hPtGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            hPtGGPi0B_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             hRapidityPt_Pi0_B_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
 
-            if(( LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
-              hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-              hInvMassPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            if(( LVgam1_Smear_P_Global).Pt()> minPtG && (LVgam2_Smear_P_Global).Pt() > minPtG){
+              hRapidityPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
+              hInvMassPt_Pi0_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             }          
 
-            if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
+            if( (gam1->first).GetPt()> minPtG && (gam2->first).GetPt()> minPtG){
 		          hInvMassGGPi0BCut_rec.Fill((LVgam1+LVgam2).M());
               hPtGGPi0BCut_rec.Fill((LVgam1+LVgam2).Pt());
-		          hInvMassGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+		          hInvMassGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+              hPtGGPi0BCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             }
           }
 
@@ -1671,19 +1717,19 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
             hInvMassGGEtaB_rec.Fill((LVgam1+LVgam2).M());
        	    hPtGGEtaB_rec.Fill((LVgam1+LVgam2).Pt());
             hRapidityPt_Eta_B_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-            hInvMassGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-       	    hPtGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            hInvMassGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+       	    hPtGGEtaB_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
 
-            if( (LVgam1_Smear_P).Pt()> minPtG && (LVgam2_Smear_P).Pt() > minPtG){
-              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
-              hInvMassPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            if( (LVgam1_Smear_P_Global).Pt()> minPtG && (LVgam2_Smear_P_Global).Pt() > minPtG){
+              hRapidityPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1+LVgam2).Pt());
+              hInvMassPt_Eta_B_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             }
 
-            if( gam1->GetPt()> minPtG && gam2->GetPt()> minPtG){
+            if( (gam1->first).GetPt()> minPtG && (gam2->first).GetPt()> minPtG){
               hInvMassGGEtaBCut_rec.Fill((LVgam1+LVgam2).M());
               hPtGGEtaBCut_rec.Fill((LVgam1+LVgam2).Pt());
-              hInvMassGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-              hPtGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+              hInvMassGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+              hPtGGEtaBCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
             }
           }
         }
@@ -1770,10 +1816,27 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
        hRapidityPt_Eta_F.Fill((track.GetRapidity()) ,track.GetPt());
        hRapidityPt_Eta_F_SmearedP.Fill((track.GetRapidity()) ,track.GetPt());}
     //if (track.GetP()< minPFG  ) continue;    /////    MOMENTUM CUT ON PHOTONS
-	  if (track.GetPdgCode() == 22 )   gamma_prim_F.emplace_back(track);
+
+    TLorentzVector LVgamF, LVgamF_Smear_P;
+    All_Track_F.emplace_back(track);        
+    (All_Track_F.back()).Get4Momentum(LVgamF);
+    LVgamF_Smear_P = ApplyMomentumSmearing_F(LVgamF);
+
+    if (track.GetPdgCode() == 22 ){   
+      gamma_prim_F.emplace_back(track);
+      gamma_prim_F_SmearedP.emplace_back(make_pair(track, LVgamF_Smear_P)); 
+
+          hPrimPhoton_from_F_Pt.Fill(track.GetPt());
+
+        auto mTrackMother_gam0_F = (*mcTracks)[track.getMotherTrackId()];
+          if (mTrackMother_gam0_F.GetPdgCode() == 111) {hPrimPhoton_from_Pi0_F_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_F.GetPdgCode() == 221) {hPrimPhoton_from_Eta_F_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_F.GetPdgCode() == 223) {hPrimPhoton_from_Omega_F_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_F.GetPdgCode() == 331) {hPrimPhoton_from_EtaPrime_F_Pt.Fill(track.GetPt());}    
+
 	  if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
-    if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamF_rec_conv.emplace_back(track);
-    
+    if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamma_F_conv_rec_SmearedP.emplace_back(make_pair(track, LVgamF_Smear_P));
+    }
 	}
 	// Conversions in forward
 	if (TMath::Abs(track.GetPdgCode()) != 11  ) continue;
@@ -1833,61 +1896,63 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
       totPi0F+=pi0_prim_F.size();
       totEtaF+=eta_prim_F.size();
       
-  for (auto gam1= gamma_prim_F.begin(); gam1!=gamma_prim_F.end();++gam1   ) {
-	TLorentzVector LVgam1, LVgam1_Smear_P;
-	gam1->Get4Momentum(LVgam1);
-  LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
-	for (auto gam2= gam1+1;  gam2!= gamma_prim_F.end(); ++gam2 ) {
-	  TLorentzVector LVgam2, LVgam2_Smear_P;
-	  gam2->Get4Momentum(LVgam2); 
-    LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
+  for (auto gam1= gamma_prim_F_SmearedP.begin(); gam1!=gamma_prim_F_SmearedP.end();++gam1   ) {
+      TLorentzVector LVgam1, LVgam1_Smear_P_Global;
+      (gam1->first).Get4Momentum(LVgam1);
+      LVgam1_Smear_P_Global=gam1->second ;
+  
+	for (auto gam2= gam1+1;  gam2!= gamma_prim_F_SmearedP.end(); ++gam2 ) {
+    TLorentzVector LVgam2, LVgam2_Smear_P_Global;
+    (gam2->first).Get4Momentum(LVgam2); 
+    LVgam2_Smear_P_Global=gam2->second ;
+
     //cout<<LVgam2_Smear_P.Px()<<" "<<LVgam2.Px()<< endl;
     hInvMassGGF.Fill((LVgam1+LVgam2).M());
-    hInvMassGGF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+    hInvMassGGF_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
     hInvMassPt_F.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-    hInvMassPt_F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+    hInvMassPt_F_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
 	  // add that the two gammas have the same mother
-	  auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-    auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
+	      auto mTrackMother_gam1 = (*mcTracks)[(gam1->first).getMotherTrackId()];
+        auto mTrackMother_gam2 = (*mcTracks)[(gam1->first).getMotherTrackId()];
 
-	  if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
+	    if ((gam1->first).getMotherTrackId() ==  (gam2->first).getMotherTrackId()){
       hInvMassPt_F_GG.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-      hInvMassPt_F_GG_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+      hInvMassPt_F_GG_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
 
   	  if ((mTrackMother_gam1.GetPdgCode() == 111) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	      hInvMassGGPi0F.Fill((LVgam1+LVgam2).M());
-        hInvMassGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+        hInvMassGGPi0F_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
 	      hPtGGPi0F.Fill((LVgam1+LVgam2).Pt());
-        hPtGGPi0F_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+        hPtGGPi0F_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
         hRapidityPt_Pi0_F_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-        hRapidityPt_Pi0_F_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        //hRapidityP_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
-        hRapidityOpeningangle_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-        hOpeningangle_PT_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+        hRapidityPt_Pi0_F_GG_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
+        //hRapidityP_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P_Global).Rapidity(),(LVgam2_Smear_P_Global).Rapidity(),(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).P());
+        hRapidityOpeningangle_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
+        hOpeningangle_PT_Pi0_F_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
 
-	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+	      if( (gam1->first).GetP()> minPFG && (gam2->first).GetP()> minPFG){
 		      hInvMassGGPi0FCut.Fill((LVgam1+LVgam2).M());
 		      hPtGGPi0FCut.Fill((LVgam1+LVgam2).Pt());
-	        hInvMassGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-          hPtGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+	        hInvMassGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+          hPtGGPi0FCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
         }
 	    }
 	      if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity()))<4.0) {
 	      hInvMassGGEtaF.Fill((LVgam1+LVgam2).M());
-	      hInvMassGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+	      hInvMassGGEtaF_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
 	      hPtGGEtaF.Fill((LVgam1+LVgam2).Pt());
-	      hPtGGEtaF_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+	      hPtGGEtaF_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
         hRapidityPt_Eta_F_GG.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
-        hRapidityPt_Eta_F_GG_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-        //hRapidityP_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P).Rapidity(),(LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P+LVgam2_Smear_P).P());
-        hRapidityOpeningangle_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
-        hOpeningangle_PT_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt(),(LVgam1_Smear_P.Vect()).Angle((LVgam2_Smear_P).Vect()));
+        hRapidityPt_Eta_F_GG_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
+        //hRapidityP_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P_Global).Rapidity(),(LVgam2_Smear_P_Global).Rapidity(),(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).P());
+        hRapidityOpeningangle_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
+        hOpeningangle_PT_Eta_F_DaughterPhotons.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt(),(LVgam1_Smear_P_Global.Vect()).Angle((LVgam2_Smear_P_Global).Vect()));
 
-	      if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+	      if( (gam1->first).GetP()> minPFG && (gam2->first).GetP()> minPFG){
 		      hInvMassGGEtaFCut.Fill((LVgam1+LVgam2).M());
 		      hPtGGEtaFCut.Fill((LVgam1+LVgam2).Pt());
-		      hInvMassGGEtaFCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-          hPtGGEtaFCut_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+		      hInvMassGGEtaFCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+          hPtGGEtaFCut_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
         }
 	    }
 	  }    
@@ -1992,30 +2057,30 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
 
 */
 
-      for (auto gam1= gamF_rec_conv.begin(); gam1!=gamF_rec_conv.end();++gam1   ) {
-        TLorentzVector LVgam1, LVgam1_Smear_P;
-        gam1->Get4Momentum(LVgam1);
-        LVgam1_Smear_P = ApplyMomentumSmearing_F(LVgam1);
+      for (auto gam1= gamma_F_conv_rec_SmearedP.begin(); gam1!=gamma_F_conv_rec_SmearedP.end();++gam1   ) {
+      TLorentzVector LVgam1, LVgam1_Smear_P_Global;
+      (gam1->first).Get4Momentum(LVgam1);
+      LVgam1_Smear_P_Global=gam1->second ;
 
-        for (auto gam2= gam1+1;  gam2!= gamF_rec_conv.end(); ++gam2 ) {
-          TLorentzVector LVgam2, LVgam2_Smear_P;
-          gam2->Get4Momentum(LVgam2);
-          LVgam2_Smear_P = ApplyMomentumSmearing_F(LVgam2);
+        for (auto gam2= gam1+1;  gam2!= gamma_F_conv_rec_SmearedP.end(); ++gam2 ) {
+        TLorentzVector LVgam2, LVgam2_Smear_P_Global;
+        (gam2->first).Get4Momentum(LVgam2); 
+        LVgam2_Smear_P_Global=gam2->second ;
 
           hInvMassGGF_rec.Fill((LVgam1+LVgam2).M());
-          hInvMassGGF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-          hInvMassPt_F_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+          hInvMassGGF_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+          hInvMassPt_F_GG_rec_SmearedP_All.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
           
           // add that the two gammas have the same mother
 
-          auto mTrackMother_gam1 = (*mcTracks)[gam1->getMotherTrackId()];
-          auto mTrackMother_gam2 = (*mcTracks)[gam2->getMotherTrackId()];
+	      auto mTrackMother_gam1 = (*mcTracks)[(gam1->first).getMotherTrackId()];
+        auto mTrackMother_gam2 = (*mcTracks)[(gam1->first).getMotherTrackId()];
 
-          if (gam1->getMotherTrackId() ==  gam2->getMotherTrackId()){
+	      if ((gam1->first).getMotherTrackId() ==  (gam2->first).getMotherTrackId()){
             hInvMassPt_F_GG_rec.Fill((LVgam1+LVgam2).M() ,(LVgam1+LVgam2).Pt());
-            hInvMassPt_F_GG_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M() ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+            hInvMassPt_F_GG_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M() ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
 		        hInvMassGGF_Samemother_rec.Fill((LVgam1+LVgam2).M());
-		        hInvMassGGF_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
+		        hInvMassGGF_Samemother_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
         		count++;
             //fprintf(myfile,"SAME MOTHER: %d, %d \n", gam1->getMotherTrackId(),gam2->getMotherTrackId());
 
@@ -2026,19 +2091,19 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
                 hRapidityPt_Pi0_F_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
                 hPtGGPi0F_rec.Fill((LVgam1+LVgam2).Pt());
 
-                if( (LVgam1_Smear_P).P()> minPFG && (LVgam2_Smear_P).P() > minPFG){
-                hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-                hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-                hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1_Smear_P+LVgam2_Smear_P).Pt());              
-                hInvMassPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).P());
+                if( (LVgam1_Smear_P_Global).P()> minPFG && (LVgam2_Smear_P_Global).P() > minPFG){
+                hPtGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
+                hInvMassGGPi0F_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+                hRapidityPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());              
+                hInvMassPt_Pi0_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).P());
                 }
 
-              if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+              if( (gam1->first).GetP()> minPFG && (gam2->first).GetP()> minPFG){
                 countEta++;
 		            hInvMassGGPi0FCut_rec.Fill((LVgam1+LVgam2).M());
                 hPtGGPi0FCut_rec.Fill((LVgam1+LVgam2).Pt());
-		            hInvMassGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-                hPtGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+		            hInvMassGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+                hPtGGPi0FCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
               }
             }
               if ((mTrackMother_gam1.GetPdgCode() == 221) && (1.75<TMath::Abs(mTrackMother_gam1.GetRapidity())) && (TMath::Abs(mTrackMother_gam1.GetRapidity())<4.0)) {
@@ -2046,18 +2111,18 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
        	      hPtGGEtaF_rec.Fill((LVgam1+LVgam2).Pt());
               hRapidityPt_Eta_F_GG_rec.Fill(((LVgam1+LVgam2).Rapidity()) ,(LVgam1+LVgam2).Pt());
            
-              if( (LVgam1_Smear_P).P()> minPFG && (LVgam2_Smear_P).P() > minPFG){
-                hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-       	        hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
-                hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).Rapidity()) ,(LVgam1+LVgam2).Pt());
-                hInvMassPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P+LVgam2_Smear_P).M()) ,(LVgam1_Smear_P+LVgam2_Smear_P).P());
+              if( (LVgam1_Smear_P_Global).P()> minPFG && (LVgam2_Smear_P_Global).P() > minPFG){
+                hInvMassGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+       	        hPtGGEtaF_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
+                hRapidityPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Rapidity()) ,(LVgam1+LVgam2).Pt());
+                hInvMassPt_Eta_F_GG_rec_SmearedP.Fill(((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M()) ,(LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).P());
 
               }
-              if( gam1->GetP()> minPFG && gam2->GetP()> minPFG){
+              if( (gam1->first).GetP()> minPFG && (gam2->first).GetP()> minPFG){
                 hInvMassGGEtaFCut_rec.Fill((LVgam1+LVgam2).M());
                 hPtGGEtaFCut_rec.Fill((LVgam1+LVgam2).Pt());
-                hInvMassGGEtaFCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).M());
-                hPtGGEtaFCut_rec_SmearedP.Fill((LVgam1_Smear_P+LVgam2_Smear_P).Pt());
+                hInvMassGGEtaFCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).M());
+                hPtGGEtaFCut_rec_SmearedP.Fill((LVgam1_Smear_P_Global+LVgam2_Smear_P_Global).Pt());
               }
             }
           }
@@ -2376,6 +2441,19 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hChargedPionPt);
     f->WriteTObject(&hPhotonPt);
     f->WriteTObject(&hNPhotonConv);
+
+    f->WriteTObject(&hPrimPhoton_from_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Pi0_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Eta_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Omega_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_EtaPrime_B_Pt);
+
+    f->WriteTObject(&hPrimPhoton_from_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Pi0_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Eta_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Omega_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_EtaPrime_F_Pt);
+
 
     f->WriteTObject(&hNPrimChPiM);
     f->WriteTObject(&hNPrimChPiP);

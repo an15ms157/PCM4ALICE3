@@ -17,8 +17,8 @@
 
 void meson_Effeciency(){
 
-gSystem->Exec("mkdir mesonEff");
-gSystem->Exec("cd mesonEff");
+gSystem->Exec("mkdir meson_Effeciency");
+gSystem->Exec("cd meson_Effeciency");
 
 
 
@@ -54,8 +54,8 @@ gStyle->SetPadTickY(1);
 bool SWITCH_write_to_file = TRUE ;
 
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/PbPb_100event_perfile/ana_pTcut_withft3_check.root";
-gSystem->Exec("mkdir ./plots/meson_Effeciency");
-gSystem->cd("./plots/meson_Effeciency");
+gSystem->Exec("mkdir ./meson_Effeciency");
+gSystem->cd("./meson_Effeciency");
 
 
 switch(collisionSystem){
@@ -241,7 +241,6 @@ l_eff_combined->AddEntry(histPt_RATIO_rap_B_all1_to_all2_Eta_SmearedP,Form("%s :
 
 
 
-
 //Eta F:
 TH2D * histRapPt_ALL_Eta_F = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG");
 TH2D * histRapPt_ALL_Eta_F_SmearedP = (TH2D*) fileRec->Get("hRapidityPt_Eta_F_GG_SmearedP");
@@ -279,7 +278,7 @@ histPt_RATIO_rap_F_all1_to_all2_Eta_SmearedP->Sumw2();
 DrawGammaSetMarker(histPt_RATIO_rap_F_all1_to_all2_Eta_SmearedP,marker_F,0.9, Eta_marker_color , Eta_marker_color);
 histPt_RATIO_rap_F_all1_to_all2_Eta_SmearedP->Draw("SAME,P");
 
-l_eff_combined->AddEntry(histPt_RATIO_rap_F_all1_to_all2_Eta_SmearedP,Form("%s : %.2f<|y|<%.2f ",LightMeson[1][1].Data(),Rap_F_all1,Rap_F_all2),"p");
+l_eff_combined->AddEntry(histPt_RATIO_rap_F_all1_to_all2_Eta_SmearedP,Form("%s : %.2f<|y|<%.2f ",LightMeson[0][1].Data(),Rap_F_all1,Rap_F_all2),"p");
 
 
 

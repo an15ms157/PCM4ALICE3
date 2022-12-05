@@ -51,8 +51,8 @@ gStyle->SetPadTickY(1);
 bool SWITCH_write_to_file = TRUE ;
 
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/PbPb_100event_perfile/ana_pTcut_withft3_check.root";
-gSystem->Exec("mkdir ./plots/meson_NetEffeciency");
-gSystem->cd("./plots/meson_NetEffeciency");
+gSystem->Exec("mkdir ./meson_NetEffeciency");
+gSystem->cd("./meson_NetEffeciency");
 
 
 switch(collisionSystem){

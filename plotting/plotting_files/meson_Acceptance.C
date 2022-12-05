@@ -49,8 +49,8 @@ Int_t ScaleFactor_Pi0_F, ScaleFactor_Pi0_B, ScaleFactor_Eta_F, ScaleFactor_Eta_B
 bool SWITCH_write_to_file = TRUE ;
 
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/PbPb_100event_perfile/ana_pTcut_withft3_check.root";
-gSystem->Exec("mkdir ./plots/meson_Acceptance");
-gSystem->cd("./plots/meson_Acceptance");
+gSystem->Exec("mkdir ./meson_Acceptance");
+gSystem->cd("./meson_Acceptance");
 
 switch(collisionSystem){
     case 0:{
@@ -255,5 +255,7 @@ histPt_Acceptance_Eta_F->Write();
 
 fout->Close();
 }
+
+//gSystem->cd("../../");
 
 }

@@ -63,3 +63,9 @@ Double_t LabelOffsetY=1.5;
 Double_t pt_bin_proj_fine[13]={0.0,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,5.0,7.0,10.0 };
 Int_t nbinspt_proj_fine  = 12;
 
+Double_t pt_bin_proj_rebin[13]={0.01,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,5.0,7.0,10.0 };
+Int_t nbinspt_proj_rebin  = 12;
+
+double_t Nevent_run5_and_run6; //pp: 1e15 ||  PbPb: 35*1e9;
+const double_t Crosssection = 7.8;
+

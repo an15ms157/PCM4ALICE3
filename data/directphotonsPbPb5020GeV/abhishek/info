@@ -1,0 +1,25 @@
+
+file Gamma_Pi0_data_GammaConvV1_InclusiveRatio_0020.root from results version "dirGammaResultsCocktailV11_addPFix" (preliminaries)
+
+object names:
+
+double ratio:
+DoubleRatioTrueEffPurity
+graphDoubleRatioTrueEffPuritySyst
+
+direct photons
+graphDirGammaSpectrumStatErr
+graphDirGammaSpectrumSystErr
+
+inclusive photons:
+histoGammaSpecCorrPurity
+
+
+
+
+file Eta_data_GammaConvV1WithoutCorrection_10210a13_0d200009ab770c00amd0404000_0152101500000000 from results version "materialBudgetWeightsCocktailInput" (preliminaries)
+
+object names:
+
+histoSigndefaultMeson
+histoSBdefaultMeson

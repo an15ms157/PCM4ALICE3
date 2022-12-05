@@ -47,8 +47,8 @@ gStyle->SetPadTickY(1);
 Int_t ScaleFactor_Pi0_F, ScaleFactor_Pi0_B, ScaleFactor_Eta_F, ScaleFactor_Eta_B;
 
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/output/no_event_rep/PbPb/PbPb_100event_perfile/ana_pTcut_withft3_check.root";
-gSystem->Exec("mkdir plots/meson_MassResolution");
-gSystem->cd("plots/meson_MassResolution");
+gSystem->Exec("mkdir ./meson_MassResolution");
+gSystem->cd("./meson_MassResolution");
 
 switch(collisionSystem){
     case 0:{
@@ -61,7 +61,8 @@ switch(collisionSystem){
     ltb_Pi0_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     ltb_Pi0_B = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     ltb_Eta_F = new TLatex(0.65,0.8,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
-    
+
+    fileRec = new TFile(input_file_loc.Data());
     ltb_Pi0_B_Additional_text = new TLatex(0.2,0.5,Form("Scale factor = %d",ScaleFactor_Pi0_B));
     ltb_Pi0_F_Additional_text = new TLatex(0.2,0.5,Form("Scale factor = %d",ScaleFactor_Pi0_F));
     ltb_Eta_B_Additional_text = new TLatex(0.2,0.5,Form("Scale factor = %d",ScaleFactor_Eta_B));
