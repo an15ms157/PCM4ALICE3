@@ -984,7 +984,16 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
   TH1D hPrimPhoton_from_Eta_B_Pt {"hPrimPhoton_from_Eta_B_Pt", "primary Photon pT from_Eta_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hPrimPhoton_from_Omega_B_Pt {"hPrimPhoton_from_Omega_B_Pt", "primary Photon pT from_Omega_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hPrimPhoton_from_EtaPrime_B_Pt {"hPrimPhoton_from_EtaPrime_B_Pt", "primary Photon pT from_EtaPrime_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
-
+  TH1D hPrimPhoton_from_Rho0_B_Pt {"hPrimPhoton_from_Rho0_B_Pt", "primary Photon pT from_Rho0_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_RhoPlus_B_Pt {"hPrimPhoton_from_RhoPlus_B_Pt", "primary Photon pT from_RhoPlus_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_RhoMinus_B_Pt {"hPrimPhoton_from_RhoMinus_B_Pt", "primary Photon pT from_RhoMinus_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Phi_B_Pt {"hPrimPhoton_from_Phi_B_Pt", "primary Photon pT from_Phi_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Delta0_B_Pt {"hPrimPhoton_from_Delta0_B_Pt", "primary Photon pT from_Delta0_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_DeltaPlus_B_Pt {"hPrimPhoton_from_DeltaPlus_B_Pt", "primary Photon pT from_DeltaPlus_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Sigma0_B_Pt {"hPrimPhoton_from_Sigma0_B_Pt", "primary Photon pT from_Sigma0_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_KZeroShort_B_Pt {"hPrimPhoton_from_KZeroShort_B_Pt", "primary Photon pT from_KZeroShort_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_KZeroLong_B_Pt {"hPrimPhoton_from_KZeroLong_B_Pt", "primary Photon pT from_KZeroLong_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Lambda_B_Pt {"hPrimPhoton_from_Lambda_B_Pt", "primary Photon pT from_Lambda_B ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
 
   TH1D hPrimPhotonPt {"hPrimPhotonPt", "primary Photon pT  ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
 
@@ -1229,6 +1238,17 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
   TH1D hPrimPhoton_from_Omega_F_Pt {"hPrimPhoton_from_Omega_F_Pt", "primary Photon pT from_Omega_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
   TH1D hPrimPhoton_from_EtaPrime_F_Pt {"hPrimPhoton_from_EtaPrime_F_Pt", "primary Photon pT from_EtaPrime_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
 
+  TH1D hPrimPhoton_from_Rho0_F_Pt {"hPrimPhoton_from_Rho0_F_Pt", "primary Photon pT from_Rho0_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_RhoPlus_F_Pt {"hPrimPhoton_from_RhoPlus_F_Pt", "primary Photon pT from_RhoPlus_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_RhoMinus_F_Pt {"hPrimPhoton_from_RhoMinus_F_Pt", "primary Photon pT from_RhoMinus_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Phi_F_Pt {"hPrimPhoton_from_Phi_F_Pt", "primary Photon pT from_Phi_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Delta0_F_Pt {"hPrimPhoton_from_Delta0_F_Pt", "primary Photon pT from_Delta0_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_DeltaPlus_F_Pt {"hPrimPhoton_from_DeltaPlus_F_Pt", "primary Photon pT from_DeltaPlus_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Sigma0_F_Pt {"hPrimPhoton_from_Sigma0_F_Pt", "primary Photon pT from_Sigma0_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_KZeroShort_F_Pt {"hPrimPhoton_from_KZeroShort_F_Pt", "primary Photon pT from_KZeroShort_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_KZeroLong_F_Pt {"hPrimPhoton_from_KZeroLong_F_Pt", "primary Photon pT from_KZeroLong_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+  TH1D hPrimPhoton_from_Lambda_F_Pt {"hPrimPhoton_from_Lambda_F_Pt", "primary Photon pT from_Lambda_F ;p_{T} (GeV/c);N / N_{ev}", 10000, 0., 10.};
+
 
   TH1D hInvMassGGBF{"hInvMassGGBF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
   TH1D hInvMassGGPi0BF{"hInvMassGGPi0BF", "invariant mass of #gamma#gamma Barrel-Forward; p_{T}  (GeV/c);N / N_{ev}", 2000, 0., 2.};
@@ -1399,10 +1419,20 @@ mcTree.AddFile("/misc/alidata130/alice_u/nath/new_Pythia_output/resultsPbPb22062
           hPrimPhoton_from_B_Pt.Fill(track.GetPt());
 
         auto mTrackMother_gam0_B = (*mcTracks)[track.getMotherTrackId()];
-          if (mTrackMother_gam0_B.GetPdgCode() == 111) {hPrimPhoton_from_Pi0_B_Pt.Fill(track.GetPt());}    
-          if (mTrackMother_gam0_B.GetPdgCode() == 221) {hPrimPhoton_from_Eta_B_Pt.Fill(track.GetPt());}    
-          if (mTrackMother_gam0_B.GetPdgCode() == 223) {hPrimPhoton_from_Omega_B_Pt.Fill(track.GetPt());}    
-          if (mTrackMother_gam0_B.GetPdgCode() == 331) {hPrimPhoton_from_EtaPrime_B_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_B.GetPdgCode() == 111) {hPrimPhoton_from_Pi0_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 221) {hPrimPhoton_from_Eta_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 223) {hPrimPhoton_from_Omega_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 331) {hPrimPhoton_from_EtaPrime_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 113) {hPrimPhoton_from_Rho0_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 213) {hPrimPhoton_from_RhoPlus_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == -213) {hPrimPhoton_from_RhoMinus_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 333) {hPrimPhoton_from_Phi_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 2114) {hPrimPhoton_from_Delta0_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 2214) {hPrimPhoton_from_DeltaPlus_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 3212) {hPrimPhoton_from_Sigma0_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 310) {hPrimPhoton_from_KZeroShort_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 130) {hPrimPhoton_from_KZeroLong_B_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_B.GetPdgCode() == 3122) {hPrimPhoton_from_Lambda_B_Pt.Fill(track.GetPt());}  
         
 	        if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamB_conv.emplace_back(track);   
           if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamma_B_conv_rec_SmearedP.emplace_back(make_pair(track, LVgamB_Smear_P));      
@@ -1829,10 +1859,21 @@ for (auto gam1= gamB_conv.begin(); gam1!=gamB_conv.end();++gam1   ) {
           hPrimPhoton_from_F_Pt.Fill(track.GetPt());
 
         auto mTrackMother_gam0_F = (*mcTracks)[track.getMotherTrackId()];
-          if (mTrackMother_gam0_F.GetPdgCode() == 111) {hPrimPhoton_from_Pi0_F_Pt.Fill(track.GetPt());}    
-          if (mTrackMother_gam0_F.GetPdgCode() == 221) {hPrimPhoton_from_Eta_F_Pt.Fill(track.GetPt());}    
-          if (mTrackMother_gam0_F.GetPdgCode() == 223) {hPrimPhoton_from_Omega_F_Pt.Fill(track.GetPt());}    
-          if (mTrackMother_gam0_F.GetPdgCode() == 331) {hPrimPhoton_from_EtaPrime_F_Pt.Fill(track.GetPt());}    
+          if (mTrackMother_gam0_F.GetPdgCode() == 111) {hPrimPhoton_from_Pi0_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 221) {hPrimPhoton_from_Eta_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 223) {hPrimPhoton_from_Omega_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 331) {hPrimPhoton_from_EtaPrime_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 113) {hPrimPhoton_from_Rho0_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 213) {hPrimPhoton_from_RhoPlus_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == -213) {hPrimPhoton_from_RhoMinus_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 333) {hPrimPhoton_from_Phi_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 2114) {hPrimPhoton_from_Delta0_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 2214) {hPrimPhoton_from_DeltaPlus_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 3212) {hPrimPhoton_from_Sigma0_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 310) {hPrimPhoton_from_KZeroShort_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 130) {hPrimPhoton_from_KZeroLong_F_Pt.Fill(track.GetPt());}
+          if (mTrackMother_gam0_F.GetPdgCode() == 3122) {hPrimPhoton_from_Lambda_F_Pt.Fill(track.GetPt());} 
+
 
 	  if ( (gRandom->Uniform() < (convProb )) && (track.GetPdgCode() == 22 ) ) gamF_conv.emplace_back(track);   
     if ( (gRandom->Uniform() < (convProb * eff)) && (track.GetPdgCode() == 22 ) ) gamma_F_conv_rec_SmearedP.emplace_back(make_pair(track, LVgamF_Smear_P));
@@ -2447,12 +2488,33 @@ for (auto gam1= gamF_conv.begin(); gam1!=gamF_conv.end();++gam1   ) {
     f->WriteTObject(&hPrimPhoton_from_Eta_B_Pt);
     f->WriteTObject(&hPrimPhoton_from_Omega_B_Pt);
     f->WriteTObject(&hPrimPhoton_from_EtaPrime_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Rho0_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_RhoPlus_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_RhoMinus_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Phi_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Delta0_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_DeltaPlus_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Sigma0_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_KZeroShort_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_KZeroLong_B_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Lambda_B_Pt);
+
 
     f->WriteTObject(&hPrimPhoton_from_F_Pt);
     f->WriteTObject(&hPrimPhoton_from_Pi0_F_Pt);
     f->WriteTObject(&hPrimPhoton_from_Eta_F_Pt);
     f->WriteTObject(&hPrimPhoton_from_Omega_F_Pt);
     f->WriteTObject(&hPrimPhoton_from_EtaPrime_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Rho0_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_RhoPlus_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_RhoMinus_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Phi_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Delta0_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_DeltaPlus_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Sigma0_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_KZeroShort_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_KZeroLong_F_Pt);
+    f->WriteTObject(&hPrimPhoton_from_Lambda_F_Pt);
 
 
     f->WriteTObject(&hNPrimChPiM);

@@ -48,13 +48,14 @@ gStyle->SetPadTickY(1);
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/plotting/plotting_files/ALICE3_significance_input.root";
 gSystem->Exec("mkdir ./meson_significance");
 gSystem->cd("./meson_significance");
+    Double_t Nevent_run5_and_run6;
 
 
 switch(collisionSystem){
     case 0:{
         
     fcollisionSystem = "pp";
-    Nevent_run5_and_run6 = 18*1e15;
+    Nevent_run5_and_run6 = Ncol_pp;
     fileRec = new TFile(input_file_loc.Data());
     ltb_general_Additional_text = new TLatex(0.2,0.85,"#splitline{ALICE 3 Study}{pp #sqrt{#it{s}_{NN}} = 14 TeV}");
     gSystem->Exec(Form("mkdir %s",fcollisionSystem.Data()));
@@ -73,7 +74,7 @@ switch(collisionSystem){
     case 1:{
 
     fcollisionSystem = "PbPb";
-    Nevent_run5_and_run6 = 35*1e9;
+    Nevent_run5_and_run6 = Ncol_PbPb;
     fileRec = new TFile(input_file_loc.Data());
     ltb_general_Additional_text = new TLatex(0.2,0.85,"#splitline{ALICE 3 Study}{PbPb #sqrt{#it{s}_{NN}} = 5.5 TeV}");
     gSystem->Exec(Form("mkdir %s",fcollisionSystem.Data()));
