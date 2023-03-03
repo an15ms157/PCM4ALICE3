@@ -3,7 +3,7 @@
 
 TFile * fileRec;
 
-Int_t collisionSystem = 0;
+Int_t collisionSystem = 1;
 TString fcollisionSystem ;
 
 TLatex *ltb_system_Eta_B;
@@ -66,7 +66,7 @@ Int_t nbinspt_proj_fine  = 12;
 
 Double_t pt_bin_proj_rebin[12]={0.01,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,4.0,5.0 };
 Int_t nbinspt_proj_rebin  = 11;
-
+double_t Nevent_run5_and_run6;
 const double_t Crosssection = 7.8;
 double_t Ncol_pp = 18*1e15;
 double_t Ncol_PbPb = 35*1e9;

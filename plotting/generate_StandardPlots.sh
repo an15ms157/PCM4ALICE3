@@ -91,21 +91,6 @@ else
   sed -i "s|Int_t collisionSystem =.*|Int_t collisionSystem = 1;|g" ./plotting_files/meson_ptbins_fit.C
 fi
 
-sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_ptbins_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_ptbins_fit.C
-root -l -b -q ./plotting_files/meson_ptbins_fit.C
-
-sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_ptbins_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_ptbins_fit.C
-root -l -b -q ./plotting_files/meson_ptbins_fit.C
-
-sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_ptbins_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_ptbins_fit.C
-root -l -b -q ./plotting_files/meson_ptbins_fit.C
-
-sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_ptbins_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_ptbins_fit.C
-root -l -b -q ./plotting_files/meson_ptbins_fit.C
 
 
 
@@ -119,22 +104,6 @@ then
 else 
   sed -i "s|Int_t collisionSystem =.*|Int_t collisionSystem = 1;|g" ./plotting_files/meson_invmass_fit.C
 fi
-
-sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_invmass_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_invmass_fit.C
-root -l -b -q ./plotting_files/meson_invmass_fit.C
-
-sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_invmass_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_invmass_fit.C
-root -l -b -q ./plotting_files/meson_invmass_fit.C
-
-sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_invmass_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_invmass_fit.C
-root -l -b -q ./plotting_files/meson_invmass_fit.C
-
-sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_invmass_fit.C
-sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_invmass_fit.C
-root -l -b -q ./plotting_files/meson_invmass_fit.C
 
 
 ###    Signal & background
@@ -162,24 +131,68 @@ sed -i "s|TString input_file_loc=.*|TString input_file_loc="\"$Input_file_locati
 ##################################
 ###   RUN: (LOCALLY)
 ##################################
-root -l -b -q ./plotting_files/meson_MassResolution.C
-root -l -b -q ./plotting_files/meson_Acceptance.C
-root -l -b -q ./plotting_files/meson_NetEfficiency.C
-root -l -b -q ./plotting_files/meson_Effeciency.C
-root -l -b -q ./plotting_files/meson_dNdyPythia.C 
-root -l -b -q ./plotting_files/meson_openingangle.C
+#root -l -b -q ./plotting_files/meson_MassResolution.C
+#root -l -b -q ./plotting_files/meson_Acceptance.C
+#root -l -b -q ./plotting_files/meson_NetEfficiency.C
+#root -l -b -q ./plotting_files/meson_Effeciency.C
+#root -l -b -q ./plotting_files/meson_dNdyPythia.C 
+#root -l -b -q ./plotting_files/meson_openingangle.C
+#
+#
+#### Signal pT bin FIT : 
+#sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_ptbins_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_ptbins_fit.C
+#root -l -b -q ./plotting_files/meson_ptbins_fit.C
+#
+#sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_ptbins_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_ptbins_fit.C
+#root -l -b -q ./plotting_files/meson_ptbins_fit.C
+#
+#sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_ptbins_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_ptbins_fit.C
+#root -l -b -q ./plotting_files/meson_ptbins_fit.C
+#
+#sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_ptbins_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_ptbins_fit.C
+#root -l -b -q ./plotting_files/meson_ptbins_fit.C
+#
+#
+#
+#### Background per event 
+#sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_invmass_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_invmass_fit.C
+#root -l -b -q ./plotting_files/meson_invmass_fit.C
+#
+#sed -i "s|TString fRap =.*;|TString fRap = \"F\";|g" ./plotting_files/meson_invmass_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_invmass_fit.C
+#root -l -b -q ./plotting_files/meson_invmass_fit.C
+#
+#sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_invmass_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 111;|g" ./plotting_files/meson_invmass_fit.C
+#root -l -b -q ./plotting_files/meson_invmass_fit.C
+#
+#sed -i "s|TString fRap =.*;|TString fRap = \"B\";|g" ./plotting_files/meson_invmass_fit.C
+#sed -i "s|fMesonId =.*;|fMesonId = 221;|g" ./plotting_files/meson_invmass_fit.C
+#root -l -b -q ./plotting_files/meson_invmass_fit.C
+#
+#
+#rm ALICE3_significance_input.root
+#hadd -f ALICE3_significance_input.root ./meson_Acceptance/ALICE3_significance_input.root ./meson_dNdyPythia/ALICE3_significance_input.root ./meson_invmass_fit/ALICE3_significance_input.root ./meson_NetEffeciency/ALICE3_significance_input.root
+#
+#root -l -b -q ./plotting_files/meson_signal_AND_background.C
+#root -l -b -q ./plotting_files/meson_signalVSbackground.C 
+#root -l -b -q ./plotting_files/meson_significance.C
+#root -l -b -q ./plotting_files/meson_Charged_primary.C
+root -l -b -q ./plotting_files/sys_uncertainity_estimate.C
 
-rm ALICE3_significance_input.root
-hadd ALICE3_significance_input.root /meson_Acceptance/ALICE3_significance_input.root ./meson_dNdyPythia/ALICE3_significance_input.root ./meson_invmass_fit/ALICE3_significance_input.root ./meson_NetEffeciency/ALICE3_significance_input.root
-
-root -l -b -q ./plotting_files/meson_signal_AND_background.C
-root -l -b -q ./plotting_files/meson_signalVSbackground.C 
-root -l -b -q ./plotting_files/meson_significance.C
-root -l -b -q ./plotting_files/meson_Charged_primary.C
 ##################################
 ###  Compile plots in PPTX
 ##################################
 
-#cp -r ~/PhD/Work/work_A/photons/auto_ppt .
-#cd auto_ppt
-#python3 ./analyze_ppt.py 
+cp -r ~/PhD/Work/work_A/photons/auto_ppt .
+cd auto_ppt
+python3 ./analyze_ppt.py 
+
+
+
+

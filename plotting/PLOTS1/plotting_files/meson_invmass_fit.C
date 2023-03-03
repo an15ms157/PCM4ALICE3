@@ -100,8 +100,8 @@ TLatex *l_mesonbackground_b;
 // OPTIONS:   pp = 0 || PbPb = 1;   fRap = F or B  fMesonID = 111 or 221
 
 //Int_t collisionSystem = 1;
-TString fRap = "B"; 
-fMesonId = 221;
+TString fRap = "F"; 
+fMesonId = 111;
 
 float_t fEnergy;            
 TString fMesonName;

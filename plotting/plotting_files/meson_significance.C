@@ -48,8 +48,6 @@ gStyle->SetPadTickY(1);
 TString input_file_loc="/home/abhishek/PhD/Work/work_A/photons/PCM4ALICE3/plotting/plotting_files/ALICE3_significance_input.root";
 gSystem->Exec("mkdir ./meson_significance");
 gSystem->cd("./meson_significance");
-    Double_t Nevent_run5_and_run6;
-
 
 switch(collisionSystem){
     case 0:{

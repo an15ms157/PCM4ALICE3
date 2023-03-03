@@ -16,7 +16,8 @@ TLatex *ltb_Eta_B_Additional_text,*ltb_Pi0_F_Additional_text,*ltb_Pi0_B_Addition
 TLatex *ltb_general_Additional_text;
 
 TString LightMeson[2][2]       = {{"Pi0","#pi^{0}"},{"Eta","#eta"}};
-TString RapidityBlock[2][2]   = {{"B", "Barrel"},{"F", "Forward"}};
+TString RapidityBlock[2][3]   = {{"B", "Barrel","0 < #eta < 1.4"},{"F", "Forward","1.75 < #eta < 4"}};
+//ARRAY[Row][Column]
 
 Double_t epsilon = 0.00001;
 Double_t Rap_F_low1 = 1.75;
@@ -52,9 +53,9 @@ Int_t Eta_marker_color = 416+3; //kGreen+3
 
 double fMaxPt=10.0;
 Int_t Font=42;
-Double_t TextSize=0.025;
-Double_t TextSize_lable=0.025;
-Double_t TextSize_title=0.025;
+Double_t TextSize=0.035;
+Double_t TextSize_lable=0.035;
+Double_t TextSize_title=0.035;
 Double_t TextSize_latex=20;
 Double_t LabelOffsetX=1.5;
 Double_t LabelOffsetY=1.5;
@@ -63,6 +64,12 @@ Double_t LabelOffsetY=1.5;
 Double_t pt_bin_proj_fine[13]={0.0,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,5.0,7.0,10.0 };
 Int_t nbinspt_proj_fine  = 12;
 
-double_t Nevent_run5_and_run6; //pp: 1e15 ||  PbPb: 35*1e9;
+Double_t pt_bin_proj_rebin[12]={0.01,0.1,0.2,0.3,0.5,0.7,1.0,1.5,2.0,3.0,4.0,5.0 };
+Int_t nbinspt_proj_rebin  = 11;
+double_t Nevent_run5_and_run6;
 const double_t Crosssection = 7.8;
+double_t Ncol_pp = 18*1e15;
+double_t Ncol_PbPb = 35*1e9;
+
+
 
