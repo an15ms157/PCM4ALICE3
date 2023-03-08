@@ -10,7 +10,7 @@ from pptx.util import Inches, Pt
 from pptx.enum.dml import MSO_THEME_COLOR
 from PIL import Image
 from datetime import date
-
+from pptx.enum.dml import MSO_FILL
 
 Author = 'Abhishek Nath'
 Dept = 'Dept. of Physics and Astronomy'
@@ -124,30 +124,36 @@ ALICE3_loc="/home/abhishek/PhD/Work/work_A/photons/auto_ppt/figures/ALICE3.png"
 layout6 = prs.slide_layouts[6]
 slide = prs.slides.add_slide(layout6)
 
+# Set the background color to blue
+colour_R,colour_G,colour_B, = (237,227,218)
+slide.background.fill.solid()
+slide.background.fill.fore_color.rgb = RGBColor(colour_R,colour_G, colour_B)
+
+
 #TITLE OPF THE PRESENTATION
-txBox00 = slide.shapes.add_textbox(Inches(3), Inches(1), width=Inches(7), height=Inches(2))
+txBox00 = slide.shapes.add_textbox(Inches(3), Inches(2.5), width=Inches(7), height=Inches(2))
 tf = txBox00.text_frame
 p01 = tf.add_paragraph()
-p01.text = "ALICE 3 light meson update" 
-p01.font.name = "Serif"
+p01.text = "ALICE 3 photon analysis via PCM" 
+p01.font.name = "Liberation Serif"
 p01.font.size = Pt(48)
 p01.font.bold = True
 
-txBox01 = slide.shapes.add_textbox(Inches(1), Inches(3), width=Inches(7), height=Inches(7))
+txBox01 = slide.shapes.add_textbox(Inches(1), Inches(4), width=Inches(7), height=Inches(7))
 tf = txBox01.text_frame
 
 p02 = tf.add_paragraph()
-p02.font.name = "Serif"
+p02.font.name = "Liberation Serif"
 p02.font.size = Pt(30)
 p02.text = Author
 
 p03 = tf.add_paragraph()
-p03.font.name = "Serif"
+p03.font.name = "Liberation Serif"
 p03.font.size = Pt(30)
 p03.text = Dept 
 
 p04 = tf.add_paragraph()
-p04.font.name = "Serif"
+p04.font.name = "Liberation Serif"
 p04.font.size = Pt(30)
 p04.text = Uni 
 
@@ -156,7 +162,7 @@ txBox02 = slide.shapes.add_textbox(Inches(5), Inches(7.5), width=Inches(7), heig
 tf = txBox02.text_frame
 
 p05 = tf.add_paragraph()
-p05.font.name = "Serif"
+p05.font.name = "Liberation Serif"
 p05.font.size = Pt(24)
 p05.text = "18th Nov 2022 : Update on Systematic studies"
 
@@ -185,7 +191,7 @@ height = Inches(1.0)
 txBox10 = slide.shapes.add_textbox(left, 0, width=Inches(7), height=Inches(6.5))
 tf = txBox10.text_frame
 p10 = tf.add_paragraph()
-p10.font.name = "Serif"
+p10.font.name = "Liberation Serif"
 p10.font.size = Pt(32)
 p10.font.bold = True
 p10.text = "Neutral meson Monte-Carlo \nperformance studies using PCM"
@@ -229,12 +235,12 @@ txBox11 = slide.shapes.add_textbox(left, 13*top, 3*width, 3*height)
 tf = txBox11.text_frame
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- Full simulations of pp √s = 14 and \n PbPb √s = 5.52 TeV using PYTHIA 8.2\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- pp: 9.6∗10^6 ; PbPb: 19k events"
 
@@ -256,7 +262,7 @@ slide.shapes.add_shape(    MSO_SHAPE.RIGHT_ARROW, left_arrow, top_arrow, width_a
 txBox12 = slide.shapes.add_textbox(left+del_x, top_arrow, width=Inches(4.5), height=Inches(4))
 tf = txBox12.text_frame
 p12 = tf.add_paragraph()
-p12.font.name = "Serif"
+p12.font.name = "Liberation Serif"
 p12.font.size = Pt(18)
 p12.text = "\tFull \nsimulations"
 
@@ -270,7 +276,7 @@ slide.shapes.add_shape(    MSO_SHAPE.RIGHT_ARROW, left_arrow +Inches(3.0) , top_
 txBox13 = slide.shapes.add_textbox(left+width_arrow+ width +3*del_x, top_arrow, width=Inches(4.5), height=Inches(4))
 tf = txBox13.text_frame
 p13 = tf.add_paragraph()
-p13.font.name = "Serif"
+p13.font.name = "Liberation Serif"
 p13.font.size = Pt(18)
 p13.text = "\tFast \nsimulations"
 
@@ -312,7 +318,7 @@ height = Inches(1.0)
 txBox10 = slide.shapes.add_textbox(left, 0, width=Inches(7), height=Inches(6.5))
 tf = txBox10.text_frame
 p10 = tf.add_paragraph()
-p10.font.name = "Serif"
+p10.font.name = "Liberation Serif"
 p10.font.size = Pt(32)
 p10.font.bold = True
 p10.text = "ALICE 3 and recent developments"
@@ -323,17 +329,17 @@ tf = txBox11.text_frame
 
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- ALICE 3: An ultra-light silicon wafer\n based detector system with very\n low momentum tracking capabilities for\n high luminosity collisions\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- High-resolution vertex detector,\n PID over large acceptance\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- Photons (1 MeV/c - 50 GeV/c), \nwide rapidity range (|y | < 4) :\n → ECAL\n → FCT\n → PCM\n"
 
@@ -355,7 +361,6 @@ ALICE3_fig = slide.shapes.add_picture(ALICE3_loc,.5*left, 3*top, 2.75*width, 4*h
 #-----------------------------------------------------------------------------------------------------------------------
 
 slide = prs.slides.add_slide(layout6) 
-shapes = slide.shapes
 
 ###############   Title:
 
@@ -366,7 +371,7 @@ height = Inches(1.0)
 txBox10 = slide.shapes.add_textbox(left, 0, width=Inches(7), height=Inches(6.5))
 tf = txBox10.text_frame
 p10 = tf.add_paragraph()
-p10.font.name = "Serif"
+p10.font.name = "Liberation Serif"
 p10.font.size = Pt(32)
 p10.font.bold = True
 p10.text = "PCM & Direct Photons"
@@ -376,17 +381,17 @@ txBox11 = slide.shapes.add_textbox(9*left, 12*top, 2.5*width, 4*height)
 tf = txBox11.text_frame
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- Can escape QCD medium without \n being affected\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- Carry information on medium’s space-time expansion \nand temperature: hadron matter phase diagram\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- High precision decay photon measurement necessary. \nMain contributions from π0 and η mesons"
 
@@ -395,22 +400,22 @@ txBox11 = slide.shapes.add_textbox(.5*left, 2*top, 2.5*width, 4*height)
 tf = txBox11.text_frame
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- PCM :Converted photons measured by \nreconstructing e+e− pairs using a V0\n algorithm.\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- Photon momentum resolution \nlinked to charged particle \nmomentum resolution.\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- Good measurement at low p_{T}\n"
 
 p11 = tf.add_paragraph()
-p11.font.name = "Serif"
+p11.font.name = "Liberation Serif"
 p11.font.size = Pt(18)
 p11.text = "- π0 and η are reconstructed \nin their respective 2γ decay channel\n"
 
@@ -428,11 +433,29 @@ Cocktail_contribution_fig = slide.shapes.add_picture(Cocktail_contribution_loc, 
                     #############   PbPb    ###############
 
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 txBox10 = slide.shapes.add_textbox(left+Inches(6), Inches(4), width=Inches(7), height=Inches(6.5))
 tf = txBox10.text_frame
 p10 = tf.add_paragraph()
-p10.font.name = "Serif"
+p10.font.name = "Liberation Serif"
 p10.font.size = Pt(32)
 p10.font.bold = True
 p10.text = "PbPb results"
@@ -441,11 +464,18 @@ p10.text = "PbPb results"
 
 
 
-
-
 #MASS RESOLUTION 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(    MSO_SHAPE.RECTANGLE, 0, Inches(0.5),Inches(16),Inches(0.5))
@@ -468,6 +498,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(    MSO_SHAPE.RECTANGLE, 0, Inches(0.5),Inches(16),Inches(0.5))
@@ -522,6 +561,15 @@ p.font.bold = True
 #NET EFFICIENCY AND pYTHIA dNDy
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -554,6 +602,15 @@ p.font.bold = True
 #OPENING ANGLE
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -584,6 +641,15 @@ p.font.bold = True
 #GAUSSIAN PEAK FIT 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -606,6 +672,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -629,6 +704,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -651,6 +735,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -678,6 +771,15 @@ p.font.bold = True
 #SIGNAL AND BACKGROUND COMPARISON
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -699,6 +801,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -722,6 +833,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -744,6 +864,15 @@ p.font.bold = True
 
 #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(layout6) 
+# Set the background color of the lower triangle of the slide
+left = 0
+top = 0
+width = Inches(16.0)
+height = Inches(2.0)
+shapes=slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+fill = shapes.fill
+fill.solid()
+fill.fore_color.rgb = RGBColor(49,57,77)
 
 #IMAGE
 shape = slide.shapes.add_shape(
@@ -903,7 +1032,7 @@ slide = prs.slides.add_slide(layout6)
 txBox10 = slide.shapes.add_textbox(left+Inches(6), Inches(4), width=Inches(7), height=Inches(6.5))
 tf = txBox10.text_frame
 p10 = tf.add_paragraph()
-p10.font.name = "Serif"
+p10.font.name = "Liberation Serif"
 p10.font.size = Pt(32)
 p10.font.bold = True
 p10.text = "pp results"
